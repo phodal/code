@@ -1,7 +1,7 @@
 grammar Code;
 
 compilationUnit
-    : packageDeclaration? importDeclaration* typeDeclaration* EOF
+    : packageDeclaration? importDeclaration* typeDeclaration* expressDeclaration* EOF
     ;
 
 packageDeclaration
@@ -16,6 +16,17 @@ typeDeclaration
     : dataStructDeclaration
     | memberDeclaration
     | functionDeclaration
+    ;
+
+expressDeclaration
+    : methodCallDeclaration
+    ;
+
+methodCallDeclaration: IDENTIFIER '(' parameterList ')';
+parameterList: parameter*;
+parameter
+    : IDENTIFIER
+    | STRING_LITERAL
     ;
 
 dataStructDeclaration: DATA_STRUCT IDENTIFIER;
@@ -36,6 +47,19 @@ IDENTIFIER:         Letter LetterOrDigit*;
 WS:                 [ \t\r\n\u000C]+ -> channel(HIDDEN);
 COMMENT:            '/*' .*? '*/'    -> channel(HIDDEN);
 LINE_COMMENT:       '//' ~[\r\n]*    -> channel(HIDDEN);
+
+STRING_LITERAL:     '"' (~["\\\r\n] | EscapeSequence)* '"';
+
+
+fragment HexDigit
+    : [0-9a-fA-F]
+    ;
+
+fragment EscapeSequence
+    : '\\' [btnfr"'\\]
+    | '\\' ([0-3]? [0-7])? [0-7]
+    | '\\' 'u'+ HexDigit HexDigit HexDigit HexDigit
+    ;
 
 fragment LetterOrDigit
     : Letter
