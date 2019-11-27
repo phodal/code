@@ -1,8 +1,20 @@
 grammar Define;
 
 compilationUnit
-    : defaultDeclaration? systemDeclaration* EOF
+    : symbolDelcaration? defaultDeclaration? normalDeclarations* EOF
     ;
+
+symbolDelcaration
+    : SYMBOL_TEXT IDENTIFIER '"' SPECIAL_SYMBOL '"'
+    ;
+
+normalDeclarations
+    : systemDeclaration
+    | moduleDeclaration
+    ;
+
+SYMBOL_TEXT: 'symbol';
+SPECIAL_SYMBOL: Symbols;
 
 defaultDeclaration
     : defineKey ':' defineValue
@@ -15,8 +27,40 @@ systemDeclaration
 defineKey: IDENTIFIER;
 defineValue: IDENTIFIER;
 
+//
+
+moduleDeclaration
+    : MODULE IDENTIFIER LBRACE  moduleDefine RBRACE
+    ;
+
+moduleDefine
+    : IDENTIFIER LBRACE moduleAttributes RBRACE
+    ;
+
+moduleAttributes
+    : IMPORT STRING_LITERAL
+    | EQUAL STRING_LITERAL
+    ;
+
+MODULE: 'module';
+IMPORT: 'import';
+EQUAL: 'equal';
+
 
 IDENTIFIER:         Letter LetterOrDigit*;
+
+// Separators
+
+LPAREN:             '(';
+RPAREN:             ')';
+LBRACE:             '{';
+RBRACE:             '}';
+LBRACK:             '[';
+RBRACK:             ']';
+SEMI:               ';';
+COMMA:              ',';
+DOT:                '.';
+
 
 // Whitespace and comments
 
@@ -40,6 +84,10 @@ fragment EscapeSequence
 fragment LetterOrDigit
     : Letter
     | [0-9]
+    ;
+
+fragment Symbols
+    : '{' | '}' | '$' | ')' | '(' | '[' | ']'
     ;
 
 fragment Letter
