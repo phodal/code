@@ -16,51 +16,73 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 22, 77, 4,
-	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7, 4,
-	8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 3, 2, 7, 2, 24, 10, 2,
-	12, 2, 14, 2, 27, 11, 2, 3, 2, 5, 2, 30, 10, 2, 3, 2, 7, 2, 33, 10, 2,
-	12, 2, 14, 2, 36, 11, 2, 3, 2, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 4,
-	5, 4, 46, 10, 4, 3, 5, 3, 5, 3, 5, 3, 5, 3, 6, 3, 6, 3, 6, 3, 6, 3, 7,
-	3, 7, 3, 8, 3, 8, 3, 9, 3, 9, 3, 9, 3, 9, 3, 9, 3, 9, 3, 10, 3, 10, 3,
-	10, 3, 10, 3, 10, 3, 11, 3, 11, 3, 11, 3, 11, 5, 11, 75, 10, 11, 3, 11,
-	2, 2, 12, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 2, 2, 2, 71, 2, 25, 3, 2,
-	2, 2, 4, 39, 3, 2, 2, 2, 6, 45, 3, 2, 2, 2, 8, 47, 3, 2, 2, 2, 10, 51,
-	3, 2, 2, 2, 12, 55, 3, 2, 2, 2, 14, 57, 3, 2, 2, 2, 16, 59, 3, 2, 2, 2,
-	18, 65, 3, 2, 2, 2, 20, 74, 3, 2, 2, 2, 22, 24, 5, 4, 3, 2, 23, 22, 3,
-	2, 2, 2, 24, 27, 3, 2, 2, 2, 25, 23, 3, 2, 2, 2, 25, 26, 3, 2, 2, 2, 26,
-	29, 3, 2, 2, 2, 27, 25, 3, 2, 2, 2, 28, 30, 5, 8, 5, 2, 29, 28, 3, 2, 2,
-	2, 29, 30, 3, 2, 2, 2, 30, 34, 3, 2, 2, 2, 31, 33, 5, 6, 4, 2, 32, 31,
-	3, 2, 2, 2, 33, 36, 3, 2, 2, 2, 34, 32, 3, 2, 2, 2, 34, 35, 3, 2, 2, 2,
-	35, 37, 3, 2, 2, 2, 36, 34, 3, 2, 2, 2, 37, 38, 7, 2, 2, 3, 38, 3, 3, 2,
-	2, 2, 39, 40, 7, 4, 2, 2, 40, 41, 7, 9, 2, 2, 41, 42, 7, 22, 2, 2, 42,
-	5, 3, 2, 2, 2, 43, 46, 5, 10, 6, 2, 44, 46, 5, 16, 9, 2, 45, 43, 3, 2,
-	2, 2, 45, 44, 3, 2, 2, 2, 46, 7, 3, 2, 2, 2, 47, 48, 5, 12, 7, 2, 48, 49,
-	7, 3, 2, 2, 49, 50, 5, 14, 8, 2, 50, 9, 3, 2, 2, 2, 51, 52, 5, 12, 7, 2,
-	52, 53, 7, 3, 2, 2, 53, 54, 5, 14, 8, 2, 54, 11, 3, 2, 2, 2, 55, 56, 7,
-	9, 2, 2, 56, 13, 3, 2, 2, 2, 57, 58, 7, 9, 2, 2, 58, 15, 3, 2, 2, 2, 59,
-	60, 7, 6, 2, 2, 60, 61, 7, 9, 2, 2, 61, 62, 7, 12, 2, 2, 62, 63, 5, 18,
-	10, 2, 63, 64, 7, 13, 2, 2, 64, 17, 3, 2, 2, 2, 65, 66, 7, 9, 2, 2, 66,
-	67, 7, 12, 2, 2, 67, 68, 5, 20, 11, 2, 68, 69, 7, 13, 2, 2, 69, 19, 3,
-	2, 2, 2, 70, 71, 7, 7, 2, 2, 71, 75, 7, 22, 2, 2, 72, 73, 7, 8, 2, 2, 73,
-	75, 7, 22, 2, 2, 74, 70, 3, 2, 2, 2, 74, 72, 3, 2, 2, 2, 75, 21, 3, 2,
-	2, 2, 7, 25, 29, 34, 45, 74,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 26, 126,
+	4, 2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7,
+	4, 8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 4, 12, 9, 12, 4, 13,
+	9, 13, 4, 14, 9, 14, 4, 15, 9, 15, 4, 16, 9, 16, 3, 2, 7, 2, 34, 10, 2,
+	12, 2, 14, 2, 37, 11, 2, 3, 2, 5, 2, 40, 10, 2, 3, 2, 7, 2, 43, 10, 2,
+	12, 2, 14, 2, 46, 11, 2, 3, 2, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 4,
+	5, 4, 56, 10, 4, 3, 5, 3, 5, 3, 5, 3, 5, 7, 5, 62, 10, 5, 12, 5, 14, 5,
+	65, 11, 5, 3, 5, 3, 5, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6,
+	3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 5, 6, 82, 10, 6, 3, 7, 3, 7, 3, 8, 3, 8,
+	3, 9, 3, 9, 3, 9, 7, 9, 91, 10, 9, 12, 9, 14, 9, 94, 11, 9, 3, 9, 3, 9,
+	3, 9, 3, 10, 3, 10, 3, 11, 3, 11, 3, 11, 3, 11, 3, 12, 3, 12, 3, 13, 3,
+	13, 3, 14, 3, 14, 3, 14, 3, 14, 3, 14, 3, 14, 3, 15, 3, 15, 3, 15, 3, 15,
+	3, 15, 3, 16, 3, 16, 3, 16, 3, 16, 5, 16, 124, 10, 16, 3, 16, 2, 2, 17,
+	2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 2, 2, 2, 118, 2,
+	35, 3, 2, 2, 2, 4, 49, 3, 2, 2, 2, 6, 55, 3, 2, 2, 2, 8, 57, 3, 2, 2, 2,
+	10, 81, 3, 2, 2, 2, 12, 83, 3, 2, 2, 2, 14, 85, 3, 2, 2, 2, 16, 87, 3,
+	2, 2, 2, 18, 98, 3, 2, 2, 2, 20, 100, 3, 2, 2, 2, 22, 104, 3, 2, 2, 2,
+	24, 106, 3, 2, 2, 2, 26, 108, 3, 2, 2, 2, 28, 114, 3, 2, 2, 2, 30, 123,
+	3, 2, 2, 2, 32, 34, 5, 4, 3, 2, 33, 32, 3, 2, 2, 2, 34, 37, 3, 2, 2, 2,
+	35, 33, 3, 2, 2, 2, 35, 36, 3, 2, 2, 2, 36, 39, 3, 2, 2, 2, 37, 35, 3,
+	2, 2, 2, 38, 40, 5, 8, 5, 2, 39, 38, 3, 2, 2, 2, 39, 40, 3, 2, 2, 2, 40,
+	44, 3, 2, 2, 2, 41, 43, 5, 6, 4, 2, 42, 41, 3, 2, 2, 2, 43, 46, 3, 2, 2,
+	2, 44, 42, 3, 2, 2, 2, 44, 45, 3, 2, 2, 2, 45, 47, 3, 2, 2, 2, 46, 44,
+	3, 2, 2, 2, 47, 48, 7, 2, 2, 3, 48, 3, 3, 2, 2, 2, 49, 50, 7, 3, 2, 2,
+	50, 51, 7, 11, 2, 2, 51, 52, 7, 25, 2, 2, 52, 5, 3, 2, 2, 2, 53, 56, 5,
+	20, 11, 2, 54, 56, 5, 26, 14, 2, 55, 53, 3, 2, 2, 2, 55, 54, 3, 2, 2, 2,
+	56, 7, 3, 2, 2, 2, 57, 58, 7, 5, 2, 2, 58, 59, 5, 22, 12, 2, 59, 63, 7,
+	14, 2, 2, 60, 62, 5, 10, 6, 2, 61, 60, 3, 2, 2, 2, 62, 65, 3, 2, 2, 2,
+	63, 61, 3, 2, 2, 2, 63, 64, 3, 2, 2, 2, 64, 66, 3, 2, 2, 2, 65, 63, 3,
+	2, 2, 2, 66, 67, 7, 15, 2, 2, 67, 9, 3, 2, 2, 2, 68, 69, 7, 6, 2, 2, 69,
+	70, 7, 21, 2, 2, 70, 71, 5, 12, 7, 2, 71, 72, 5, 14, 8, 2, 72, 82, 3, 2,
+	2, 2, 73, 74, 7, 7, 2, 2, 74, 75, 7, 12, 2, 2, 75, 76, 7, 11, 2, 2, 76,
+	77, 7, 13, 2, 2, 77, 78, 7, 14, 2, 2, 78, 79, 5, 16, 9, 2, 79, 80, 7, 15,
+	2, 2, 80, 82, 3, 2, 2, 2, 81, 68, 3, 2, 2, 2, 81, 73, 3, 2, 2, 2, 82, 11,
+	3, 2, 2, 2, 83, 84, 7, 11, 2, 2, 84, 13, 3, 2, 2, 2, 85, 86, 7, 11, 2,
+	2, 86, 15, 3, 2, 2, 2, 87, 88, 5, 12, 7, 2, 88, 92, 7, 11, 2, 2, 89, 91,
+	5, 12, 7, 2, 90, 89, 3, 2, 2, 2, 91, 94, 3, 2, 2, 2, 92, 90, 3, 2, 2, 2,
+	92, 93, 3, 2, 2, 2, 93, 95, 3, 2, 2, 2, 94, 92, 3, 2, 2, 2, 95, 96, 5,
+	18, 10, 2, 96, 97, 5, 12, 7, 2, 97, 17, 3, 2, 2, 2, 98, 99, 7, 25, 2, 2,
+	99, 19, 3, 2, 2, 2, 100, 101, 5, 22, 12, 2, 101, 102, 7, 21, 2, 2, 102,
+	103, 5, 24, 13, 2, 103, 21, 3, 2, 2, 2, 104, 105, 7, 11, 2, 2, 105, 23,
+	3, 2, 2, 2, 106, 107, 7, 11, 2, 2, 107, 25, 3, 2, 2, 2, 108, 109, 7, 8,
+	2, 2, 109, 110, 7, 11, 2, 2, 110, 111, 7, 14, 2, 2, 111, 112, 5, 28, 15,
+	2, 112, 113, 7, 15, 2, 2, 113, 27, 3, 2, 2, 2, 114, 115, 7, 11, 2, 2, 115,
+	116, 7, 14, 2, 2, 116, 117, 5, 30, 16, 2, 117, 118, 7, 15, 2, 2, 118, 29,
+	3, 2, 2, 2, 119, 120, 7, 9, 2, 2, 120, 124, 7, 25, 2, 2, 121, 122, 7, 10,
+	2, 2, 122, 124, 7, 25, 2, 2, 123, 119, 3, 2, 2, 2, 123, 121, 3, 2, 2, 2,
+	124, 31, 3, 2, 2, 2, 10, 35, 39, 44, 55, 63, 81, 92, 123,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
 
 var literalNames = []string{
-	"", "':'", "'symbol'", "", "'module'", "'import'", "'equal'", "", "'('",
-	"')'", "'{'", "'}'", "'['", "']'", "';'", "','", "'.'",
+	"", "'symbol'", "", "'define'", "'defaultSymbol'", "'defaultTemplate'",
+	"'module'", "'import'", "'equal'", "", "'('", "')'", "'{'", "'}'", "'['",
+	"']'", "';'", "','", "'.'", "':'",
 }
 var symbolicNames = []string{
-	"", "", "SYMBOL_TEXT", "SPECIAL_SYMBOL", "MODULE", "IMPORT", "EQUAL", "IDENTIFIER",
-	"LPAREN", "RPAREN", "LBRACE", "RBRACE", "LBRACK", "RBRACK", "SEMI", "COMMA",
-	"DOT", "WS", "COMMENT", "LINE_COMMENT", "STRING_LITERAL",
+	"", "SYMBOL_TEXT", "SPECIAL_SYMBOL", "DEFINE", "DEFAULT_SYMBOL", "DEFAULT_TEMPLATE",
+	"MODULE", "IMPORT", "EQUAL", "IDENTIFIER", "LPAREN", "RPAREN", "LBRACE",
+	"RBRACE", "LBRACK", "RBRACK", "SEMI", "COMMA", "DOT", "COLON", "WS", "COMMENT",
+	"LINE_COMMENT", "STRING_LITERAL", "Symbols",
 }
 
 var ruleNames = []string{
-	"compilationUnit", "symbolDelcaration", "normalDeclarations", "defaultDeclaration",
+	"compilationUnit", "symbolDelcaration", "normalDeclarations", "defineDeclaration",
+	"defineExpress", "symbolKey", "symbolValue", "defineBody", "templateData",
 	"systemDeclaration", "defineKey", "defineValue", "moduleDeclaration", "moduleDefine",
 	"moduleAttributes",
 }
@@ -92,27 +114,31 @@ func NewDefineParser(input antlr.TokenStream) *DefineParser {
 
 // DefineParser tokens.
 const (
-	DefineParserEOF            = antlr.TokenEOF
-	DefineParserT__0           = 1
-	DefineParserSYMBOL_TEXT    = 2
-	DefineParserSPECIAL_SYMBOL = 3
-	DefineParserMODULE         = 4
-	DefineParserIMPORT         = 5
-	DefineParserEQUAL          = 6
-	DefineParserIDENTIFIER     = 7
-	DefineParserLPAREN         = 8
-	DefineParserRPAREN         = 9
-	DefineParserLBRACE         = 10
-	DefineParserRBRACE         = 11
-	DefineParserLBRACK         = 12
-	DefineParserRBRACK         = 13
-	DefineParserSEMI           = 14
-	DefineParserCOMMA          = 15
-	DefineParserDOT            = 16
-	DefineParserWS             = 17
-	DefineParserCOMMENT        = 18
-	DefineParserLINE_COMMENT   = 19
-	DefineParserSTRING_LITERAL = 20
+	DefineParserEOF              = antlr.TokenEOF
+	DefineParserSYMBOL_TEXT      = 1
+	DefineParserSPECIAL_SYMBOL   = 2
+	DefineParserDEFINE           = 3
+	DefineParserDEFAULT_SYMBOL   = 4
+	DefineParserDEFAULT_TEMPLATE = 5
+	DefineParserMODULE           = 6
+	DefineParserIMPORT           = 7
+	DefineParserEQUAL            = 8
+	DefineParserIDENTIFIER       = 9
+	DefineParserLPAREN           = 10
+	DefineParserRPAREN           = 11
+	DefineParserLBRACE           = 12
+	DefineParserRBRACE           = 13
+	DefineParserLBRACK           = 14
+	DefineParserRBRACK           = 15
+	DefineParserSEMI             = 16
+	DefineParserCOMMA            = 17
+	DefineParserDOT              = 18
+	DefineParserCOLON            = 19
+	DefineParserWS               = 20
+	DefineParserCOMMENT          = 21
+	DefineParserLINE_COMMENT     = 22
+	DefineParserSTRING_LITERAL   = 23
+	DefineParserSymbols          = 24
 )
 
 // DefineParser rules.
@@ -120,13 +146,18 @@ const (
 	DefineParserRULE_compilationUnit    = 0
 	DefineParserRULE_symbolDelcaration  = 1
 	DefineParserRULE_normalDeclarations = 2
-	DefineParserRULE_defaultDeclaration = 3
-	DefineParserRULE_systemDeclaration  = 4
-	DefineParserRULE_defineKey          = 5
-	DefineParserRULE_defineValue        = 6
-	DefineParserRULE_moduleDeclaration  = 7
-	DefineParserRULE_moduleDefine       = 8
-	DefineParserRULE_moduleAttributes   = 9
+	DefineParserRULE_defineDeclaration  = 3
+	DefineParserRULE_defineExpress      = 4
+	DefineParserRULE_symbolKey          = 5
+	DefineParserRULE_symbolValue        = 6
+	DefineParserRULE_defineBody         = 7
+	DefineParserRULE_templateData       = 8
+	DefineParserRULE_systemDeclaration  = 9
+	DefineParserRULE_defineKey          = 10
+	DefineParserRULE_defineValue        = 11
+	DefineParserRULE_moduleDeclaration  = 12
+	DefineParserRULE_moduleDefine       = 13
+	DefineParserRULE_moduleAttributes   = 14
 )
 
 // ICompilationUnitContext is an interface to support dynamic dispatch.
@@ -194,14 +225,14 @@ func (s *CompilationUnitContext) SymbolDelcaration(i int) ISymbolDelcarationCont
 	return t.(ISymbolDelcarationContext)
 }
 
-func (s *CompilationUnitContext) DefaultDeclaration() IDefaultDeclarationContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IDefaultDeclarationContext)(nil)).Elem(), 0)
+func (s *CompilationUnitContext) DefineDeclaration() IDefineDeclarationContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IDefineDeclarationContext)(nil)).Elem(), 0)
 
 	if t == nil {
 		return nil
 	}
 
-	return t.(IDefaultDeclarationContext)
+	return t.(IDefineDeclarationContext)
 }
 
 func (s *CompilationUnitContext) AllNormalDeclarations() []INormalDeclarationsContext {
@@ -279,46 +310,47 @@ func (p *DefineParser) CompilationUnit() (localctx ICompilationUnitContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(23)
+	p.SetState(33)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == DefineParserSYMBOL_TEXT {
 		{
-			p.SetState(20)
+			p.SetState(30)
 			p.SymbolDelcaration()
 		}
 
-		p.SetState(25)
+		p.SetState(35)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
-	p.SetState(27)
+	p.SetState(37)
 	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
 
-	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 1, p.GetParserRuleContext()) == 1 {
+	if _la == DefineParserDEFINE {
 		{
-			p.SetState(26)
-			p.DefaultDeclaration()
+			p.SetState(36)
+			p.DefineDeclaration()
 		}
 
 	}
-	p.SetState(32)
+	p.SetState(42)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == DefineParserMODULE || _la == DefineParserIDENTIFIER {
 		{
-			p.SetState(29)
+			p.SetState(39)
 			p.NormalDeclarations()
 		}
 
-		p.SetState(34)
+		p.SetState(44)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(35)
+		p.SetState(45)
 		p.Match(DefineParserEOF)
 	}
 
@@ -427,15 +459,15 @@ func (p *DefineParser) SymbolDelcaration() (localctx ISymbolDelcarationContext) 
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(37)
+		p.SetState(47)
 		p.Match(DefineParserSYMBOL_TEXT)
 	}
 	{
-		p.SetState(38)
+		p.SetState(48)
 		p.Match(DefineParserIDENTIFIER)
 	}
 	{
-		p.SetState(39)
+		p.SetState(49)
 		p.Match(DefineParserSTRING_LITERAL)
 	}
 
@@ -550,21 +582,21 @@ func (p *DefineParser) NormalDeclarations() (localctx INormalDeclarationsContext
 		}
 	}()
 
-	p.SetState(43)
+	p.SetState(53)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
 	case DefineParserIDENTIFIER:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(41)
+			p.SetState(51)
 			p.SystemDeclaration()
 		}
 
 	case DefineParserMODULE:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(42)
+			p.SetState(52)
 			p.ModuleDeclaration()
 		}
 
@@ -575,45 +607,49 @@ func (p *DefineParser) NormalDeclarations() (localctx INormalDeclarationsContext
 	return localctx
 }
 
-// IDefaultDeclarationContext is an interface to support dynamic dispatch.
-type IDefaultDeclarationContext interface {
+// IDefineDeclarationContext is an interface to support dynamic dispatch.
+type IDefineDeclarationContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
-	// IsDefaultDeclarationContext differentiates from other interfaces.
-	IsDefaultDeclarationContext()
+	// IsDefineDeclarationContext differentiates from other interfaces.
+	IsDefineDeclarationContext()
 }
 
-type DefaultDeclarationContext struct {
+type DefineDeclarationContext struct {
 	*antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyDefaultDeclarationContext() *DefaultDeclarationContext {
-	var p = new(DefaultDeclarationContext)
+func NewEmptyDefineDeclarationContext() *DefineDeclarationContext {
+	var p = new(DefineDeclarationContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = DefineParserRULE_defaultDeclaration
+	p.RuleIndex = DefineParserRULE_defineDeclaration
 	return p
 }
 
-func (*DefaultDeclarationContext) IsDefaultDeclarationContext() {}
+func (*DefineDeclarationContext) IsDefineDeclarationContext() {}
 
-func NewDefaultDeclarationContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DefaultDeclarationContext {
-	var p = new(DefaultDeclarationContext)
+func NewDefineDeclarationContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DefineDeclarationContext {
+	var p = new(DefineDeclarationContext)
 
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = DefineParserRULE_defaultDeclaration
+	p.RuleIndex = DefineParserRULE_defineDeclaration
 
 	return p
 }
 
-func (s *DefaultDeclarationContext) GetParser() antlr.Parser { return s.parser }
+func (s *DefineDeclarationContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *DefaultDeclarationContext) DefineKey() IDefineKeyContext {
+func (s *DefineDeclarationContext) DEFINE() antlr.TerminalNode {
+	return s.GetToken(DefineParserDEFINE, 0)
+}
+
+func (s *DefineDeclarationContext) DefineKey() IDefineKeyContext {
 	var t = s.GetTypedRuleContext(reflect.TypeOf((*IDefineKeyContext)(nil)).Elem(), 0)
 
 	if t == nil {
@@ -623,49 +659,71 @@ func (s *DefaultDeclarationContext) DefineKey() IDefineKeyContext {
 	return t.(IDefineKeyContext)
 }
 
-func (s *DefaultDeclarationContext) DefineValue() IDefineValueContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IDefineValueContext)(nil)).Elem(), 0)
+func (s *DefineDeclarationContext) LBRACE() antlr.TerminalNode {
+	return s.GetToken(DefineParserLBRACE, 0)
+}
+
+func (s *DefineDeclarationContext) RBRACE() antlr.TerminalNode {
+	return s.GetToken(DefineParserRBRACE, 0)
+}
+
+func (s *DefineDeclarationContext) AllDefineExpress() []IDefineExpressContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IDefineExpressContext)(nil)).Elem())
+	var tst = make([]IDefineExpressContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(IDefineExpressContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *DefineDeclarationContext) DefineExpress(i int) IDefineExpressContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IDefineExpressContext)(nil)).Elem(), i)
 
 	if t == nil {
 		return nil
 	}
 
-	return t.(IDefineValueContext)
+	return t.(IDefineExpressContext)
 }
 
-func (s *DefaultDeclarationContext) GetRuleContext() antlr.RuleContext {
+func (s *DefineDeclarationContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *DefaultDeclarationContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *DefineDeclarationContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *DefaultDeclarationContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *DefineDeclarationContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(DefineListener); ok {
-		listenerT.EnterDefaultDeclaration(s)
+		listenerT.EnterDefineDeclaration(s)
 	}
 }
 
-func (s *DefaultDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *DefineDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(DefineListener); ok {
-		listenerT.ExitDefaultDeclaration(s)
+		listenerT.ExitDefineDeclaration(s)
 	}
 }
 
-func (s *DefaultDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+func (s *DefineDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case DefineVisitor:
-		return t.VisitDefaultDeclaration(s)
+		return t.VisitDefineDeclaration(s)
 
 	default:
 		return t.VisitChildren(s)
 	}
 }
 
-func (p *DefineParser) DefaultDeclaration() (localctx IDefaultDeclarationContext) {
-	localctx = NewDefaultDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 6, DefineParserRULE_defaultDeclaration)
+func (p *DefineParser) DefineDeclaration() (localctx IDefineDeclarationContext) {
+	localctx = NewDefineDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 6, DefineParserRULE_defineDeclaration)
+	var _la int
 
 	defer func() {
 		p.ExitRule()
@@ -685,16 +743,709 @@ func (p *DefineParser) DefaultDeclaration() (localctx IDefaultDeclarationContext
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(45)
+		p.SetState(55)
+		p.Match(DefineParserDEFINE)
+	}
+	{
+		p.SetState(56)
 		p.DefineKey()
 	}
 	{
-		p.SetState(46)
-		p.Match(DefineParserT__0)
+		p.SetState(57)
+		p.Match(DefineParserLBRACE)
+	}
+	p.SetState(61)
+	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
+
+	for _la == DefineParserDEFAULT_SYMBOL || _la == DefineParserDEFAULT_TEMPLATE {
+		{
+			p.SetState(58)
+			p.DefineExpress()
+		}
+
+		p.SetState(63)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(47)
-		p.DefineValue()
+		p.SetState(64)
+		p.Match(DefineParserRBRACE)
+	}
+
+	return localctx
+}
+
+// IDefineExpressContext is an interface to support dynamic dispatch.
+type IDefineExpressContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsDefineExpressContext differentiates from other interfaces.
+	IsDefineExpressContext()
+}
+
+type DefineExpressContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyDefineExpressContext() *DefineExpressContext {
+	var p = new(DefineExpressContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = DefineParserRULE_defineExpress
+	return p
+}
+
+func (*DefineExpressContext) IsDefineExpressContext() {}
+
+func NewDefineExpressContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DefineExpressContext {
+	var p = new(DefineExpressContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = DefineParserRULE_defineExpress
+
+	return p
+}
+
+func (s *DefineExpressContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *DefineExpressContext) DEFAULT_SYMBOL() antlr.TerminalNode {
+	return s.GetToken(DefineParserDEFAULT_SYMBOL, 0)
+}
+
+func (s *DefineExpressContext) COLON() antlr.TerminalNode {
+	return s.GetToken(DefineParserCOLON, 0)
+}
+
+func (s *DefineExpressContext) SymbolKey() ISymbolKeyContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*ISymbolKeyContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ISymbolKeyContext)
+}
+
+func (s *DefineExpressContext) SymbolValue() ISymbolValueContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*ISymbolValueContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ISymbolValueContext)
+}
+
+func (s *DefineExpressContext) DEFAULT_TEMPLATE() antlr.TerminalNode {
+	return s.GetToken(DefineParserDEFAULT_TEMPLATE, 0)
+}
+
+func (s *DefineExpressContext) LPAREN() antlr.TerminalNode {
+	return s.GetToken(DefineParserLPAREN, 0)
+}
+
+func (s *DefineExpressContext) IDENTIFIER() antlr.TerminalNode {
+	return s.GetToken(DefineParserIDENTIFIER, 0)
+}
+
+func (s *DefineExpressContext) RPAREN() antlr.TerminalNode {
+	return s.GetToken(DefineParserRPAREN, 0)
+}
+
+func (s *DefineExpressContext) LBRACE() antlr.TerminalNode {
+	return s.GetToken(DefineParserLBRACE, 0)
+}
+
+func (s *DefineExpressContext) DefineBody() IDefineBodyContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IDefineBodyContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IDefineBodyContext)
+}
+
+func (s *DefineExpressContext) RBRACE() antlr.TerminalNode {
+	return s.GetToken(DefineParserRBRACE, 0)
+}
+
+func (s *DefineExpressContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *DefineExpressContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *DefineExpressContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(DefineListener); ok {
+		listenerT.EnterDefineExpress(s)
+	}
+}
+
+func (s *DefineExpressContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(DefineListener); ok {
+		listenerT.ExitDefineExpress(s)
+	}
+}
+
+func (s *DefineExpressContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case DefineVisitor:
+		return t.VisitDefineExpress(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+func (p *DefineParser) DefineExpress() (localctx IDefineExpressContext) {
+	localctx = NewDefineExpressContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 8, DefineParserRULE_defineExpress)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.SetState(79)
+	p.GetErrorHandler().Sync(p)
+
+	switch p.GetTokenStream().LA(1) {
+	case DefineParserDEFAULT_SYMBOL:
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(66)
+			p.Match(DefineParserDEFAULT_SYMBOL)
+		}
+		{
+			p.SetState(67)
+			p.Match(DefineParserCOLON)
+		}
+		{
+			p.SetState(68)
+			p.SymbolKey()
+		}
+		{
+			p.SetState(69)
+			p.SymbolValue()
+		}
+
+	case DefineParserDEFAULT_TEMPLATE:
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(71)
+			p.Match(DefineParserDEFAULT_TEMPLATE)
+		}
+		{
+			p.SetState(72)
+			p.Match(DefineParserLPAREN)
+		}
+		{
+			p.SetState(73)
+			p.Match(DefineParserIDENTIFIER)
+		}
+		{
+			p.SetState(74)
+			p.Match(DefineParserRPAREN)
+		}
+		{
+			p.SetState(75)
+			p.Match(DefineParserLBRACE)
+		}
+		{
+			p.SetState(76)
+			p.DefineBody()
+		}
+		{
+			p.SetState(77)
+			p.Match(DefineParserRBRACE)
+		}
+
+	default:
+		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+	}
+
+	return localctx
+}
+
+// ISymbolKeyContext is an interface to support dynamic dispatch.
+type ISymbolKeyContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsSymbolKeyContext differentiates from other interfaces.
+	IsSymbolKeyContext()
+}
+
+type SymbolKeyContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptySymbolKeyContext() *SymbolKeyContext {
+	var p = new(SymbolKeyContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = DefineParserRULE_symbolKey
+	return p
+}
+
+func (*SymbolKeyContext) IsSymbolKeyContext() {}
+
+func NewSymbolKeyContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *SymbolKeyContext {
+	var p = new(SymbolKeyContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = DefineParserRULE_symbolKey
+
+	return p
+}
+
+func (s *SymbolKeyContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *SymbolKeyContext) IDENTIFIER() antlr.TerminalNode {
+	return s.GetToken(DefineParserIDENTIFIER, 0)
+}
+
+func (s *SymbolKeyContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *SymbolKeyContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *SymbolKeyContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(DefineListener); ok {
+		listenerT.EnterSymbolKey(s)
+	}
+}
+
+func (s *SymbolKeyContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(DefineListener); ok {
+		listenerT.ExitSymbolKey(s)
+	}
+}
+
+func (s *SymbolKeyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case DefineVisitor:
+		return t.VisitSymbolKey(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+func (p *DefineParser) SymbolKey() (localctx ISymbolKeyContext) {
+	localctx = NewSymbolKeyContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 10, DefineParserRULE_symbolKey)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(81)
+		p.Match(DefineParserIDENTIFIER)
+	}
+
+	return localctx
+}
+
+// ISymbolValueContext is an interface to support dynamic dispatch.
+type ISymbolValueContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsSymbolValueContext differentiates from other interfaces.
+	IsSymbolValueContext()
+}
+
+type SymbolValueContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptySymbolValueContext() *SymbolValueContext {
+	var p = new(SymbolValueContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = DefineParserRULE_symbolValue
+	return p
+}
+
+func (*SymbolValueContext) IsSymbolValueContext() {}
+
+func NewSymbolValueContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *SymbolValueContext {
+	var p = new(SymbolValueContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = DefineParserRULE_symbolValue
+
+	return p
+}
+
+func (s *SymbolValueContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *SymbolValueContext) IDENTIFIER() antlr.TerminalNode {
+	return s.GetToken(DefineParserIDENTIFIER, 0)
+}
+
+func (s *SymbolValueContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *SymbolValueContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *SymbolValueContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(DefineListener); ok {
+		listenerT.EnterSymbolValue(s)
+	}
+}
+
+func (s *SymbolValueContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(DefineListener); ok {
+		listenerT.ExitSymbolValue(s)
+	}
+}
+
+func (s *SymbolValueContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case DefineVisitor:
+		return t.VisitSymbolValue(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+func (p *DefineParser) SymbolValue() (localctx ISymbolValueContext) {
+	localctx = NewSymbolValueContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 12, DefineParserRULE_symbolValue)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(83)
+		p.Match(DefineParserIDENTIFIER)
+	}
+
+	return localctx
+}
+
+// IDefineBodyContext is an interface to support dynamic dispatch.
+type IDefineBodyContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsDefineBodyContext differentiates from other interfaces.
+	IsDefineBodyContext()
+}
+
+type DefineBodyContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyDefineBodyContext() *DefineBodyContext {
+	var p = new(DefineBodyContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = DefineParserRULE_defineBody
+	return p
+}
+
+func (*DefineBodyContext) IsDefineBodyContext() {}
+
+func NewDefineBodyContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DefineBodyContext {
+	var p = new(DefineBodyContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = DefineParserRULE_defineBody
+
+	return p
+}
+
+func (s *DefineBodyContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *DefineBodyContext) AllSymbolKey() []ISymbolKeyContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*ISymbolKeyContext)(nil)).Elem())
+	var tst = make([]ISymbolKeyContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(ISymbolKeyContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *DefineBodyContext) SymbolKey(i int) ISymbolKeyContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*ISymbolKeyContext)(nil)).Elem(), i)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ISymbolKeyContext)
+}
+
+func (s *DefineBodyContext) IDENTIFIER() antlr.TerminalNode {
+	return s.GetToken(DefineParserIDENTIFIER, 0)
+}
+
+func (s *DefineBodyContext) TemplateData() ITemplateDataContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*ITemplateDataContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ITemplateDataContext)
+}
+
+func (s *DefineBodyContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *DefineBodyContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *DefineBodyContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(DefineListener); ok {
+		listenerT.EnterDefineBody(s)
+	}
+}
+
+func (s *DefineBodyContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(DefineListener); ok {
+		listenerT.ExitDefineBody(s)
+	}
+}
+
+func (s *DefineBodyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case DefineVisitor:
+		return t.VisitDefineBody(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+func (p *DefineParser) DefineBody() (localctx IDefineBodyContext) {
+	localctx = NewDefineBodyContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 14, DefineParserRULE_defineBody)
+	var _la int
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(85)
+		p.SymbolKey()
+	}
+	{
+		p.SetState(86)
+		p.Match(DefineParserIDENTIFIER)
+	}
+	p.SetState(90)
+	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
+
+	for _la == DefineParserIDENTIFIER {
+		{
+			p.SetState(87)
+			p.SymbolKey()
+		}
+
+		p.SetState(92)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+	}
+	{
+		p.SetState(93)
+		p.TemplateData()
+	}
+	{
+		p.SetState(94)
+		p.SymbolKey()
+	}
+
+	return localctx
+}
+
+// ITemplateDataContext is an interface to support dynamic dispatch.
+type ITemplateDataContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsTemplateDataContext differentiates from other interfaces.
+	IsTemplateDataContext()
+}
+
+type TemplateDataContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyTemplateDataContext() *TemplateDataContext {
+	var p = new(TemplateDataContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = DefineParserRULE_templateData
+	return p
+}
+
+func (*TemplateDataContext) IsTemplateDataContext() {}
+
+func NewTemplateDataContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *TemplateDataContext {
+	var p = new(TemplateDataContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = DefineParserRULE_templateData
+
+	return p
+}
+
+func (s *TemplateDataContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *TemplateDataContext) STRING_LITERAL() antlr.TerminalNode {
+	return s.GetToken(DefineParserSTRING_LITERAL, 0)
+}
+
+func (s *TemplateDataContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *TemplateDataContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *TemplateDataContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(DefineListener); ok {
+		listenerT.EnterTemplateData(s)
+	}
+}
+
+func (s *TemplateDataContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(DefineListener); ok {
+		listenerT.ExitTemplateData(s)
+	}
+}
+
+func (s *TemplateDataContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case DefineVisitor:
+		return t.VisitTemplateData(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+func (p *DefineParser) TemplateData() (localctx ITemplateDataContext) {
+	localctx = NewTemplateDataContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 16, DefineParserRULE_templateData)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(96)
+		p.Match(DefineParserSTRING_LITERAL)
 	}
 
 	return localctx
@@ -748,6 +1499,10 @@ func (s *SystemDeclarationContext) DefineKey() IDefineKeyContext {
 	return t.(IDefineKeyContext)
 }
 
+func (s *SystemDeclarationContext) COLON() antlr.TerminalNode {
+	return s.GetToken(DefineParserCOLON, 0)
+}
+
 func (s *SystemDeclarationContext) DefineValue() IDefineValueContext {
 	var t = s.GetTypedRuleContext(reflect.TypeOf((*IDefineValueContext)(nil)).Elem(), 0)
 
@@ -790,7 +1545,7 @@ func (s *SystemDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interf
 
 func (p *DefineParser) SystemDeclaration() (localctx ISystemDeclarationContext) {
 	localctx = NewSystemDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, DefineParserRULE_systemDeclaration)
+	p.EnterRule(localctx, 18, DefineParserRULE_systemDeclaration)
 
 	defer func() {
 		p.ExitRule()
@@ -810,15 +1565,15 @@ func (p *DefineParser) SystemDeclaration() (localctx ISystemDeclarationContext) 
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(49)
+		p.SetState(98)
 		p.DefineKey()
 	}
 	{
-		p.SetState(50)
-		p.Match(DefineParserT__0)
+		p.SetState(99)
+		p.Match(DefineParserCOLON)
 	}
 	{
-		p.SetState(51)
+		p.SetState(100)
 		p.DefineValue()
 	}
 
@@ -899,7 +1654,7 @@ func (s *DefineKeyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 
 func (p *DefineParser) DefineKey() (localctx IDefineKeyContext) {
 	localctx = NewDefineKeyContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 10, DefineParserRULE_defineKey)
+	p.EnterRule(localctx, 20, DefineParserRULE_defineKey)
 
 	defer func() {
 		p.ExitRule()
@@ -919,7 +1674,7 @@ func (p *DefineParser) DefineKey() (localctx IDefineKeyContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(53)
+		p.SetState(102)
 		p.Match(DefineParserIDENTIFIER)
 	}
 
@@ -1000,7 +1755,7 @@ func (s *DefineValueContext) Accept(visitor antlr.ParseTreeVisitor) interface{} 
 
 func (p *DefineParser) DefineValue() (localctx IDefineValueContext) {
 	localctx = NewDefineValueContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 12, DefineParserRULE_defineValue)
+	p.EnterRule(localctx, 22, DefineParserRULE_defineValue)
 
 	defer func() {
 		p.ExitRule()
@@ -1020,7 +1775,7 @@ func (p *DefineParser) DefineValue() (localctx IDefineValueContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(55)
+		p.SetState(104)
 		p.Match(DefineParserIDENTIFIER)
 	}
 
@@ -1123,7 +1878,7 @@ func (s *ModuleDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interf
 
 func (p *DefineParser) ModuleDeclaration() (localctx IModuleDeclarationContext) {
 	localctx = NewModuleDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 14, DefineParserRULE_moduleDeclaration)
+	p.EnterRule(localctx, 24, DefineParserRULE_moduleDeclaration)
 
 	defer func() {
 		p.ExitRule()
@@ -1143,23 +1898,23 @@ func (p *DefineParser) ModuleDeclaration() (localctx IModuleDeclarationContext) 
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(57)
+		p.SetState(106)
 		p.Match(DefineParserMODULE)
 	}
 	{
-		p.SetState(58)
+		p.SetState(107)
 		p.Match(DefineParserIDENTIFIER)
 	}
 	{
-		p.SetState(59)
+		p.SetState(108)
 		p.Match(DefineParserLBRACE)
 	}
 	{
-		p.SetState(60)
+		p.SetState(109)
 		p.ModuleDefine()
 	}
 	{
-		p.SetState(61)
+		p.SetState(110)
 		p.Match(DefineParserRBRACE)
 	}
 
@@ -1258,7 +2013,7 @@ func (s *ModuleDefineContext) Accept(visitor antlr.ParseTreeVisitor) interface{}
 
 func (p *DefineParser) ModuleDefine() (localctx IModuleDefineContext) {
 	localctx = NewModuleDefineContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 16, DefineParserRULE_moduleDefine)
+	p.EnterRule(localctx, 26, DefineParserRULE_moduleDefine)
 
 	defer func() {
 		p.ExitRule()
@@ -1278,19 +2033,19 @@ func (p *DefineParser) ModuleDefine() (localctx IModuleDefineContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(63)
+		p.SetState(112)
 		p.Match(DefineParserIDENTIFIER)
 	}
 	{
-		p.SetState(64)
+		p.SetState(113)
 		p.Match(DefineParserLBRACE)
 	}
 	{
-		p.SetState(65)
+		p.SetState(114)
 		p.ModuleAttributes()
 	}
 	{
-		p.SetState(66)
+		p.SetState(115)
 		p.Match(DefineParserRBRACE)
 	}
 
@@ -1379,7 +2134,7 @@ func (s *ModuleAttributesContext) Accept(visitor antlr.ParseTreeVisitor) interfa
 
 func (p *DefineParser) ModuleAttributes() (localctx IModuleAttributesContext) {
 	localctx = NewModuleAttributesContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 18, DefineParserRULE_moduleAttributes)
+	p.EnterRule(localctx, 28, DefineParserRULE_moduleAttributes)
 
 	defer func() {
 		p.ExitRule()
@@ -1397,29 +2152,29 @@ func (p *DefineParser) ModuleAttributes() (localctx IModuleAttributesContext) {
 		}
 	}()
 
-	p.SetState(72)
+	p.SetState(121)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
 	case DefineParserIMPORT:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(68)
+			p.SetState(117)
 			p.Match(DefineParserIMPORT)
 		}
 		{
-			p.SetState(69)
+			p.SetState(118)
 			p.Match(DefineParserSTRING_LITERAL)
 		}
 
 	case DefineParserEQUAL:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(70)
+			p.SetState(119)
 			p.Match(DefineParserEQUAL)
 		}
 		{
-			p.SetState(71)
+			p.SetState(120)
 			p.Match(DefineParserSTRING_LITERAL)
 		}
 

@@ -39,11 +39,41 @@ func (s *BaseDefineListener) EnterNormalDeclarations(ctx *NormalDeclarationsCont
 // ExitNormalDeclarations is called when production normalDeclarations is exited.
 func (s *BaseDefineListener) ExitNormalDeclarations(ctx *NormalDeclarationsContext) {}
 
-// EnterDefaultDeclaration is called when production defaultDeclaration is entered.
-func (s *BaseDefineListener) EnterDefaultDeclaration(ctx *DefaultDeclarationContext) {}
+// EnterDefineDeclaration is called when production defineDeclaration is entered.
+func (s *BaseDefineListener) EnterDefineDeclaration(ctx *DefineDeclarationContext) {}
 
-// ExitDefaultDeclaration is called when production defaultDeclaration is exited.
-func (s *BaseDefineListener) ExitDefaultDeclaration(ctx *DefaultDeclarationContext) {}
+// ExitDefineDeclaration is called when production defineDeclaration is exited.
+func (s *BaseDefineListener) ExitDefineDeclaration(ctx *DefineDeclarationContext) {}
+
+// EnterDefineExpress is called when production defineExpress is entered.
+func (s *BaseDefineListener) EnterDefineExpress(ctx *DefineExpressContext) {}
+
+// ExitDefineExpress is called when production defineExpress is exited.
+func (s *BaseDefineListener) ExitDefineExpress(ctx *DefineExpressContext) {}
+
+// EnterSymbolKey is called when production symbolKey is entered.
+func (s *BaseDefineListener) EnterSymbolKey(ctx *SymbolKeyContext) {}
+
+// ExitSymbolKey is called when production symbolKey is exited.
+func (s *BaseDefineListener) ExitSymbolKey(ctx *SymbolKeyContext) {}
+
+// EnterSymbolValue is called when production symbolValue is entered.
+func (s *BaseDefineListener) EnterSymbolValue(ctx *SymbolValueContext) {}
+
+// ExitSymbolValue is called when production symbolValue is exited.
+func (s *BaseDefineListener) ExitSymbolValue(ctx *SymbolValueContext) {}
+
+// EnterDefineBody is called when production defineBody is entered.
+func (s *BaseDefineListener) EnterDefineBody(ctx *DefineBodyContext) {}
+
+// ExitDefineBody is called when production defineBody is exited.
+func (s *BaseDefineListener) ExitDefineBody(ctx *DefineBodyContext) {}
+
+// EnterTemplateData is called when production templateData is entered.
+func (s *BaseDefineListener) EnterTemplateData(ctx *TemplateDataContext) {}
+
+// ExitTemplateData is called when production templateData is exited.
+func (s *BaseDefineListener) ExitTemplateData(ctx *TemplateDataContext) {}
 
 // EnterSystemDeclaration is called when production systemDeclaration is entered.
 func (s *BaseDefineListener) EnterSystemDeclaration(ctx *SystemDeclarationContext) {}

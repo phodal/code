@@ -1,7 +1,7 @@
 grammar Define;
 
 compilationUnit
-    : symbolDelcaration* defaultDeclaration? normalDeclarations* EOF
+    : symbolDelcaration* defineDeclaration? normalDeclarations* EOF
     ;
 
 symbolDelcaration
@@ -16,9 +16,32 @@ normalDeclarations
 SYMBOL_TEXT: 'symbol';
 SPECIAL_SYMBOL: Symbols;
 
-defaultDeclaration
-    : defineKey ':' defineValue
+//Define
+
+defineDeclaration
+    : DEFINE defineKey LBRACE defineExpress* RBRACE
     ;
+
+
+defineExpress
+    : DEFAULT_SYMBOL COLON symbolKey symbolValue
+    | DEFAULT_TEMPLATE LPAREN IDENTIFIER RPAREN LBRACE defineBody RBRACE
+    ;
+
+symbolKey: IDENTIFIER;
+symbolValue: IDENTIFIER;
+defineBody
+    : symbolKey IDENTIFIER symbolKey* templateData symbolKey
+    ;
+
+DEFINE: 'define';
+DEFAULT_SYMBOL: 'defaultSymbol';
+DEFAULT_TEMPLATE: 'defaultTemplate';
+
+templateData: STRING_LITERAL;
+
+
+//
 
 systemDeclaration
     : defineKey ':' defineValue
@@ -60,7 +83,7 @@ RBRACK:             ']';
 SEMI:               ';';
 COMMA:              ',';
 DOT:                '.';
-
+COLON:              ':';
 
 // Whitespace and comments
 
@@ -86,7 +109,7 @@ fragment LetterOrDigit
     | [0-9]
     ;
 
-fragment Symbols
+Symbols
     : '{' | '}' | '$' | ')' | '(' | '[' | ']'
     ;
 

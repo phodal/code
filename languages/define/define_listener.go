@@ -17,8 +17,23 @@ type DefineListener interface {
 	// EnterNormalDeclarations is called when entering the normalDeclarations production.
 	EnterNormalDeclarations(c *NormalDeclarationsContext)
 
-	// EnterDefaultDeclaration is called when entering the defaultDeclaration production.
-	EnterDefaultDeclaration(c *DefaultDeclarationContext)
+	// EnterDefineDeclaration is called when entering the defineDeclaration production.
+	EnterDefineDeclaration(c *DefineDeclarationContext)
+
+	// EnterDefineExpress is called when entering the defineExpress production.
+	EnterDefineExpress(c *DefineExpressContext)
+
+	// EnterSymbolKey is called when entering the symbolKey production.
+	EnterSymbolKey(c *SymbolKeyContext)
+
+	// EnterSymbolValue is called when entering the symbolValue production.
+	EnterSymbolValue(c *SymbolValueContext)
+
+	// EnterDefineBody is called when entering the defineBody production.
+	EnterDefineBody(c *DefineBodyContext)
+
+	// EnterTemplateData is called when entering the templateData production.
+	EnterTemplateData(c *TemplateDataContext)
 
 	// EnterSystemDeclaration is called when entering the systemDeclaration production.
 	EnterSystemDeclaration(c *SystemDeclarationContext)
@@ -47,8 +62,23 @@ type DefineListener interface {
 	// ExitNormalDeclarations is called when exiting the normalDeclarations production.
 	ExitNormalDeclarations(c *NormalDeclarationsContext)
 
-	// ExitDefaultDeclaration is called when exiting the defaultDeclaration production.
-	ExitDefaultDeclaration(c *DefaultDeclarationContext)
+	// ExitDefineDeclaration is called when exiting the defineDeclaration production.
+	ExitDefineDeclaration(c *DefineDeclarationContext)
+
+	// ExitDefineExpress is called when exiting the defineExpress production.
+	ExitDefineExpress(c *DefineExpressContext)
+
+	// ExitSymbolKey is called when exiting the symbolKey production.
+	ExitSymbolKey(c *SymbolKeyContext)
+
+	// ExitSymbolValue is called when exiting the symbolValue production.
+	ExitSymbolValue(c *SymbolValueContext)
+
+	// ExitDefineBody is called when exiting the defineBody production.
+	ExitDefineBody(c *DefineBodyContext)
+
+	// ExitTemplateData is called when exiting the templateData production.
+	ExitTemplateData(c *TemplateDataContext)
 
 	// ExitSystemDeclaration is called when exiting the systemDeclaration production.
 	ExitSystemDeclaration(c *SystemDeclarationContext)

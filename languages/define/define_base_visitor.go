@@ -20,7 +20,27 @@ func (v *BaseDefineVisitor) VisitNormalDeclarations(ctx *NormalDeclarationsConte
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseDefineVisitor) VisitDefaultDeclaration(ctx *DefaultDeclarationContext) interface{} {
+func (v *BaseDefineVisitor) VisitDefineDeclaration(ctx *DefineDeclarationContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseDefineVisitor) VisitDefineExpress(ctx *DefineExpressContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseDefineVisitor) VisitSymbolKey(ctx *SymbolKeyContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseDefineVisitor) VisitSymbolValue(ctx *SymbolValueContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseDefineVisitor) VisitDefineBody(ctx *DefineBodyContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseDefineVisitor) VisitTemplateData(ctx *TemplateDataContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
