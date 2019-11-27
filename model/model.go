@@ -60,8 +60,11 @@ type CodeParameter struct {
 }
 
 type CodeParameterValue struct {
-	Type  CodeType
 	Value string
+}
+
+func CreateParameter() {
+
 }
 
 func CreateFunctionCall(functionName string, parameters []CodeParameter) CodeFunctionCall {

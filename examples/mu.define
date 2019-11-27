@@ -1,0 +1,21 @@
+symbol FUNCTION "func"
+symbol METHOD_START "{"
+symbol METHOD_END "}"
+symbol PARAMETER_START "("
+symbol PARAMETER_END ")"
+symbol PARAMETER_SPLIT ","
+symbol MAIN "main"
+
+define entrypoint {
+    symbol: FUNCTION MAIN
+    template(code) {
+        FUNCTION main PARAMETER_START PARAMETER_END METHOD_START code METHOD_END
+    }
+}
+
+module "sys" {
+    print {
+        import "fmt"
+        equal "fmt.Println"
+    }
+}

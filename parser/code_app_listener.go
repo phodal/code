@@ -23,7 +23,7 @@ func (s *CodeAppListener) EnterMethodCallDeclaration(ctx *MethodCallDeclarationC
 		stringCodeType := &CodeType{
 			Type: "string",
 		}
-		var paramValue = &CodeParameterValue{Type: *stringCodeType, Value: parameter.GetText()}
+		var paramValue = &CodeParameterValue{Value: parameter.GetText()}
 		parameter := &CodeParameter{*stringCodeType, *paramValue}
 		parameters = append(parameters, *parameter)
 	}
