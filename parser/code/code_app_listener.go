@@ -1,8 +1,8 @@
-package parser
+package code
 
 import (
-	. "../languages/code"
-	. "../model"
+	. "../../languages/code"
+	. "../../model"
 	"fmt"
 )
 

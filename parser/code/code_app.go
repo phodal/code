@@ -1,7 +1,7 @@
-package parser
+package code
 
 import (
-	. "../languages/code"
+	. "../../languages/code"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 

@@ -1,7 +1,7 @@
 package main
 
 import (
-	. "./parser"
+	. "./parser/code"
 )
 
 func main()  {
