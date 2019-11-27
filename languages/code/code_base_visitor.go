@@ -32,10 +32,6 @@ func (v *BaseCodeVisitor) VisitMethodCallDeclaration(ctx *MethodCallDeclarationC
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseCodeVisitor) VisitParameterList(ctx *ParameterListContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
 func (v *BaseCodeVisitor) VisitParameter(ctx *ParameterContext) interface{} {
 	return v.VisitChildren(ctx)
 }

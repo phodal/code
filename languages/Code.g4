@@ -22,8 +22,7 @@ expressDeclaration
     : methodCallDeclaration
     ;
 
-methodCallDeclaration: IDENTIFIER '(' parameterList ')';
-parameterList: parameter*;
+methodCallDeclaration: IDENTIFIER '(' parameter* ')';
 parameter
     : IDENTIFIER
     | STRING_LITERAL

@@ -26,9 +26,6 @@ type CodeListener interface {
 	// EnterMethodCallDeclaration is called when entering the methodCallDeclaration production.
 	EnterMethodCallDeclaration(c *MethodCallDeclarationContext)
 
-	// EnterParameterList is called when entering the parameterList production.
-	EnterParameterList(c *ParameterListContext)
-
 	// EnterParameter is called when entering the parameter production.
 	EnterParameter(c *ParameterContext)
 
@@ -58,9 +55,6 @@ type CodeListener interface {
 
 	// ExitMethodCallDeclaration is called when exiting the methodCallDeclaration production.
 	ExitMethodCallDeclaration(c *MethodCallDeclarationContext)
-
-	// ExitParameterList is called when exiting the parameterList production.
-	ExitParameterList(c *ParameterListContext)
 
 	// ExitParameter is called when exiting the parameter production.
 	ExitParameter(c *ParameterContext)

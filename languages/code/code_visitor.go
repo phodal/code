@@ -26,9 +26,6 @@ type CodeVisitor interface {
 	// Visit a parse tree produced by CodeParser#methodCallDeclaration.
 	VisitMethodCallDeclaration(ctx *MethodCallDeclarationContext) interface{}
 
-	// Visit a parse tree produced by CodeParser#parameterList.
-	VisitParameterList(ctx *ParameterListContext) interface{}
-
 	// Visit a parse tree produced by CodeParser#parameter.
 	VisitParameter(ctx *ParameterContext) interface{}
 

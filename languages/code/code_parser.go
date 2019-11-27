@@ -16,38 +16,37 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 14, 83, 4,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 14, 80, 4,
 	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7, 4,
-	8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 4, 12, 9, 12, 3, 2, 5,
-	2, 26, 10, 2, 3, 2, 7, 2, 29, 10, 2, 12, 2, 14, 2, 32, 11, 2, 3, 2, 7,
-	2, 35, 10, 2, 12, 2, 14, 2, 38, 11, 2, 3, 2, 7, 2, 41, 10, 2, 12, 2, 14,
-	2, 44, 11, 2, 3, 2, 3, 2, 3, 3, 3, 3, 3, 3, 3, 4, 3, 4, 3, 4, 3, 5, 3,
-	5, 3, 5, 5, 5, 57, 10, 5, 3, 6, 3, 6, 3, 7, 3, 7, 3, 7, 3, 7, 3, 7, 3,
-	8, 7, 8, 67, 10, 8, 12, 8, 14, 8, 70, 11, 8, 3, 9, 3, 9, 3, 10, 3, 10,
-	3, 10, 3, 11, 3, 11, 3, 11, 3, 12, 3, 12, 3, 12, 3, 12, 2, 2, 13, 2, 4,
-	6, 8, 10, 12, 14, 16, 18, 20, 22, 2, 3, 4, 2, 10, 10, 14, 14, 2, 78, 2,
-	25, 3, 2, 2, 2, 4, 47, 3, 2, 2, 2, 6, 50, 3, 2, 2, 2, 8, 56, 3, 2, 2, 2,
-	10, 58, 3, 2, 2, 2, 12, 60, 3, 2, 2, 2, 14, 68, 3, 2, 2, 2, 16, 71, 3,
-	2, 2, 2, 18, 73, 3, 2, 2, 2, 20, 76, 3, 2, 2, 2, 22, 79, 3, 2, 2, 2, 24,
-	26, 5, 4, 3, 2, 25, 24, 3, 2, 2, 2, 25, 26, 3, 2, 2, 2, 26, 30, 3, 2, 2,
-	2, 27, 29, 5, 6, 4, 2, 28, 27, 3, 2, 2, 2, 29, 32, 3, 2, 2, 2, 30, 28,
-	3, 2, 2, 2, 30, 31, 3, 2, 2, 2, 31, 36, 3, 2, 2, 2, 32, 30, 3, 2, 2, 2,
-	33, 35, 5, 8, 5, 2, 34, 33, 3, 2, 2, 2, 35, 38, 3, 2, 2, 2, 36, 34, 3,
-	2, 2, 2, 36, 37, 3, 2, 2, 2, 37, 42, 3, 2, 2, 2, 38, 36, 3, 2, 2, 2, 39,
-	41, 5, 10, 6, 2, 40, 39, 3, 2, 2, 2, 41, 44, 3, 2, 2, 2, 42, 40, 3, 2,
-	2, 2, 42, 43, 3, 2, 2, 2, 43, 45, 3, 2, 2, 2, 44, 42, 3, 2, 2, 2, 45, 46,
-	7, 2, 2, 3, 46, 3, 3, 2, 2, 2, 47, 48, 7, 5, 2, 2, 48, 49, 7, 10, 2, 2,
-	49, 5, 3, 2, 2, 2, 50, 51, 7, 6, 2, 2, 51, 52, 7, 10, 2, 2, 52, 7, 3, 2,
-	2, 2, 53, 57, 5, 18, 10, 2, 54, 57, 5, 20, 11, 2, 55, 57, 5, 22, 12, 2,
-	56, 53, 3, 2, 2, 2, 56, 54, 3, 2, 2, 2, 56, 55, 3, 2, 2, 2, 57, 9, 3, 2,
-	2, 2, 58, 59, 5, 12, 7, 2, 59, 11, 3, 2, 2, 2, 60, 61, 7, 10, 2, 2, 61,
-	62, 7, 3, 2, 2, 62, 63, 5, 14, 8, 2, 63, 64, 7, 4, 2, 2, 64, 13, 3, 2,
-	2, 2, 65, 67, 5, 16, 9, 2, 66, 65, 3, 2, 2, 2, 67, 70, 3, 2, 2, 2, 68,
-	66, 3, 2, 2, 2, 68, 69, 3, 2, 2, 2, 69, 15, 3, 2, 2, 2, 70, 68, 3, 2, 2,
-	2, 71, 72, 9, 2, 2, 2, 72, 17, 3, 2, 2, 2, 73, 74, 7, 7, 2, 2, 74, 75,
-	7, 10, 2, 2, 75, 19, 3, 2, 2, 2, 76, 77, 7, 8, 2, 2, 77, 78, 7, 10, 2,
-	2, 78, 21, 3, 2, 2, 2, 79, 80, 7, 9, 2, 2, 80, 81, 7, 10, 2, 2, 81, 23,
-	3, 2, 2, 2, 8, 25, 30, 36, 42, 56, 68,
+	8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 3, 2, 5, 2, 24, 10, 2,
+	3, 2, 7, 2, 27, 10, 2, 12, 2, 14, 2, 30, 11, 2, 3, 2, 7, 2, 33, 10, 2,
+	12, 2, 14, 2, 36, 11, 2, 3, 2, 7, 2, 39, 10, 2, 12, 2, 14, 2, 42, 11, 2,
+	3, 2, 3, 2, 3, 3, 3, 3, 3, 3, 3, 4, 3, 4, 3, 4, 3, 5, 3, 5, 3, 5, 5, 5,
+	55, 10, 5, 3, 6, 3, 6, 3, 7, 3, 7, 3, 7, 7, 7, 62, 10, 7, 12, 7, 14, 7,
+	65, 11, 7, 3, 7, 3, 7, 3, 8, 3, 8, 3, 9, 3, 9, 3, 9, 3, 10, 3, 10, 3, 10,
+	3, 11, 3, 11, 3, 11, 3, 11, 2, 2, 12, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20,
+	2, 3, 4, 2, 10, 10, 14, 14, 2, 76, 2, 23, 3, 2, 2, 2, 4, 45, 3, 2, 2, 2,
+	6, 48, 3, 2, 2, 2, 8, 54, 3, 2, 2, 2, 10, 56, 3, 2, 2, 2, 12, 58, 3, 2,
+	2, 2, 14, 68, 3, 2, 2, 2, 16, 70, 3, 2, 2, 2, 18, 73, 3, 2, 2, 2, 20, 76,
+	3, 2, 2, 2, 22, 24, 5, 4, 3, 2, 23, 22, 3, 2, 2, 2, 23, 24, 3, 2, 2, 2,
+	24, 28, 3, 2, 2, 2, 25, 27, 5, 6, 4, 2, 26, 25, 3, 2, 2, 2, 27, 30, 3,
+	2, 2, 2, 28, 26, 3, 2, 2, 2, 28, 29, 3, 2, 2, 2, 29, 34, 3, 2, 2, 2, 30,
+	28, 3, 2, 2, 2, 31, 33, 5, 8, 5, 2, 32, 31, 3, 2, 2, 2, 33, 36, 3, 2, 2,
+	2, 34, 32, 3, 2, 2, 2, 34, 35, 3, 2, 2, 2, 35, 40, 3, 2, 2, 2, 36, 34,
+	3, 2, 2, 2, 37, 39, 5, 10, 6, 2, 38, 37, 3, 2, 2, 2, 39, 42, 3, 2, 2, 2,
+	40, 38, 3, 2, 2, 2, 40, 41, 3, 2, 2, 2, 41, 43, 3, 2, 2, 2, 42, 40, 3,
+	2, 2, 2, 43, 44, 7, 2, 2, 3, 44, 3, 3, 2, 2, 2, 45, 46, 7, 5, 2, 2, 46,
+	47, 7, 10, 2, 2, 47, 5, 3, 2, 2, 2, 48, 49, 7, 6, 2, 2, 49, 50, 7, 10,
+	2, 2, 50, 7, 3, 2, 2, 2, 51, 55, 5, 16, 9, 2, 52, 55, 5, 18, 10, 2, 53,
+	55, 5, 20, 11, 2, 54, 51, 3, 2, 2, 2, 54, 52, 3, 2, 2, 2, 54, 53, 3, 2,
+	2, 2, 55, 9, 3, 2, 2, 2, 56, 57, 5, 12, 7, 2, 57, 11, 3, 2, 2, 2, 58, 59,
+	7, 10, 2, 2, 59, 63, 7, 3, 2, 2, 60, 62, 5, 14, 8, 2, 61, 60, 3, 2, 2,
+	2, 62, 65, 3, 2, 2, 2, 63, 61, 3, 2, 2, 2, 63, 64, 3, 2, 2, 2, 64, 66,
+	3, 2, 2, 2, 65, 63, 3, 2, 2, 2, 66, 67, 7, 4, 2, 2, 67, 13, 3, 2, 2, 2,
+	68, 69, 9, 2, 2, 2, 69, 15, 3, 2, 2, 2, 70, 71, 7, 7, 2, 2, 71, 72, 7,
+	10, 2, 2, 72, 17, 3, 2, 2, 2, 73, 74, 7, 8, 2, 2, 74, 75, 7, 10, 2, 2,
+	75, 19, 3, 2, 2, 2, 76, 77, 7, 9, 2, 2, 77, 78, 7, 10, 2, 2, 78, 21, 3,
+	2, 2, 2, 8, 23, 28, 34, 40, 54, 63,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
@@ -62,8 +61,8 @@ var symbolicNames = []string{
 
 var ruleNames = []string{
 	"compilationUnit", "packageDeclaration", "importDeclaration", "typeDeclaration",
-	"expressDeclaration", "methodCallDeclaration", "parameterList", "parameter",
-	"dataStructDeclaration", "memberDeclaration", "functionDeclaration",
+	"expressDeclaration", "methodCallDeclaration", "parameter", "dataStructDeclaration",
+	"memberDeclaration", "functionDeclaration",
 }
 var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
 
@@ -116,11 +115,10 @@ const (
 	CodeParserRULE_typeDeclaration       = 3
 	CodeParserRULE_expressDeclaration    = 4
 	CodeParserRULE_methodCallDeclaration = 5
-	CodeParserRULE_parameterList         = 6
-	CodeParserRULE_parameter             = 7
-	CodeParserRULE_dataStructDeclaration = 8
-	CodeParserRULE_memberDeclaration     = 9
-	CodeParserRULE_functionDeclaration   = 10
+	CodeParserRULE_parameter             = 6
+	CodeParserRULE_dataStructDeclaration = 7
+	CodeParserRULE_memberDeclaration     = 8
+	CodeParserRULE_functionDeclaration   = 9
 )
 
 // ICompilationUnitContext is an interface to support dynamic dispatch.
@@ -296,61 +294,61 @@ func (p *CodeParser) CompilationUnit() (localctx ICompilationUnitContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(23)
+	p.SetState(21)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == CodeParserPACKAGE {
 		{
-			p.SetState(22)
+			p.SetState(20)
 			p.PackageDeclaration()
 		}
 
 	}
-	p.SetState(28)
+	p.SetState(26)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == CodeParserIMPORT {
 		{
-			p.SetState(25)
+			p.SetState(23)
 			p.ImportDeclaration()
 		}
 
-		p.SetState(30)
+		p.SetState(28)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
-	p.SetState(34)
+	p.SetState(32)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<CodeParserDATA_STRUCT)|(1<<CodeParserMEMBER)|(1<<CodeParserFUNCTION))) != 0 {
 		{
-			p.SetState(31)
+			p.SetState(29)
 			p.TypeDeclaration()
 		}
 
-		p.SetState(36)
+		p.SetState(34)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
-	p.SetState(40)
+	p.SetState(38)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == CodeParserIDENTIFIER {
 		{
-			p.SetState(37)
+			p.SetState(35)
 			p.ExpressDeclaration()
 		}
 
-		p.SetState(42)
+		p.SetState(40)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(43)
+		p.SetState(41)
 		p.Match(CodeParserEOF)
 	}
 
@@ -455,11 +453,11 @@ func (p *CodeParser) PackageDeclaration() (localctx IPackageDeclarationContext) 
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(45)
+		p.SetState(43)
 		p.Match(CodeParserPACKAGE)
 	}
 	{
-		p.SetState(46)
+		p.SetState(44)
 		p.Match(CodeParserIDENTIFIER)
 	}
 
@@ -564,11 +562,11 @@ func (p *CodeParser) ImportDeclaration() (localctx IImportDeclarationContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(48)
+		p.SetState(46)
 		p.Match(CodeParserIMPORT)
 	}
 	{
-		p.SetState(49)
+		p.SetState(47)
 		p.Match(CodeParserIDENTIFIER)
 	}
 
@@ -693,28 +691,28 @@ func (p *CodeParser) TypeDeclaration() (localctx ITypeDeclarationContext) {
 		}
 	}()
 
-	p.SetState(54)
+	p.SetState(52)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
 	case CodeParserDATA_STRUCT:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(51)
+			p.SetState(49)
 			p.DataStructDeclaration()
 		}
 
 	case CodeParserMEMBER:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(52)
+			p.SetState(50)
 			p.MemberDeclaration()
 		}
 
 	case CodeParserFUNCTION:
 		p.EnterOuterAlt(localctx, 3)
 		{
-			p.SetState(53)
+			p.SetState(51)
 			p.FunctionDeclaration()
 		}
 
@@ -825,7 +823,7 @@ func (p *CodeParser) ExpressDeclaration() (localctx IExpressDeclarationContext) 
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(56)
+		p.SetState(54)
 		p.MethodCallDeclaration()
 	}
 
@@ -874,14 +872,27 @@ func (s *MethodCallDeclarationContext) IDENTIFIER() antlr.TerminalNode {
 	return s.GetToken(CodeParserIDENTIFIER, 0)
 }
 
-func (s *MethodCallDeclarationContext) ParameterList() IParameterListContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IParameterListContext)(nil)).Elem(), 0)
+func (s *MethodCallDeclarationContext) AllParameter() []IParameterContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IParameterContext)(nil)).Elem())
+	var tst = make([]IParameterContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(IParameterContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *MethodCallDeclarationContext) Parameter(i int) IParameterContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IParameterContext)(nil)).Elem(), i)
 
 	if t == nil {
 		return nil
 	}
 
-	return t.(IParameterListContext)
+	return t.(IParameterContext)
 }
 
 func (s *MethodCallDeclarationContext) GetRuleContext() antlr.RuleContext {
@@ -917,138 +928,6 @@ func (s *MethodCallDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) in
 func (p *CodeParser) MethodCallDeclaration() (localctx IMethodCallDeclarationContext) {
 	localctx = NewMethodCallDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 10, CodeParserRULE_methodCallDeclaration)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(58)
-		p.Match(CodeParserIDENTIFIER)
-	}
-	{
-		p.SetState(59)
-		p.Match(CodeParserT__0)
-	}
-	{
-		p.SetState(60)
-		p.ParameterList()
-	}
-	{
-		p.SetState(61)
-		p.Match(CodeParserT__1)
-	}
-
-	return localctx
-}
-
-// IParameterListContext is an interface to support dynamic dispatch.
-type IParameterListContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// IsParameterListContext differentiates from other interfaces.
-	IsParameterListContext()
-}
-
-type ParameterListContext struct {
-	*antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyParameterListContext() *ParameterListContext {
-	var p = new(ParameterListContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = CodeParserRULE_parameterList
-	return p
-}
-
-func (*ParameterListContext) IsParameterListContext() {}
-
-func NewParameterListContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ParameterListContext {
-	var p = new(ParameterListContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = CodeParserRULE_parameterList
-
-	return p
-}
-
-func (s *ParameterListContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *ParameterListContext) AllParameter() []IParameterContext {
-	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IParameterContext)(nil)).Elem())
-	var tst = make([]IParameterContext, len(ts))
-
-	for i, t := range ts {
-		if t != nil {
-			tst[i] = t.(IParameterContext)
-		}
-	}
-
-	return tst
-}
-
-func (s *ParameterListContext) Parameter(i int) IParameterContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IParameterContext)(nil)).Elem(), i)
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IParameterContext)
-}
-
-func (s *ParameterListContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *ParameterListContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *ParameterListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CodeListener); ok {
-		listenerT.EnterParameterList(s)
-	}
-}
-
-func (s *ParameterListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CodeListener); ok {
-		listenerT.ExitParameterList(s)
-	}
-}
-
-func (s *ParameterListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
-	switch t := visitor.(type) {
-	case CodeVisitor:
-		return t.VisitParameterList(s)
-
-	default:
-		return t.VisitChildren(s)
-	}
-}
-
-func (p *CodeParser) ParameterList() (localctx IParameterListContext) {
-	localctx = NewParameterListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 12, CodeParserRULE_parameterList)
 	var _la int
 
 	defer func() {
@@ -1068,19 +947,31 @@ func (p *CodeParser) ParameterList() (localctx IParameterListContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(66)
+	{
+		p.SetState(56)
+		p.Match(CodeParserIDENTIFIER)
+	}
+	{
+		p.SetState(57)
+		p.Match(CodeParserT__0)
+	}
+	p.SetState(61)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == CodeParserIDENTIFIER || _la == CodeParserSTRING_LITERAL {
 		{
-			p.SetState(63)
+			p.SetState(58)
 			p.Parameter()
 		}
 
-		p.SetState(68)
+		p.SetState(63)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
+	}
+	{
+		p.SetState(64)
+		p.Match(CodeParserT__1)
 	}
 
 	return localctx
@@ -1164,7 +1055,7 @@ func (s *ParameterContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 
 func (p *CodeParser) Parameter() (localctx IParameterContext) {
 	localctx = NewParameterContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 14, CodeParserRULE_parameter)
+	p.EnterRule(localctx, 12, CodeParserRULE_parameter)
 	var _la int
 
 	defer func() {
@@ -1185,7 +1076,7 @@ func (p *CodeParser) Parameter() (localctx IParameterContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(69)
+		p.SetState(66)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(_la == CodeParserIDENTIFIER || _la == CodeParserSTRING_LITERAL) {
@@ -1277,7 +1168,7 @@ func (s *DataStructDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) in
 
 func (p *CodeParser) DataStructDeclaration() (localctx IDataStructDeclarationContext) {
 	localctx = NewDataStructDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 16, CodeParserRULE_dataStructDeclaration)
+	p.EnterRule(localctx, 14, CodeParserRULE_dataStructDeclaration)
 
 	defer func() {
 		p.ExitRule()
@@ -1297,11 +1188,11 @@ func (p *CodeParser) DataStructDeclaration() (localctx IDataStructDeclarationCon
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(71)
+		p.SetState(68)
 		p.Match(CodeParserDATA_STRUCT)
 	}
 	{
-		p.SetState(72)
+		p.SetState(69)
 		p.Match(CodeParserIDENTIFIER)
 	}
 
@@ -1386,7 +1277,7 @@ func (s *MemberDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interf
 
 func (p *CodeParser) MemberDeclaration() (localctx IMemberDeclarationContext) {
 	localctx = NewMemberDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 18, CodeParserRULE_memberDeclaration)
+	p.EnterRule(localctx, 16, CodeParserRULE_memberDeclaration)
 
 	defer func() {
 		p.ExitRule()
@@ -1406,11 +1297,11 @@ func (p *CodeParser) MemberDeclaration() (localctx IMemberDeclarationContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(74)
+		p.SetState(71)
 		p.Match(CodeParserMEMBER)
 	}
 	{
-		p.SetState(75)
+		p.SetState(72)
 		p.Match(CodeParserIDENTIFIER)
 	}
 
@@ -1495,7 +1386,7 @@ func (s *FunctionDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) inte
 
 func (p *CodeParser) FunctionDeclaration() (localctx IFunctionDeclarationContext) {
 	localctx = NewFunctionDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 20, CodeParserRULE_functionDeclaration)
+	p.EnterRule(localctx, 18, CodeParserRULE_functionDeclaration)
 
 	defer func() {
 		p.ExitRule()
@@ -1515,11 +1406,11 @@ func (p *CodeParser) FunctionDeclaration() (localctx IFunctionDeclarationContext
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(77)
+		p.SetState(74)
 		p.Match(CodeParserFUNCTION)
 	}
 	{
-		p.SetState(78)
+		p.SetState(75)
 		p.Match(CodeParserIDENTIFIER)
 	}
 

@@ -57,12 +57,6 @@ func (s *BaseCodeListener) EnterMethodCallDeclaration(ctx *MethodCallDeclaration
 // ExitMethodCallDeclaration is called when production methodCallDeclaration is exited.
 func (s *BaseCodeListener) ExitMethodCallDeclaration(ctx *MethodCallDeclarationContext) {}
 
-// EnterParameterList is called when production parameterList is entered.
-func (s *BaseCodeListener) EnterParameterList(ctx *ParameterListContext) {}
-
-// ExitParameterList is called when production parameterList is exited.
-func (s *BaseCodeListener) ExitParameterList(ctx *ParameterListContext) {}
-
 // EnterParameter is called when production parameter is entered.
 func (s *BaseCodeListener) EnterParameter(ctx *ParameterContext) {}
 
