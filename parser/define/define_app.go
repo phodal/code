@@ -17,6 +17,8 @@ func (j *DefineApp) Start(path string) {
 	listener := NewDefineAppListener()
 
 	antlr.NewParseTreeWalker().Walk(listener, context)
+
+	listener.getDefineInformation()
 }
 
 func (j *DefineApp) ProcessFile(path string) *DefineParser {

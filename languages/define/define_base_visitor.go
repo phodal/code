@@ -12,7 +12,7 @@ func (v *BaseDefineVisitor) VisitCompilationUnit(ctx *CompilationUnitContext) in
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseDefineVisitor) VisitSymbolDelcaration(ctx *SymbolDelcarationContext) interface{} {
+func (v *BaseDefineVisitor) VisitSymbolDeclaration(ctx *SymbolDeclarationContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -25,6 +25,14 @@ func (v *BaseDefineVisitor) VisitDefineDeclaration(ctx *DefineDeclarationContext
 }
 
 func (v *BaseDefineVisitor) VisitDefineExpress(ctx *DefineExpressContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseDefineVisitor) VisitDefineAttribute(ctx *DefineAttributeContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseDefineVisitor) VisitDefineTemplate(ctx *DefineTemplateContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

@@ -11,8 +11,8 @@ type DefineVisitor interface {
 	// Visit a parse tree produced by DefineParser#compilationUnit.
 	VisitCompilationUnit(ctx *CompilationUnitContext) interface{}
 
-	// Visit a parse tree produced by DefineParser#symbolDelcaration.
-	VisitSymbolDelcaration(ctx *SymbolDelcarationContext) interface{}
+	// Visit a parse tree produced by DefineParser#symbolDeclaration.
+	VisitSymbolDeclaration(ctx *SymbolDeclarationContext) interface{}
 
 	// Visit a parse tree produced by DefineParser#normalDeclarations.
 	VisitNormalDeclarations(ctx *NormalDeclarationsContext) interface{}
@@ -22,6 +22,12 @@ type DefineVisitor interface {
 
 	// Visit a parse tree produced by DefineParser#defineExpress.
 	VisitDefineExpress(ctx *DefineExpressContext) interface{}
+
+	// Visit a parse tree produced by DefineParser#defineAttribute.
+	VisitDefineAttribute(ctx *DefineAttributeContext) interface{}
+
+	// Visit a parse tree produced by DefineParser#defineTemplate.
+	VisitDefineTemplate(ctx *DefineTemplateContext) interface{}
 
 	// Visit a parse tree produced by DefineParser#symbolKey.
 	VisitSymbolKey(ctx *SymbolKeyContext) interface{}

@@ -27,11 +27,11 @@ func (s *BaseDefineListener) EnterCompilationUnit(ctx *CompilationUnitContext) {
 // ExitCompilationUnit is called when production compilationUnit is exited.
 func (s *BaseDefineListener) ExitCompilationUnit(ctx *CompilationUnitContext) {}
 
-// EnterSymbolDelcaration is called when production symbolDelcaration is entered.
-func (s *BaseDefineListener) EnterSymbolDelcaration(ctx *SymbolDelcarationContext) {}
+// EnterSymbolDeclaration is called when production symbolDeclaration is entered.
+func (s *BaseDefineListener) EnterSymbolDeclaration(ctx *SymbolDeclarationContext) {}
 
-// ExitSymbolDelcaration is called when production symbolDelcaration is exited.
-func (s *BaseDefineListener) ExitSymbolDelcaration(ctx *SymbolDelcarationContext) {}
+// ExitSymbolDeclaration is called when production symbolDeclaration is exited.
+func (s *BaseDefineListener) ExitSymbolDeclaration(ctx *SymbolDeclarationContext) {}
 
 // EnterNormalDeclarations is called when production normalDeclarations is entered.
 func (s *BaseDefineListener) EnterNormalDeclarations(ctx *NormalDeclarationsContext) {}
@@ -50,6 +50,18 @@ func (s *BaseDefineListener) EnterDefineExpress(ctx *DefineExpressContext) {}
 
 // ExitDefineExpress is called when production defineExpress is exited.
 func (s *BaseDefineListener) ExitDefineExpress(ctx *DefineExpressContext) {}
+
+// EnterDefineAttribute is called when production defineAttribute is entered.
+func (s *BaseDefineListener) EnterDefineAttribute(ctx *DefineAttributeContext) {}
+
+// ExitDefineAttribute is called when production defineAttribute is exited.
+func (s *BaseDefineListener) ExitDefineAttribute(ctx *DefineAttributeContext) {}
+
+// EnterDefineTemplate is called when production defineTemplate is entered.
+func (s *BaseDefineListener) EnterDefineTemplate(ctx *DefineTemplateContext) {}
+
+// ExitDefineTemplate is called when production defineTemplate is exited.
+func (s *BaseDefineListener) ExitDefineTemplate(ctx *DefineTemplateContext) {}
 
 // EnterSymbolKey is called when production symbolKey is entered.
 func (s *BaseDefineListener) EnterSymbolKey(ctx *SymbolKeyContext) {}

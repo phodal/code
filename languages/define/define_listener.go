@@ -11,8 +11,8 @@ type DefineListener interface {
 	// EnterCompilationUnit is called when entering the compilationUnit production.
 	EnterCompilationUnit(c *CompilationUnitContext)
 
-	// EnterSymbolDelcaration is called when entering the symbolDelcaration production.
-	EnterSymbolDelcaration(c *SymbolDelcarationContext)
+	// EnterSymbolDeclaration is called when entering the symbolDeclaration production.
+	EnterSymbolDeclaration(c *SymbolDeclarationContext)
 
 	// EnterNormalDeclarations is called when entering the normalDeclarations production.
 	EnterNormalDeclarations(c *NormalDeclarationsContext)
@@ -22,6 +22,12 @@ type DefineListener interface {
 
 	// EnterDefineExpress is called when entering the defineExpress production.
 	EnterDefineExpress(c *DefineExpressContext)
+
+	// EnterDefineAttribute is called when entering the defineAttribute production.
+	EnterDefineAttribute(c *DefineAttributeContext)
+
+	// EnterDefineTemplate is called when entering the defineTemplate production.
+	EnterDefineTemplate(c *DefineTemplateContext)
 
 	// EnterSymbolKey is called when entering the symbolKey production.
 	EnterSymbolKey(c *SymbolKeyContext)
@@ -56,8 +62,8 @@ type DefineListener interface {
 	// ExitCompilationUnit is called when exiting the compilationUnit production.
 	ExitCompilationUnit(c *CompilationUnitContext)
 
-	// ExitSymbolDelcaration is called when exiting the symbolDelcaration production.
-	ExitSymbolDelcaration(c *SymbolDelcarationContext)
+	// ExitSymbolDeclaration is called when exiting the symbolDeclaration production.
+	ExitSymbolDeclaration(c *SymbolDeclarationContext)
 
 	// ExitNormalDeclarations is called when exiting the normalDeclarations production.
 	ExitNormalDeclarations(c *NormalDeclarationsContext)
@@ -67,6 +73,12 @@ type DefineListener interface {
 
 	// ExitDefineExpress is called when exiting the defineExpress production.
 	ExitDefineExpress(c *DefineExpressContext)
+
+	// ExitDefineAttribute is called when exiting the defineAttribute production.
+	ExitDefineAttribute(c *DefineAttributeContext)
+
+	// ExitDefineTemplate is called when exiting the defineTemplate production.
+	ExitDefineTemplate(c *DefineTemplateContext)
 
 	// ExitSymbolKey is called when exiting the symbolKey production.
 	ExitSymbolKey(c *SymbolKeyContext)

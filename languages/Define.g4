@@ -1,10 +1,10 @@
 grammar Define;
 
 compilationUnit
-    : symbolDelcaration* defineDeclaration? normalDeclarations* EOF
+    : symbolDeclaration* defineDeclaration? normalDeclarations* EOF
     ;
 
-symbolDelcaration
+symbolDeclaration
     : SYMBOL_TEXT IDENTIFIER STRING_LITERAL
     ;
 
@@ -24,9 +24,13 @@ defineDeclaration
 
 
 defineExpress
-    : DEFAULT_SYMBOL COLON symbolKey symbolValue
-    | DEFAULT_TEMPLATE LPAREN IDENTIFIER RPAREN LBRACE defineBody RBRACE
+    : defineAttribute
+    | defineTemplate
     ;
+
+defineAttribute: DEFAULT_SYMBOL COLON symbolKey symbolValue;
+
+defineTemplate: DEFAULT_TEMPLATE LPAREN IDENTIFIER RPAREN LBRACE defineBody RBRACE;
 
 symbolKey: IDENTIFIER;
 symbolValue: IDENTIFIER;
