@@ -14,7 +14,7 @@ normalDeclarations
     ;
 
 SYMBOL_TEXT: 'symbol';
-SPECIAL_SYMBOL: Symbols;
+//SPECIAL_SYMBOL: SYMBOLS;
 
 //Define
 
@@ -31,14 +31,14 @@ defineExpress
 symbolKey: IDENTIFIER;
 symbolValue: IDENTIFIER;
 defineBody
-    : symbolKey IDENTIFIER symbolKey* templateData symbolKey
+    : symbolKey STRING_LITERAL symbolKey* templateData symbolKey
     ;
 
 DEFINE: 'define';
 DEFAULT_SYMBOL: 'defaultSymbol';
 DEFAULT_TEMPLATE: 'defaultTemplate';
 
-templateData: STRING_LITERAL;
+templateData: IDENTIFIER;
 
 
 //
@@ -57,7 +57,7 @@ moduleDeclaration
     ;
 
 moduleDefine
-    : IDENTIFIER LBRACE moduleAttributes RBRACE
+    : IDENTIFIER LBRACE moduleAttributes* RBRACE
     ;
 
 moduleAttributes
@@ -109,9 +109,9 @@ fragment LetterOrDigit
     | [0-9]
     ;
 
-Symbols
-    : '{' | '}' | '$' | ')' | '(' | '[' | ']'
-    ;
+//SYMBOLS
+//    : '{' | '}' | '$' | ')' | '(' | '[' | ']'
+//    ;
 
 fragment Letter
     : [a-zA-Z$_] // these are the "java letters" below 0x7F

@@ -16,7 +16,7 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 26, 126,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 24, 131,
 	4, 2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7,
 	4, 8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 4, 12, 9, 12, 4, 13,
 	9, 13, 4, 14, 9, 14, 4, 15, 9, 15, 4, 16, 9, 16, 3, 2, 7, 2, 34, 10, 2,
@@ -27,57 +27,60 @@ var parserATN = []uint16{
 	3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 5, 6, 82, 10, 6, 3, 7, 3, 7, 3, 8, 3, 8,
 	3, 9, 3, 9, 3, 9, 7, 9, 91, 10, 9, 12, 9, 14, 9, 94, 11, 9, 3, 9, 3, 9,
 	3, 9, 3, 10, 3, 10, 3, 11, 3, 11, 3, 11, 3, 11, 3, 12, 3, 12, 3, 13, 3,
-	13, 3, 14, 3, 14, 3, 14, 3, 14, 3, 14, 3, 14, 3, 15, 3, 15, 3, 15, 3, 15,
-	3, 15, 3, 16, 3, 16, 3, 16, 3, 16, 5, 16, 124, 10, 16, 3, 16, 2, 2, 17,
-	2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 2, 2, 2, 118, 2,
-	35, 3, 2, 2, 2, 4, 49, 3, 2, 2, 2, 6, 55, 3, 2, 2, 2, 8, 57, 3, 2, 2, 2,
-	10, 81, 3, 2, 2, 2, 12, 83, 3, 2, 2, 2, 14, 85, 3, 2, 2, 2, 16, 87, 3,
-	2, 2, 2, 18, 98, 3, 2, 2, 2, 20, 100, 3, 2, 2, 2, 22, 104, 3, 2, 2, 2,
-	24, 106, 3, 2, 2, 2, 26, 108, 3, 2, 2, 2, 28, 114, 3, 2, 2, 2, 30, 123,
-	3, 2, 2, 2, 32, 34, 5, 4, 3, 2, 33, 32, 3, 2, 2, 2, 34, 37, 3, 2, 2, 2,
-	35, 33, 3, 2, 2, 2, 35, 36, 3, 2, 2, 2, 36, 39, 3, 2, 2, 2, 37, 35, 3,
-	2, 2, 2, 38, 40, 5, 8, 5, 2, 39, 38, 3, 2, 2, 2, 39, 40, 3, 2, 2, 2, 40,
-	44, 3, 2, 2, 2, 41, 43, 5, 6, 4, 2, 42, 41, 3, 2, 2, 2, 43, 46, 3, 2, 2,
-	2, 44, 42, 3, 2, 2, 2, 44, 45, 3, 2, 2, 2, 45, 47, 3, 2, 2, 2, 46, 44,
-	3, 2, 2, 2, 47, 48, 7, 2, 2, 3, 48, 3, 3, 2, 2, 2, 49, 50, 7, 3, 2, 2,
-	50, 51, 7, 11, 2, 2, 51, 52, 7, 25, 2, 2, 52, 5, 3, 2, 2, 2, 53, 56, 5,
-	20, 11, 2, 54, 56, 5, 26, 14, 2, 55, 53, 3, 2, 2, 2, 55, 54, 3, 2, 2, 2,
-	56, 7, 3, 2, 2, 2, 57, 58, 7, 5, 2, 2, 58, 59, 5, 22, 12, 2, 59, 63, 7,
-	14, 2, 2, 60, 62, 5, 10, 6, 2, 61, 60, 3, 2, 2, 2, 62, 65, 3, 2, 2, 2,
-	63, 61, 3, 2, 2, 2, 63, 64, 3, 2, 2, 2, 64, 66, 3, 2, 2, 2, 65, 63, 3,
-	2, 2, 2, 66, 67, 7, 15, 2, 2, 67, 9, 3, 2, 2, 2, 68, 69, 7, 6, 2, 2, 69,
-	70, 7, 21, 2, 2, 70, 71, 5, 12, 7, 2, 71, 72, 5, 14, 8, 2, 72, 82, 3, 2,
-	2, 2, 73, 74, 7, 7, 2, 2, 74, 75, 7, 12, 2, 2, 75, 76, 7, 11, 2, 2, 76,
-	77, 7, 13, 2, 2, 77, 78, 7, 14, 2, 2, 78, 79, 5, 16, 9, 2, 79, 80, 7, 15,
-	2, 2, 80, 82, 3, 2, 2, 2, 81, 68, 3, 2, 2, 2, 81, 73, 3, 2, 2, 2, 82, 11,
-	3, 2, 2, 2, 83, 84, 7, 11, 2, 2, 84, 13, 3, 2, 2, 2, 85, 86, 7, 11, 2,
-	2, 86, 15, 3, 2, 2, 2, 87, 88, 5, 12, 7, 2, 88, 92, 7, 11, 2, 2, 89, 91,
-	5, 12, 7, 2, 90, 89, 3, 2, 2, 2, 91, 94, 3, 2, 2, 2, 92, 90, 3, 2, 2, 2,
-	92, 93, 3, 2, 2, 2, 93, 95, 3, 2, 2, 2, 94, 92, 3, 2, 2, 2, 95, 96, 5,
-	18, 10, 2, 96, 97, 5, 12, 7, 2, 97, 17, 3, 2, 2, 2, 98, 99, 7, 25, 2, 2,
-	99, 19, 3, 2, 2, 2, 100, 101, 5, 22, 12, 2, 101, 102, 7, 21, 2, 2, 102,
-	103, 5, 24, 13, 2, 103, 21, 3, 2, 2, 2, 104, 105, 7, 11, 2, 2, 105, 23,
-	3, 2, 2, 2, 106, 107, 7, 11, 2, 2, 107, 25, 3, 2, 2, 2, 108, 109, 7, 8,
-	2, 2, 109, 110, 7, 11, 2, 2, 110, 111, 7, 14, 2, 2, 111, 112, 5, 28, 15,
-	2, 112, 113, 7, 15, 2, 2, 113, 27, 3, 2, 2, 2, 114, 115, 7, 11, 2, 2, 115,
-	116, 7, 14, 2, 2, 116, 117, 5, 30, 16, 2, 117, 118, 7, 15, 2, 2, 118, 29,
-	3, 2, 2, 2, 119, 120, 7, 9, 2, 2, 120, 124, 7, 25, 2, 2, 121, 122, 7, 10,
-	2, 2, 122, 124, 7, 25, 2, 2, 123, 119, 3, 2, 2, 2, 123, 121, 3, 2, 2, 2,
-	124, 31, 3, 2, 2, 2, 10, 35, 39, 44, 55, 63, 81, 92, 123,
+	13, 3, 14, 3, 14, 3, 14, 3, 14, 3, 14, 3, 14, 3, 15, 3, 15, 3, 15, 7, 15,
+	118, 10, 15, 12, 15, 14, 15, 121, 11, 15, 3, 15, 3, 15, 3, 16, 3, 16, 3,
+	16, 3, 16, 5, 16, 129, 10, 16, 3, 16, 2, 2, 17, 2, 4, 6, 8, 10, 12, 14,
+	16, 18, 20, 22, 24, 26, 28, 30, 2, 2, 2, 124, 2, 35, 3, 2, 2, 2, 4, 49,
+	3, 2, 2, 2, 6, 55, 3, 2, 2, 2, 8, 57, 3, 2, 2, 2, 10, 81, 3, 2, 2, 2, 12,
+	83, 3, 2, 2, 2, 14, 85, 3, 2, 2, 2, 16, 87, 3, 2, 2, 2, 18, 98, 3, 2, 2,
+	2, 20, 100, 3, 2, 2, 2, 22, 104, 3, 2, 2, 2, 24, 106, 3, 2, 2, 2, 26, 108,
+	3, 2, 2, 2, 28, 114, 3, 2, 2, 2, 30, 128, 3, 2, 2, 2, 32, 34, 5, 4, 3,
+	2, 33, 32, 3, 2, 2, 2, 34, 37, 3, 2, 2, 2, 35, 33, 3, 2, 2, 2, 35, 36,
+	3, 2, 2, 2, 36, 39, 3, 2, 2, 2, 37, 35, 3, 2, 2, 2, 38, 40, 5, 8, 5, 2,
+	39, 38, 3, 2, 2, 2, 39, 40, 3, 2, 2, 2, 40, 44, 3, 2, 2, 2, 41, 43, 5,
+	6, 4, 2, 42, 41, 3, 2, 2, 2, 43, 46, 3, 2, 2, 2, 44, 42, 3, 2, 2, 2, 44,
+	45, 3, 2, 2, 2, 45, 47, 3, 2, 2, 2, 46, 44, 3, 2, 2, 2, 47, 48, 7, 2, 2,
+	3, 48, 3, 3, 2, 2, 2, 49, 50, 7, 3, 2, 2, 50, 51, 7, 10, 2, 2, 51, 52,
+	7, 24, 2, 2, 52, 5, 3, 2, 2, 2, 53, 56, 5, 20, 11, 2, 54, 56, 5, 26, 14,
+	2, 55, 53, 3, 2, 2, 2, 55, 54, 3, 2, 2, 2, 56, 7, 3, 2, 2, 2, 57, 58, 7,
+	4, 2, 2, 58, 59, 5, 22, 12, 2, 59, 63, 7, 13, 2, 2, 60, 62, 5, 10, 6, 2,
+	61, 60, 3, 2, 2, 2, 62, 65, 3, 2, 2, 2, 63, 61, 3, 2, 2, 2, 63, 64, 3,
+	2, 2, 2, 64, 66, 3, 2, 2, 2, 65, 63, 3, 2, 2, 2, 66, 67, 7, 14, 2, 2, 67,
+	9, 3, 2, 2, 2, 68, 69, 7, 5, 2, 2, 69, 70, 7, 20, 2, 2, 70, 71, 5, 12,
+	7, 2, 71, 72, 5, 14, 8, 2, 72, 82, 3, 2, 2, 2, 73, 74, 7, 6, 2, 2, 74,
+	75, 7, 11, 2, 2, 75, 76, 7, 10, 2, 2, 76, 77, 7, 12, 2, 2, 77, 78, 7, 13,
+	2, 2, 78, 79, 5, 16, 9, 2, 79, 80, 7, 14, 2, 2, 80, 82, 3, 2, 2, 2, 81,
+	68, 3, 2, 2, 2, 81, 73, 3, 2, 2, 2, 82, 11, 3, 2, 2, 2, 83, 84, 7, 10,
+	2, 2, 84, 13, 3, 2, 2, 2, 85, 86, 7, 10, 2, 2, 86, 15, 3, 2, 2, 2, 87,
+	88, 5, 12, 7, 2, 88, 92, 7, 24, 2, 2, 89, 91, 5, 12, 7, 2, 90, 89, 3, 2,
+	2, 2, 91, 94, 3, 2, 2, 2, 92, 90, 3, 2, 2, 2, 92, 93, 3, 2, 2, 2, 93, 95,
+	3, 2, 2, 2, 94, 92, 3, 2, 2, 2, 95, 96, 5, 18, 10, 2, 96, 97, 5, 12, 7,
+	2, 97, 17, 3, 2, 2, 2, 98, 99, 7, 10, 2, 2, 99, 19, 3, 2, 2, 2, 100, 101,
+	5, 22, 12, 2, 101, 102, 7, 20, 2, 2, 102, 103, 5, 24, 13, 2, 103, 21, 3,
+	2, 2, 2, 104, 105, 7, 10, 2, 2, 105, 23, 3, 2, 2, 2, 106, 107, 7, 10, 2,
+	2, 107, 25, 3, 2, 2, 2, 108, 109, 7, 7, 2, 2, 109, 110, 7, 10, 2, 2, 110,
+	111, 7, 13, 2, 2, 111, 112, 5, 28, 15, 2, 112, 113, 7, 14, 2, 2, 113, 27,
+	3, 2, 2, 2, 114, 115, 7, 10, 2, 2, 115, 119, 7, 13, 2, 2, 116, 118, 5,
+	30, 16, 2, 117, 116, 3, 2, 2, 2, 118, 121, 3, 2, 2, 2, 119, 117, 3, 2,
+	2, 2, 119, 120, 3, 2, 2, 2, 120, 122, 3, 2, 2, 2, 121, 119, 3, 2, 2, 2,
+	122, 123, 7, 14, 2, 2, 123, 29, 3, 2, 2, 2, 124, 125, 7, 8, 2, 2, 125,
+	129, 7, 24, 2, 2, 126, 127, 7, 9, 2, 2, 127, 129, 7, 24, 2, 2, 128, 124,
+	3, 2, 2, 2, 128, 126, 3, 2, 2, 2, 129, 31, 3, 2, 2, 2, 11, 35, 39, 44,
+	55, 63, 81, 92, 119, 128,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
 
 var literalNames = []string{
-	"", "'symbol'", "", "'define'", "'defaultSymbol'", "'defaultTemplate'",
-	"'module'", "'import'", "'equal'", "", "'('", "')'", "'{'", "'}'", "'['",
-	"']'", "';'", "','", "'.'", "':'",
+	"", "'symbol'", "'define'", "'defaultSymbol'", "'defaultTemplate'", "'module'",
+	"'import'", "'equal'", "", "'('", "')'", "'{'", "'}'", "'['", "']'", "';'",
+	"','", "'.'", "':'",
 }
 var symbolicNames = []string{
-	"", "SYMBOL_TEXT", "SPECIAL_SYMBOL", "DEFINE", "DEFAULT_SYMBOL", "DEFAULT_TEMPLATE",
-	"MODULE", "IMPORT", "EQUAL", "IDENTIFIER", "LPAREN", "RPAREN", "LBRACE",
-	"RBRACE", "LBRACK", "RBRACK", "SEMI", "COMMA", "DOT", "COLON", "WS", "COMMENT",
-	"LINE_COMMENT", "STRING_LITERAL", "Symbols",
+	"", "SYMBOL_TEXT", "DEFINE", "DEFAULT_SYMBOL", "DEFAULT_TEMPLATE", "MODULE",
+	"IMPORT", "EQUAL", "IDENTIFIER", "LPAREN", "RPAREN", "LBRACE", "RBRACE",
+	"LBRACK", "RBRACK", "SEMI", "COMMA", "DOT", "COLON", "WS", "COMMENT", "LINE_COMMENT",
+	"STRING_LITERAL",
 }
 
 var ruleNames = []string{
@@ -116,29 +119,27 @@ func NewDefineParser(input antlr.TokenStream) *DefineParser {
 const (
 	DefineParserEOF              = antlr.TokenEOF
 	DefineParserSYMBOL_TEXT      = 1
-	DefineParserSPECIAL_SYMBOL   = 2
-	DefineParserDEFINE           = 3
-	DefineParserDEFAULT_SYMBOL   = 4
-	DefineParserDEFAULT_TEMPLATE = 5
-	DefineParserMODULE           = 6
-	DefineParserIMPORT           = 7
-	DefineParserEQUAL            = 8
-	DefineParserIDENTIFIER       = 9
-	DefineParserLPAREN           = 10
-	DefineParserRPAREN           = 11
-	DefineParserLBRACE           = 12
-	DefineParserRBRACE           = 13
-	DefineParserLBRACK           = 14
-	DefineParserRBRACK           = 15
-	DefineParserSEMI             = 16
-	DefineParserCOMMA            = 17
-	DefineParserDOT              = 18
-	DefineParserCOLON            = 19
-	DefineParserWS               = 20
-	DefineParserCOMMENT          = 21
-	DefineParserLINE_COMMENT     = 22
-	DefineParserSTRING_LITERAL   = 23
-	DefineParserSymbols          = 24
+	DefineParserDEFINE           = 2
+	DefineParserDEFAULT_SYMBOL   = 3
+	DefineParserDEFAULT_TEMPLATE = 4
+	DefineParserMODULE           = 5
+	DefineParserIMPORT           = 6
+	DefineParserEQUAL            = 7
+	DefineParserIDENTIFIER       = 8
+	DefineParserLPAREN           = 9
+	DefineParserRPAREN           = 10
+	DefineParserLBRACE           = 11
+	DefineParserRBRACE           = 12
+	DefineParserLBRACK           = 13
+	DefineParserRBRACK           = 14
+	DefineParserSEMI             = 15
+	DefineParserCOMMA            = 16
+	DefineParserDOT              = 17
+	DefineParserCOLON            = 18
+	DefineParserWS               = 19
+	DefineParserCOMMENT          = 20
+	DefineParserLINE_COMMENT     = 21
+	DefineParserSTRING_LITERAL   = 22
 )
 
 // DefineParser rules.
@@ -1250,8 +1251,8 @@ func (s *DefineBodyContext) SymbolKey(i int) ISymbolKeyContext {
 	return t.(ISymbolKeyContext)
 }
 
-func (s *DefineBodyContext) IDENTIFIER() antlr.TerminalNode {
-	return s.GetToken(DefineParserIDENTIFIER, 0)
+func (s *DefineBodyContext) STRING_LITERAL() antlr.TerminalNode {
+	return s.GetToken(DefineParserSTRING_LITERAL, 0)
 }
 
 func (s *DefineBodyContext) TemplateData() ITemplateDataContext {
@@ -1297,7 +1298,6 @@ func (s *DefineBodyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 func (p *DefineParser) DefineBody() (localctx IDefineBodyContext) {
 	localctx = NewDefineBodyContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 14, DefineParserRULE_defineBody)
-	var _la int
 
 	defer func() {
 		p.ExitRule()
@@ -1315,6 +1315,8 @@ func (p *DefineParser) DefineBody() (localctx IDefineBodyContext) {
 		}
 	}()
 
+	var _alt int
+
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(85)
@@ -1322,21 +1324,23 @@ func (p *DefineParser) DefineBody() (localctx IDefineBodyContext) {
 	}
 	{
 		p.SetState(86)
-		p.Match(DefineParserIDENTIFIER)
+		p.Match(DefineParserSTRING_LITERAL)
 	}
 	p.SetState(90)
 	p.GetErrorHandler().Sync(p)
-	_la = p.GetTokenStream().LA(1)
+	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 6, p.GetParserRuleContext())
 
-	for _la == DefineParserIDENTIFIER {
-		{
-			p.SetState(87)
-			p.SymbolKey()
+	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
+		if _alt == 1 {
+			{
+				p.SetState(87)
+				p.SymbolKey()
+			}
+
 		}
-
 		p.SetState(92)
 		p.GetErrorHandler().Sync(p)
-		_la = p.GetTokenStream().LA(1)
+		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 6, p.GetParserRuleContext())
 	}
 	{
 		p.SetState(93)
@@ -1388,8 +1392,8 @@ func NewTemplateDataContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 
 func (s *TemplateDataContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *TemplateDataContext) STRING_LITERAL() antlr.TerminalNode {
-	return s.GetToken(DefineParserSTRING_LITERAL, 0)
+func (s *TemplateDataContext) IDENTIFIER() antlr.TerminalNode {
+	return s.GetToken(DefineParserIDENTIFIER, 0)
 }
 
 func (s *TemplateDataContext) GetRuleContext() antlr.RuleContext {
@@ -1445,7 +1449,7 @@ func (p *DefineParser) TemplateData() (localctx ITemplateDataContext) {
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(96)
-		p.Match(DefineParserSTRING_LITERAL)
+		p.Match(DefineParserIDENTIFIER)
 	}
 
 	return localctx
@@ -1967,18 +1971,31 @@ func (s *ModuleDefineContext) LBRACE() antlr.TerminalNode {
 	return s.GetToken(DefineParserLBRACE, 0)
 }
 
-func (s *ModuleDefineContext) ModuleAttributes() IModuleAttributesContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IModuleAttributesContext)(nil)).Elem(), 0)
+func (s *ModuleDefineContext) RBRACE() antlr.TerminalNode {
+	return s.GetToken(DefineParserRBRACE, 0)
+}
+
+func (s *ModuleDefineContext) AllModuleAttributes() []IModuleAttributesContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IModuleAttributesContext)(nil)).Elem())
+	var tst = make([]IModuleAttributesContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(IModuleAttributesContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *ModuleDefineContext) ModuleAttributes(i int) IModuleAttributesContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IModuleAttributesContext)(nil)).Elem(), i)
 
 	if t == nil {
 		return nil
 	}
 
 	return t.(IModuleAttributesContext)
-}
-
-func (s *ModuleDefineContext) RBRACE() antlr.TerminalNode {
-	return s.GetToken(DefineParserRBRACE, 0)
 }
 
 func (s *ModuleDefineContext) GetRuleContext() antlr.RuleContext {
@@ -2014,6 +2031,7 @@ func (s *ModuleDefineContext) Accept(visitor antlr.ParseTreeVisitor) interface{}
 func (p *DefineParser) ModuleDefine() (localctx IModuleDefineContext) {
 	localctx = NewModuleDefineContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 26, DefineParserRULE_moduleDefine)
+	var _la int
 
 	defer func() {
 		p.ExitRule()
@@ -2040,12 +2058,22 @@ func (p *DefineParser) ModuleDefine() (localctx IModuleDefineContext) {
 		p.SetState(113)
 		p.Match(DefineParserLBRACE)
 	}
-	{
-		p.SetState(114)
-		p.ModuleAttributes()
+	p.SetState(117)
+	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
+
+	for _la == DefineParserIMPORT || _la == DefineParserEQUAL {
+		{
+			p.SetState(114)
+			p.ModuleAttributes()
+		}
+
+		p.SetState(119)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(115)
+		p.SetState(120)
 		p.Match(DefineParserRBRACE)
 	}
 
@@ -2152,29 +2180,29 @@ func (p *DefineParser) ModuleAttributes() (localctx IModuleAttributesContext) {
 		}
 	}()
 
-	p.SetState(121)
+	p.SetState(126)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
 	case DefineParserIMPORT:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(117)
+			p.SetState(122)
 			p.Match(DefineParserIMPORT)
 		}
 		{
-			p.SetState(118)
+			p.SetState(123)
 			p.Match(DefineParserSTRING_LITERAL)
 		}
 
 	case DefineParserEQUAL:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(119)
+			p.SetState(124)
 			p.Match(DefineParserEQUAL)
 		}
 		{
-			p.SetState(120)
+			p.SetState(125)
 			p.Match(DefineParserSTRING_LITERAL)
 		}
 
