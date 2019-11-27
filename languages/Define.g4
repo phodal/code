@@ -1,11 +1,11 @@
 grammar Define;
 
 compilationUnit
-    : symbolDelcaration? defaultDeclaration? normalDeclarations* EOF
+    : symbolDelcaration* defaultDeclaration? normalDeclarations* EOF
     ;
 
 symbolDelcaration
-    : SYMBOL_TEXT IDENTIFIER '"' SPECIAL_SYMBOL '"'
+    : SYMBOL_TEXT IDENTIFIER STRING_LITERAL
     ;
 
 normalDeclarations
