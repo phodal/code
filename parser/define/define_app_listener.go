@@ -2,8 +2,8 @@ package code
 
 import (
 	. "../../languages/define"
-	"fmt"
 	"reflect"
+	"strings"
 )
 
 type Symbol struct {
@@ -14,7 +14,19 @@ type Symbol struct {
 var symbols []Symbol
 var symbolMaps map[string]string
 
-func NewDefineAppListener() *DefineAppListener {
+var startSymbol string
+var endSymbol string
+
+type DefineInformation struct {
+	defineTemplate map[string]string
+}
+
+var defineInformation DefineInformation
+
+func NewDefineAppListener(start string, end string) *DefineAppListener {
+	startSymbol = start
+	endSymbol = end
+	defineInformation = *&DefineInformation{make(map[string]string)}
 	symbolMaps = make(map[string]string)
 	return &DefineAppListener{}
 }
@@ -65,15 +77,19 @@ func buildEntryPoint(ctx *DefineDeclarationContext) {
 					codeText = append(codeText, funcName)
 				}
 				if index == len(allSymbol)-2 {
-					codeText = append(codeText, templateData)
+					codeText = append(codeText, buildTemplate(templateData))
 				}
 			}
 
-			fmt.Println(templateKey, codeText)
+			defineInformation.defineTemplate[templateKey] = strings.Join(codeText, " ")
 		}
 	}
 }
 
-func (s *DefineAppListener) getDefineInformation() {
-	fmt.Println(symbols)
+func buildTemplate(templateData string) string {
+	return startSymbol + templateData + endSymbol
+}
+
+func (s *DefineAppListener) getDefineInformation() DefineInformation {
+	return defineInformation
 }

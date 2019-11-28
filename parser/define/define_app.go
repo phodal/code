@@ -5,20 +5,26 @@ import (
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
-func NewDefineApp() *DefineApp {
+var startTemplateSymbol string
+var endTemplateSymbol string
+
+func NewDefineApp(startSymbol string, endSymbol string) *DefineApp {
+	startTemplateSymbol = startSymbol
+	endTemplateSymbol = endSymbol
 	return &DefineApp{}
 }
 
 type DefineApp struct {
 }
 
-func (j *DefineApp) Start(path string) {
+func (j *DefineApp) Start(path string) DefineInformation {
 	context := (*DefineApp)(nil).ProcessFile(path).CompilationUnit()
-	listener := NewDefineAppListener()
+	listener := NewDefineAppListener(startTemplateSymbol, endTemplateSymbol)
 
 	antlr.NewParseTreeWalker().Walk(listener, context)
 
-	listener.getDefineInformation()
+	information := listener.getDefineInformation()
+	return information
 }
 
 func (j *DefineApp) ProcessFile(path string) *DefineParser {
