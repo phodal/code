@@ -49,7 +49,21 @@ func buildEntryPoint(ctx *DefineDeclarationContext) {
 			fmt.Println(attributeCtx.GetText())
 		case "*parser.DefineTemplateContext":
 			defineCtx := firstChild.(*DefineTemplateContext)
-			fmt.Println(defineCtx.GetText())
+			templateKey := defineCtx.IDENTIFIER().GetText()
+			defineBody := defineCtx.DefineBody().(*DefineBodyContext)
+			funcName := defineBody.STRING_LITERAL().GetText()
+			templateData := defineBody.TemplateData().GetText()
+
+			firstSymbol := defineBody.AllSymbolKey()[:1][0].(*SymbolKeyContext).GetText()
+			fmt.Println(firstSymbol)
+			//fmt.Println(symbolMaps[firstSymbol])
+			for _, symbolKey := range defineBody.AllSymbolKey() {
+				symbolCtx := symbolKey.(*SymbolKeyContext)
+				symbolCtx.GetText()
+				//symbolText := symbolCtx.GetText()
+			}
+
+			fmt.Println(templateKey, funcName, templateData)
 		}
 	}
 }
