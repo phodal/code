@@ -1,2 +1,4 @@
-va = 5
-print(va)
+// va = 5
+// print(va)
+print("aa")
+print(222)

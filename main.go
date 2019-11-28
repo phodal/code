@@ -21,17 +21,24 @@ func main() {
 	info := defineApp.Start("examples/mu.define")
 
 	transform := &Transform{}
-	code := transform.ToCode(codeModel, info.ModuleDeclarations)
+
+	var packageInfo string
+	var imports []string
+	var code = ""
+	var result = ""
+
+	for _, call := range codeModel.FunctionCalls {
+		code = code  + "\n" + transform.ToCode(call, info.ModuleDeclarations)
+		imports = transform.BuildImport(call, info.ModuleDeclarations)
+	}
 
 	templates := info.DefineTemplates
 	template := codetemplate.New(templates["code"], startTemplateSymbol, endTemplateSymbol)
-	result := template.ExecuteString(map[string]interface{}{
+	result = template.ExecuteString(map[string]interface{}{
 		"code": code,
 	})
 
-
-	packageInfo := transform.BuildPackage("main")
-	imports := transform.BuildImport(codeModel, info.ModuleDeclarations)
+	packageInfo = transform.BuildPackage("main")
 
 	codeWithImport := packageInfo + strings.Join(imports, "") + result
 

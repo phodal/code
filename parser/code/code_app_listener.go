@@ -6,10 +6,15 @@ import (
 	"fmt"
 )
 
-var functionCall CodeFunctionCall
+type CodeModel struct {
+	FunctionCalls []CodeFunctionCall
+}
+
+var currentCodeModel CodeModel
 
 func NewCodeAppListener() *CodeAppListener {
-	functionCall = *&CodeFunctionCall{"", nil, nil}
+	//functionCall = *&CodeFunctionCall{"", nil, nil}
+	currentCodeModel = *&CodeModel{nil}
 	return &CodeAppListener{}
 }
 
@@ -18,7 +23,6 @@ type CodeAppListener struct {
 }
 
 func (s *CodeAppListener) EnterMethodCallDeclaration(ctx *MethodCallDeclarationContext) {
-	fmt.Println(ctx.IDENTIFIER().GetText())
 	allParameters := ctx.AllParameter()
 
 	var parameters []CodeParameter
@@ -31,14 +35,15 @@ func (s *CodeAppListener) EnterMethodCallDeclaration(ctx *MethodCallDeclarationC
 		parameters = append(parameters, *parameter)
 	}
 
-	functionCall = CreateFunctionCall(ctx.IDENTIFIER().GetText(), parameters)
+	functionCall := CreateFunctionCall(ctx.IDENTIFIER().GetText(), parameters)
+	currentCodeModel.FunctionCalls = append(currentCodeModel.FunctionCalls, functionCall)
 }
 
 func (s *CodeAppListener) EnterVariableDeclarators(ctx *VariableDeclaratorsContext) {
 	fmt.Println(ctx.GetText())
 }
 
-func (s *CodeAppListener) getCode() CodeFunctionCall {
-	return functionCall
+func (s *CodeAppListener) getCode() CodeModel {
+	return currentCodeModel
 }
 
