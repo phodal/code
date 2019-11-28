@@ -26,6 +26,7 @@ methodCallDeclaration: IDENTIFIER '(' parameter* ')';
 parameter
     : IDENTIFIER
     | STRING_LITERAL
+    | DECIMAL_LITERAL
     ;
 
 dataStructDeclaration: DATA_STRUCT IDENTIFIER;
@@ -49,6 +50,12 @@ LINE_COMMENT:       '//' ~[\r\n]*    -> channel(HIDDEN);
 
 STRING_LITERAL:     '"' (~["\\\r\n] | EscapeSequence)* '"';
 
+
+DECIMAL_LITERAL:    ('0' | [1-9] (Digits? | '_'+ Digits)) [lL]?;
+
+fragment Digits
+    : [0-9] ([0-9_]* [0-9])?
+    ;
 
 fragment HexDigit
     : [0-9a-fA-F]
