@@ -17,7 +17,7 @@ func main() {
 	info := defineApp.Start("examples/mu.define")
 
 	templates := info.DefineTemplates
-	fmt.Println(templates)
+	fmt.Println(info)
 	template := codetemplate.New(templates["code"], startTemplateSymbol, endTemplateSymbol)
 	result := template.ExecuteString(map[string]interface{}{
 		"code": "aaaa",

@@ -65,7 +65,7 @@ defineKey
 defineValue
 moduleDeclaration
 moduleDefine
-moduleAttributes
+moduleAttribute
 
 
 atn:

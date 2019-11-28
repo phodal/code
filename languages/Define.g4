@@ -61,10 +61,10 @@ moduleDeclaration
     ;
 
 moduleDefine
-    : IDENTIFIER LBRACE moduleAttributes* RBRACE
+    : IDENTIFIER LBRACE moduleAttribute* RBRACE
     ;
 
-moduleAttributes
+moduleAttribute
     : IMPORT STRING_LITERAL
     | EQUAL STRING_LITERAL
     ;

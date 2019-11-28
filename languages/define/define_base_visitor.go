@@ -72,6 +72,6 @@ func (v *BaseDefineVisitor) VisitModuleDefine(ctx *ModuleDefineContext) interfac
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseDefineVisitor) VisitModuleAttributes(ctx *ModuleAttributesContext) interface{} {
+func (v *BaseDefineVisitor) VisitModuleAttribute(ctx *ModuleAttributeContext) interface{} {
 	return v.VisitChildren(ctx)
 }

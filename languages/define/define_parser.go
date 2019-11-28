@@ -89,7 +89,7 @@ var ruleNames = []string{
 	"compilationUnit", "symbolDeclaration", "normalDeclarations", "defineDeclaration",
 	"defineExpress", "defineAttribute", "defineTemplate", "symbolKey", "symbolValue",
 	"defineBody", "templateData", "systemDeclaration", "defineKey", "defineValue",
-	"moduleDeclaration", "moduleDefine", "moduleAttributes",
+	"moduleDeclaration", "moduleDefine", "moduleAttribute",
 }
 var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
 
@@ -162,7 +162,7 @@ const (
 	DefineParserRULE_defineValue        = 13
 	DefineParserRULE_moduleDeclaration  = 14
 	DefineParserRULE_moduleDefine       = 15
-	DefineParserRULE_moduleAttributes   = 16
+	DefineParserRULE_moduleAttribute    = 16
 )
 
 // ICompilationUnitContext is an interface to support dynamic dispatch.
@@ -2193,27 +2193,27 @@ func (s *ModuleDefineContext) RBRACE() antlr.TerminalNode {
 	return s.GetToken(DefineParserRBRACE, 0)
 }
 
-func (s *ModuleDefineContext) AllModuleAttributes() []IModuleAttributesContext {
-	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IModuleAttributesContext)(nil)).Elem())
-	var tst = make([]IModuleAttributesContext, len(ts))
+func (s *ModuleDefineContext) AllModuleAttribute() []IModuleAttributeContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IModuleAttributeContext)(nil)).Elem())
+	var tst = make([]IModuleAttributeContext, len(ts))
 
 	for i, t := range ts {
 		if t != nil {
-			tst[i] = t.(IModuleAttributesContext)
+			tst[i] = t.(IModuleAttributeContext)
 		}
 	}
 
 	return tst
 }
 
-func (s *ModuleDefineContext) ModuleAttributes(i int) IModuleAttributesContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IModuleAttributesContext)(nil)).Elem(), i)
+func (s *ModuleDefineContext) ModuleAttribute(i int) IModuleAttributeContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IModuleAttributeContext)(nil)).Elem(), i)
 
 	if t == nil {
 		return nil
 	}
 
-	return t.(IModuleAttributesContext)
+	return t.(IModuleAttributeContext)
 }
 
 func (s *ModuleDefineContext) GetRuleContext() antlr.RuleContext {
@@ -2283,7 +2283,7 @@ func (p *DefineParser) ModuleDefine() (localctx IModuleDefineContext) {
 	for _la == DefineParserIMPORT || _la == DefineParserEQUAL {
 		{
 			p.SetState(120)
-			p.ModuleAttributes()
+			p.ModuleAttribute()
 		}
 
 		p.SetState(125)
@@ -2298,89 +2298,89 @@ func (p *DefineParser) ModuleDefine() (localctx IModuleDefineContext) {
 	return localctx
 }
 
-// IModuleAttributesContext is an interface to support dynamic dispatch.
-type IModuleAttributesContext interface {
+// IModuleAttributeContext is an interface to support dynamic dispatch.
+type IModuleAttributeContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
-	// IsModuleAttributesContext differentiates from other interfaces.
-	IsModuleAttributesContext()
+	// IsModuleAttributeContext differentiates from other interfaces.
+	IsModuleAttributeContext()
 }
 
-type ModuleAttributesContext struct {
+type ModuleAttributeContext struct {
 	*antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyModuleAttributesContext() *ModuleAttributesContext {
-	var p = new(ModuleAttributesContext)
+func NewEmptyModuleAttributeContext() *ModuleAttributeContext {
+	var p = new(ModuleAttributeContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = DefineParserRULE_moduleAttributes
+	p.RuleIndex = DefineParserRULE_moduleAttribute
 	return p
 }
 
-func (*ModuleAttributesContext) IsModuleAttributesContext() {}
+func (*ModuleAttributeContext) IsModuleAttributeContext() {}
 
-func NewModuleAttributesContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ModuleAttributesContext {
-	var p = new(ModuleAttributesContext)
+func NewModuleAttributeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ModuleAttributeContext {
+	var p = new(ModuleAttributeContext)
 
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = DefineParserRULE_moduleAttributes
+	p.RuleIndex = DefineParserRULE_moduleAttribute
 
 	return p
 }
 
-func (s *ModuleAttributesContext) GetParser() antlr.Parser { return s.parser }
+func (s *ModuleAttributeContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ModuleAttributesContext) IMPORT() antlr.TerminalNode {
+func (s *ModuleAttributeContext) IMPORT() antlr.TerminalNode {
 	return s.GetToken(DefineParserIMPORT, 0)
 }
 
-func (s *ModuleAttributesContext) STRING_LITERAL() antlr.TerminalNode {
+func (s *ModuleAttributeContext) STRING_LITERAL() antlr.TerminalNode {
 	return s.GetToken(DefineParserSTRING_LITERAL, 0)
 }
 
-func (s *ModuleAttributesContext) EQUAL() antlr.TerminalNode {
+func (s *ModuleAttributeContext) EQUAL() antlr.TerminalNode {
 	return s.GetToken(DefineParserEQUAL, 0)
 }
 
-func (s *ModuleAttributesContext) GetRuleContext() antlr.RuleContext {
+func (s *ModuleAttributeContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *ModuleAttributesContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *ModuleAttributeContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *ModuleAttributesContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *ModuleAttributeContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(DefineListener); ok {
-		listenerT.EnterModuleAttributes(s)
+		listenerT.EnterModuleAttribute(s)
 	}
 }
 
-func (s *ModuleAttributesContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *ModuleAttributeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(DefineListener); ok {
-		listenerT.ExitModuleAttributes(s)
+		listenerT.ExitModuleAttribute(s)
 	}
 }
 
-func (s *ModuleAttributesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+func (s *ModuleAttributeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case DefineVisitor:
-		return t.VisitModuleAttributes(s)
+		return t.VisitModuleAttribute(s)
 
 	default:
 		return t.VisitChildren(s)
 	}
 }
 
-func (p *DefineParser) ModuleAttributes() (localctx IModuleAttributesContext) {
-	localctx = NewModuleAttributesContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 32, DefineParserRULE_moduleAttributes)
+func (p *DefineParser) ModuleAttribute() (localctx IModuleAttributeContext) {
+	localctx = NewModuleAttributeContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 32, DefineParserRULE_moduleAttribute)
 
 	defer func() {
 		p.ExitRule()

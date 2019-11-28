@@ -56,8 +56,8 @@ type DefineListener interface {
 	// EnterModuleDefine is called when entering the moduleDefine production.
 	EnterModuleDefine(c *ModuleDefineContext)
 
-	// EnterModuleAttributes is called when entering the moduleAttributes production.
-	EnterModuleAttributes(c *ModuleAttributesContext)
+	// EnterModuleAttribute is called when entering the moduleAttribute production.
+	EnterModuleAttribute(c *ModuleAttributeContext)
 
 	// ExitCompilationUnit is called when exiting the compilationUnit production.
 	ExitCompilationUnit(c *CompilationUnitContext)
@@ -107,6 +107,6 @@ type DefineListener interface {
 	// ExitModuleDefine is called when exiting the moduleDefine production.
 	ExitModuleDefine(c *ModuleDefineContext)
 
-	// ExitModuleAttributes is called when exiting the moduleAttributes production.
-	ExitModuleAttributes(c *ModuleAttributesContext)
+	// ExitModuleAttribute is called when exiting the moduleAttribute production.
+	ExitModuleAttribute(c *ModuleAttributeContext)
 }

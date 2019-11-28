@@ -56,6 +56,6 @@ type DefineVisitor interface {
 	// Visit a parse tree produced by DefineParser#moduleDefine.
 	VisitModuleDefine(ctx *ModuleDefineContext) interface{}
 
-	// Visit a parse tree produced by DefineParser#moduleAttributes.
-	VisitModuleAttributes(ctx *ModuleAttributesContext) interface{}
+	// Visit a parse tree produced by DefineParser#moduleAttribute.
+	VisitModuleAttribute(ctx *ModuleAttributeContext) interface{}
 }

@@ -117,8 +117,8 @@ func (s *BaseDefineListener) EnterModuleDefine(ctx *ModuleDefineContext) {}
 // ExitModuleDefine is called when production moduleDefine is exited.
 func (s *BaseDefineListener) ExitModuleDefine(ctx *ModuleDefineContext) {}
 
-// EnterModuleAttributes is called when production moduleAttributes is entered.
-func (s *BaseDefineListener) EnterModuleAttributes(ctx *ModuleAttributesContext) {}
+// EnterModuleAttribute is called when production moduleAttribute is entered.
+func (s *BaseDefineListener) EnterModuleAttribute(ctx *ModuleAttributeContext) {}
 
-// ExitModuleAttributes is called when production moduleAttributes is exited.
-func (s *BaseDefineListener) ExitModuleAttributes(ctx *ModuleAttributesContext) {}
+// ExitModuleAttribute is called when production moduleAttribute is exited.
+func (s *BaseDefineListener) ExitModuleAttribute(ctx *ModuleAttributeContext) {}

@@ -18,7 +18,19 @@ var startSymbol string
 var endSymbol string
 
 type DefineInformation struct {
-	DefineTemplates map[string]string
+	DefineTemplates    map[string]string
+	ModuleDeclarations []DefineModule
+}
+
+type DefineModule struct {
+	ModuleName      string
+	ModuleFunctions []ModuleFunction
+}
+
+type ModuleFunction struct {
+	FunctionName string
+	EqualName    string
+	ImportName   string
 }
 
 var defineInformation DefineInformation
@@ -26,7 +38,10 @@ var defineInformation DefineInformation
 func NewDefineAppListener(start string, end string) *DefineAppListener {
 	startSymbol = start
 	endSymbol = end
-	defineInformation = *&DefineInformation{make(map[string]string)}
+	defineInformation = *&DefineInformation{
+		make(map[string]string),
+		nil,
+	}
 	symbolMaps = make(map[string]string)
 	return &DefineAppListener{}
 }
@@ -41,6 +56,28 @@ func (s *DefineAppListener) EnterSymbolDeclaration(ctx *SymbolDeclarationContext
 	symbol := &Symbol{key, value}
 	symbols = append(symbols, *symbol)
 	symbolMaps[key] = value
+}
+
+func (s *DefineAppListener) EnterModuleDeclaration(ctx *ModuleDeclarationContext) {
+	moduleDefine := ctx.ModuleDefine().(*ModuleDefineContext)
+	defineModule := &DefineModule{
+		ModuleName:      ctx.IDENTIFIER().GetText(),
+		ModuleFunctions: nil,
+	}
+	for _, attribute := range moduleDefine.AllModuleAttribute() {
+		moduleFunction := &ModuleFunction{}
+		moduleFunction.FunctionName = moduleDefine.IDENTIFIER().GetText()
+		attr := attribute.(*ModuleAttributeContext)
+		if attr.IMPORT() != nil {
+			moduleFunction.ImportName = attr.STRING_LITERAL().GetText()
+		}
+		if attr.EQUAL() != nil {
+			moduleFunction.EqualName = attr.STRING_LITERAL().GetText()
+		}
+
+		defineModule.ModuleFunctions = append(defineModule.ModuleFunctions, *moduleFunction)
+	}
+	defineInformation.ModuleDeclarations = append(defineInformation.ModuleDeclarations, *defineModule)
 }
 
 func (s *DefineAppListener) EnterDefineDeclaration(ctx *DefineDeclarationContext) {
