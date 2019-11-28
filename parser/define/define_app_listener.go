@@ -40,13 +40,12 @@ func (s *DefineAppListener) EnterDefineDeclaration(ctx *DefineDeclarationContext
 
 func buildEntryPoint(ctx *DefineDeclarationContext) {
 	for _, express := range ctx.AllDefineExpress() {
-		fmt.Println(express.(*DefineExpressContext).GetText())
 		firstChild := express.(*DefineExpressContext).GetChild(0)
 		typeOfExpress := reflect.TypeOf(firstChild).String()
 		switch typeOfExpress {
 		case "*parser.DefineAttributeContext":
 			attributeCtx := firstChild.(*DefineAttributeContext)
-			fmt.Println(attributeCtx.GetText())
+			attributeCtx.GetText()
 		case "*parser.DefineTemplateContext":
 			defineCtx := firstChild.(*DefineTemplateContext)
 			templateKey := defineCtx.IDENTIFIER().GetText()
@@ -54,16 +53,23 @@ func buildEntryPoint(ctx *DefineDeclarationContext) {
 			funcName := defineBody.STRING_LITERAL().GetText()
 			templateData := defineBody.TemplateData().GetText()
 
-			firstSymbol := defineBody.AllSymbolKey()[:1][0].(*SymbolKeyContext).GetText()
-			fmt.Println(firstSymbol)
-			//fmt.Println(symbolMaps[firstSymbol])
-			for _, symbolKey := range defineBody.AllSymbolKey() {
+			allSymbol := defineBody.AllSymbolKey()
+
+			var codeText []string
+			for index, symbolKey := range allSymbol {
 				symbolCtx := symbolKey.(*SymbolKeyContext)
-				symbolCtx.GetText()
-				//symbolText := symbolCtx.GetText()
+				symbolText := symbolCtx.GetText()
+
+				codeText = append(codeText, symbolMaps[symbolText])
+				if index == 0 {
+					codeText = append(codeText, funcName)
+				}
+				if index == len(allSymbol)-2 {
+					codeText = append(codeText, templateData)
+				}
 			}
 
-			fmt.Println(templateKey, funcName, templateData)
+			fmt.Println(templateKey, codeText)
 		}
 	}
 }
