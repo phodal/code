@@ -5,7 +5,9 @@ import (
 	. "./parser/define"
 	codetemplate "./parser/template"
 	. "./transform"
+	"fmt"
 	"io/ioutil"
+	"os/exec"
 	"strings"
 )
 
@@ -28,10 +30,19 @@ func main() {
 	})
 
 
-	packageInfo := transform.BuildPackage("test")
+	packageInfo := transform.BuildPackage("main")
 	imports := transform.BuildImport(codeModel, info.ModuleDeclarations)
 
 	codeWithImport := packageInfo + strings.Join(imports, "") + result
 
-	_ = ioutil.WriteFile("test/test.go", []byte(codeWithImport), 0644)
+	_ = ioutil.WriteFile("test/main/main.go", []byte(codeWithImport), 0644)
+
+	cmd := exec.Command("go", "run", "test/main/main.go")
+	stdout, err := cmd.StdoutPipe()
+	_ = cmd.Start()
+	content, err := ioutil.ReadAll(stdout)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(string(content))
 }

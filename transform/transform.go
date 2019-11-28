@@ -14,9 +14,18 @@ func (transform Transform) ToCode(call CodeFunctionCall, modules []DefineModule)
 		parameters = append(parameters, parameter.Value.Value)
 	}
 
+	callName :=  call.MemberId
+	for _, module := range modules {
+		for _, function := range module.ModuleFunctions {
+			if function.FunctionName == call.MemberId {
+				callName = function.EqualName[1:len(function.EqualName)-1]
+			}
+		}
+	}
+
 	paramList := strings.Join(parameters, ",")
 
-	return call.MemberId + "(" + paramList + ")"
+	return callName + "(" + paramList + ")"
 }
 
 func (transform Transform) BuildImport(call CodeFunctionCall, modules []DefineModule) []string {
@@ -25,7 +34,7 @@ func (transform Transform) BuildImport(call CodeFunctionCall, modules []DefineMo
 	for _, module := range modules {
 		for _, function := range module.ModuleFunctions {
 			if function.FunctionName == call.MemberId {
-				imports = append(imports, "import " + function.EqualName + "\n")
+				imports = append(imports, "import " + function.ImportName + "\n")
 			}
 		}
 	}
