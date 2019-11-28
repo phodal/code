@@ -57,10 +57,10 @@ defineValue: IDENTIFIER;
 //
 
 moduleDeclaration
-    : MODULE IDENTIFIER LBRACE  moduleDefine RBRACE
+    : MODULE IDENTIFIER LBRACE  moduleDefines* RBRACE
     ;
 
-moduleDefine
+moduleDefines
     : IDENTIFIER LBRACE moduleAttribute* RBRACE
     ;
 

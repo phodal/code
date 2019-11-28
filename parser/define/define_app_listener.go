@@ -59,24 +59,29 @@ func (s *DefineAppListener) EnterSymbolDeclaration(ctx *SymbolDeclarationContext
 }
 
 func (s *DefineAppListener) EnterModuleDeclaration(ctx *ModuleDeclarationContext) {
-	moduleDefine := ctx.ModuleDefine().(*ModuleDefineContext)
 	defineModule := &DefineModule{
 		ModuleName:      ctx.IDENTIFIER().GetText(),
 		ModuleFunctions: nil,
 	}
-	for _, attribute := range moduleDefine.AllModuleAttribute() {
+
+	for _, moduleDefine := range ctx.AllModuleDefines() {
 		moduleFunction := &ModuleFunction{}
-		moduleFunction.FunctionName = moduleDefine.IDENTIFIER().GetText()
-		attr := attribute.(*ModuleAttributeContext)
-		if attr.IMPORT() != nil {
-			moduleFunction.ImportName = attr.STRING_LITERAL().GetText()
-		}
-		if attr.EQUAL() != nil {
-			moduleFunction.EqualName = attr.STRING_LITERAL().GetText()
+		moduleDefineCtx := moduleDefine.(*ModuleDefinesContext)
+		for _, attribute := range moduleDefineCtx.AllModuleAttribute() {
+			moduleFunction.FunctionName = moduleDefineCtx.IDENTIFIER().GetText()
+			attr := attribute.(*ModuleAttributeContext)
+			if attr.IMPORT() != nil {
+				moduleFunction.ImportName = attr.STRING_LITERAL().GetText()
+			}
+			if attr.EQUAL() != nil {
+				moduleFunction.EqualName = attr.STRING_LITERAL().GetText()
+			}
 		}
 
 		defineModule.ModuleFunctions = append(defineModule.ModuleFunctions, *moduleFunction)
+
 	}
+
 	defineInformation.ModuleDeclarations = append(defineInformation.ModuleDeclarations, *defineModule)
 }
 
