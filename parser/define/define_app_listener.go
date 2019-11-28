@@ -2,6 +2,7 @@ package code
 
 import (
 	. "../../languages/define"
+	. "../../model"
 	"reflect"
 	"strings"
 )
@@ -16,22 +17,6 @@ var symbolMaps map[string]string
 
 var startSymbol string
 var endSymbol string
-
-type DefineInformation struct {
-	DefineTemplates    map[string]string
-	ModuleDeclarations []DefineModule
-}
-
-type DefineModule struct {
-	ModuleName      string
-	ModuleFunctions []ModuleFunction
-}
-
-type ModuleFunction struct {
-	FunctionName string
-	EqualName    string
-	ImportName   string
-}
 
 var defineInformation DefineInformation
 
@@ -55,7 +40,7 @@ func (s *DefineAppListener) EnterSymbolDeclaration(ctx *SymbolDeclarationContext
 	value := ctx.STRING_LITERAL().GetText()
 	symbol := &Symbol{key, value}
 	symbols = append(symbols, *symbol)
-	symbolMaps[key] = value
+	symbolMaps[key] = value[1: len(value)-1]
 }
 
 func (s *DefineAppListener) EnterModuleDeclaration(ctx *ModuleDeclarationContext) {
@@ -116,7 +101,7 @@ func buildEntryPoint(ctx *DefineDeclarationContext) {
 
 				codeText = append(codeText, symbolMaps[symbolText])
 				if index == 0 {
-					codeText = append(codeText, funcName)
+					codeText = append(codeText, funcName[1:len(funcName)-1])
 				}
 				if index == len(allSymbol)-2 {
 					codeText = append(codeText, buildTemplate(templateData))

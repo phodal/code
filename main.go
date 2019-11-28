@@ -4,23 +4,34 @@ import (
 	. "./parser/code"
 	. "./parser/define"
 	codetemplate "./parser/template"
-	"fmt"
+	. "./transform"
+	"io/ioutil"
+	"strings"
 )
 
 func main() {
 	app := NewCodeApp()
-	app.Start("examples/helloworld.code")
+	codeModel := app.Start("examples/helloworld.code")
 
 	startTemplateSymbol := "{{"
 	endTemplateSymbol := "}}"
 	defineApp := NewDefineApp(startTemplateSymbol, endTemplateSymbol)
 	info := defineApp.Start("examples/mu.define")
 
+	transform := &Transform{}
+	code := transform.ToCode(codeModel, info.ModuleDeclarations)
+
 	templates := info.DefineTemplates
-	fmt.Println(info)
 	template := codetemplate.New(templates["code"], startTemplateSymbol, endTemplateSymbol)
 	result := template.ExecuteString(map[string]interface{}{
-		"code": "aaaa",
+		"code": code,
 	})
-	fmt.Printf("%s", result)
+
+
+	packageInfo := transform.BuildPackage("test")
+	imports := transform.BuildImport(codeModel, info.ModuleDeclarations)
+
+	codeWithImport := packageInfo + strings.Join(imports, "") + result
+
+	_ = ioutil.WriteFile("test/test.go", []byte(codeWithImport), 0644)
 }
