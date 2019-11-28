@@ -23,6 +23,27 @@ type CodeListener interface {
 	// EnterExpressDeclaration is called when entering the expressDeclaration production.
 	EnterExpressDeclaration(c *ExpressDeclarationContext)
 
+	// EnterBlockStatement is called when entering the blockStatement production.
+	EnterBlockStatement(c *BlockStatementContext)
+
+	// EnterLocalVariableDeclaration is called when entering the localVariableDeclaration production.
+	EnterLocalVariableDeclaration(c *LocalVariableDeclarationContext)
+
+	// EnterVariableDeclarators is called when entering the variableDeclarators production.
+	EnterVariableDeclarators(c *VariableDeclaratorsContext)
+
+	// EnterVariableDeclarator is called when entering the variableDeclarator production.
+	EnterVariableDeclarator(c *VariableDeclaratorContext)
+
+	// EnterVariableDeclaratorId is called when entering the variableDeclaratorId production.
+	EnterVariableDeclaratorId(c *VariableDeclaratorIdContext)
+
+	// EnterVariableInitializer is called when entering the variableInitializer production.
+	EnterVariableInitializer(c *VariableInitializerContext)
+
+	// EnterExpression is called when entering the expression production.
+	EnterExpression(c *ExpressionContext)
+
 	// EnterMethodCallDeclaration is called when entering the methodCallDeclaration production.
 	EnterMethodCallDeclaration(c *MethodCallDeclarationContext)
 
@@ -52,6 +73,27 @@ type CodeListener interface {
 
 	// ExitExpressDeclaration is called when exiting the expressDeclaration production.
 	ExitExpressDeclaration(c *ExpressDeclarationContext)
+
+	// ExitBlockStatement is called when exiting the blockStatement production.
+	ExitBlockStatement(c *BlockStatementContext)
+
+	// ExitLocalVariableDeclaration is called when exiting the localVariableDeclaration production.
+	ExitLocalVariableDeclaration(c *LocalVariableDeclarationContext)
+
+	// ExitVariableDeclarators is called when exiting the variableDeclarators production.
+	ExitVariableDeclarators(c *VariableDeclaratorsContext)
+
+	// ExitVariableDeclarator is called when exiting the variableDeclarator production.
+	ExitVariableDeclarator(c *VariableDeclaratorContext)
+
+	// ExitVariableDeclaratorId is called when exiting the variableDeclaratorId production.
+	ExitVariableDeclaratorId(c *VariableDeclaratorIdContext)
+
+	// ExitVariableInitializer is called when exiting the variableInitializer production.
+	ExitVariableInitializer(c *VariableInitializerContext)
+
+	// ExitExpression is called when exiting the expression production.
+	ExitExpression(c *ExpressionContext)
 
 	// ExitMethodCallDeclaration is called when exiting the methodCallDeclaration production.
 	ExitMethodCallDeclaration(c *MethodCallDeclarationContext)

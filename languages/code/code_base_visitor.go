@@ -28,6 +28,34 @@ func (v *BaseCodeVisitor) VisitExpressDeclaration(ctx *ExpressDeclarationContext
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseCodeVisitor) VisitBlockStatement(ctx *BlockStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseCodeVisitor) VisitLocalVariableDeclaration(ctx *LocalVariableDeclarationContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseCodeVisitor) VisitVariableDeclarators(ctx *VariableDeclaratorsContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseCodeVisitor) VisitVariableDeclarator(ctx *VariableDeclaratorContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseCodeVisitor) VisitVariableDeclaratorId(ctx *VariableDeclaratorIdContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseCodeVisitor) VisitVariableInitializer(ctx *VariableInitializerContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseCodeVisitor) VisitExpression(ctx *ExpressionContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseCodeVisitor) VisitMethodCallDeclaration(ctx *MethodCallDeclarationContext) interface{} {
 	return v.VisitChildren(ctx)
 }

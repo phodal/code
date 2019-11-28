@@ -51,6 +51,48 @@ func (s *BaseCodeListener) EnterExpressDeclaration(ctx *ExpressDeclarationContex
 // ExitExpressDeclaration is called when production expressDeclaration is exited.
 func (s *BaseCodeListener) ExitExpressDeclaration(ctx *ExpressDeclarationContext) {}
 
+// EnterBlockStatement is called when production blockStatement is entered.
+func (s *BaseCodeListener) EnterBlockStatement(ctx *BlockStatementContext) {}
+
+// ExitBlockStatement is called when production blockStatement is exited.
+func (s *BaseCodeListener) ExitBlockStatement(ctx *BlockStatementContext) {}
+
+// EnterLocalVariableDeclaration is called when production localVariableDeclaration is entered.
+func (s *BaseCodeListener) EnterLocalVariableDeclaration(ctx *LocalVariableDeclarationContext) {}
+
+// ExitLocalVariableDeclaration is called when production localVariableDeclaration is exited.
+func (s *BaseCodeListener) ExitLocalVariableDeclaration(ctx *LocalVariableDeclarationContext) {}
+
+// EnterVariableDeclarators is called when production variableDeclarators is entered.
+func (s *BaseCodeListener) EnterVariableDeclarators(ctx *VariableDeclaratorsContext) {}
+
+// ExitVariableDeclarators is called when production variableDeclarators is exited.
+func (s *BaseCodeListener) ExitVariableDeclarators(ctx *VariableDeclaratorsContext) {}
+
+// EnterVariableDeclarator is called when production variableDeclarator is entered.
+func (s *BaseCodeListener) EnterVariableDeclarator(ctx *VariableDeclaratorContext) {}
+
+// ExitVariableDeclarator is called when production variableDeclarator is exited.
+func (s *BaseCodeListener) ExitVariableDeclarator(ctx *VariableDeclaratorContext) {}
+
+// EnterVariableDeclaratorId is called when production variableDeclaratorId is entered.
+func (s *BaseCodeListener) EnterVariableDeclaratorId(ctx *VariableDeclaratorIdContext) {}
+
+// ExitVariableDeclaratorId is called when production variableDeclaratorId is exited.
+func (s *BaseCodeListener) ExitVariableDeclaratorId(ctx *VariableDeclaratorIdContext) {}
+
+// EnterVariableInitializer is called when production variableInitializer is entered.
+func (s *BaseCodeListener) EnterVariableInitializer(ctx *VariableInitializerContext) {}
+
+// ExitVariableInitializer is called when production variableInitializer is exited.
+func (s *BaseCodeListener) ExitVariableInitializer(ctx *VariableInitializerContext) {}
+
+// EnterExpression is called when production expression is entered.
+func (s *BaseCodeListener) EnterExpression(ctx *ExpressionContext) {}
+
+// ExitExpression is called when production expression is exited.
+func (s *BaseCodeListener) ExitExpression(ctx *ExpressionContext) {}
+
 // EnterMethodCallDeclaration is called when production methodCallDeclaration is entered.
 func (s *BaseCodeListener) EnterMethodCallDeclaration(ctx *MethodCallDeclarationContext) {}
 

@@ -20,6 +20,35 @@ typeDeclaration
 
 expressDeclaration
     : methodCallDeclaration
+    | blockStatement
+    ;
+
+blockStatement
+    : localVariableDeclaration
+    ;
+
+localVariableDeclaration
+    : variableDeclarators
+    ;
+
+variableDeclarators
+    : variableDeclarator (',' variableDeclarator)*
+    ;
+
+variableDeclarator
+    : variableDeclaratorId ('=' variableInitializer)?
+    ;
+
+variableDeclaratorId
+    : IDENTIFIER
+    ;
+
+variableInitializer
+    : expression
+    ;
+
+expression
+    : (IDENTIFIER | DECIMAL_LITERAL)
     ;
 
 methodCallDeclaration: IDENTIFIER '(' parameter* ')';

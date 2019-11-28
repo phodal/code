@@ -34,6 +34,10 @@ func (s *CodeAppListener) EnterMethodCallDeclaration(ctx *MethodCallDeclarationC
 	functionCall = CreateFunctionCall(ctx.IDENTIFIER().GetText(), parameters)
 }
 
+func (s *CodeAppListener) EnterVariableDeclarators(ctx *VariableDeclaratorsContext) {
+	fmt.Println(ctx.GetText())
+}
+
 func (s *CodeAppListener) getCode() CodeFunctionCall {
 	return functionCall
 }

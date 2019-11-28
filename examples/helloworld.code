@@ -1,2 +1,2 @@
-print("hello, world, hahaha")
-print(2)
+va = 5
+print(va)
