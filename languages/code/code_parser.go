@@ -16,7 +16,7 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 14, 80, 4,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 15, 80, 4,
 	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7, 4,
 	8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 3, 2, 5, 2, 24, 10, 2,
 	3, 2, 7, 2, 27, 10, 2, 12, 2, 14, 2, 30, 11, 2, 3, 2, 7, 2, 33, 10, 2,
@@ -25,7 +25,7 @@ var parserATN = []uint16{
 	55, 10, 5, 3, 6, 3, 6, 3, 7, 3, 7, 3, 7, 7, 7, 62, 10, 7, 12, 7, 14, 7,
 	65, 11, 7, 3, 7, 3, 7, 3, 8, 3, 8, 3, 9, 3, 9, 3, 9, 3, 10, 3, 10, 3, 10,
 	3, 11, 3, 11, 3, 11, 3, 11, 2, 2, 12, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20,
-	2, 3, 4, 2, 10, 10, 14, 14, 2, 76, 2, 23, 3, 2, 2, 2, 4, 45, 3, 2, 2, 2,
+	2, 3, 4, 2, 10, 10, 14, 15, 2, 76, 2, 23, 3, 2, 2, 2, 4, 45, 3, 2, 2, 2,
 	6, 48, 3, 2, 2, 2, 8, 54, 3, 2, 2, 2, 10, 56, 3, 2, 2, 2, 12, 58, 3, 2,
 	2, 2, 14, 68, 3, 2, 2, 2, 16, 70, 3, 2, 2, 2, 18, 73, 3, 2, 2, 2, 20, 76,
 	3, 2, 2, 2, 22, 24, 5, 4, 3, 2, 23, 22, 3, 2, 2, 2, 23, 24, 3, 2, 2, 2,
@@ -56,7 +56,7 @@ var literalNames = []string{
 }
 var symbolicNames = []string{
 	"", "", "", "PACKAGE", "IMPORT", "DATA_STRUCT", "MEMBER", "FUNCTION", "IDENTIFIER",
-	"WS", "COMMENT", "LINE_COMMENT", "STRING_LITERAL",
+	"WS", "COMMENT", "LINE_COMMENT", "STRING_LITERAL", "DECIMAL_LITERAL",
 }
 
 var ruleNames = []string{
@@ -92,19 +92,20 @@ func NewCodeParser(input antlr.TokenStream) *CodeParser {
 
 // CodeParser tokens.
 const (
-	CodeParserEOF            = antlr.TokenEOF
-	CodeParserT__0           = 1
-	CodeParserT__1           = 2
-	CodeParserPACKAGE        = 3
-	CodeParserIMPORT         = 4
-	CodeParserDATA_STRUCT    = 5
-	CodeParserMEMBER         = 6
-	CodeParserFUNCTION       = 7
-	CodeParserIDENTIFIER     = 8
-	CodeParserWS             = 9
-	CodeParserCOMMENT        = 10
-	CodeParserLINE_COMMENT   = 11
-	CodeParserSTRING_LITERAL = 12
+	CodeParserEOF             = antlr.TokenEOF
+	CodeParserT__0            = 1
+	CodeParserT__1            = 2
+	CodeParserPACKAGE         = 3
+	CodeParserIMPORT          = 4
+	CodeParserDATA_STRUCT     = 5
+	CodeParserMEMBER          = 6
+	CodeParserFUNCTION        = 7
+	CodeParserIDENTIFIER      = 8
+	CodeParserWS              = 9
+	CodeParserCOMMENT         = 10
+	CodeParserLINE_COMMENT    = 11
+	CodeParserSTRING_LITERAL  = 12
+	CodeParserDECIMAL_LITERAL = 13
 )
 
 // CodeParser rules.
@@ -959,7 +960,7 @@ func (p *CodeParser) MethodCallDeclaration() (localctx IMethodCallDeclarationCon
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == CodeParserIDENTIFIER || _la == CodeParserSTRING_LITERAL {
+	for ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<CodeParserIDENTIFIER)|(1<<CodeParserSTRING_LITERAL)|(1<<CodeParserDECIMAL_LITERAL))) != 0 {
 		{
 			p.SetState(58)
 			p.Parameter()
@@ -1023,6 +1024,10 @@ func (s *ParameterContext) STRING_LITERAL() antlr.TerminalNode {
 	return s.GetToken(CodeParserSTRING_LITERAL, 0)
 }
 
+func (s *ParameterContext) DECIMAL_LITERAL() antlr.TerminalNode {
+	return s.GetToken(CodeParserDECIMAL_LITERAL, 0)
+}
+
 func (s *ParameterContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
@@ -1079,7 +1084,7 @@ func (p *CodeParser) Parameter() (localctx IParameterContext) {
 		p.SetState(66)
 		_la = p.GetTokenStream().LA(1)
 
-		if !(_la == CodeParserIDENTIFIER || _la == CodeParserSTRING_LITERAL) {
+		if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<CodeParserIDENTIFIER)|(1<<CodeParserSTRING_LITERAL)|(1<<CodeParserDECIMAL_LITERAL))) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
