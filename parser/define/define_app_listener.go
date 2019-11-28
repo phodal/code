@@ -18,7 +18,7 @@ var startSymbol string
 var endSymbol string
 
 type DefineInformation struct {
-	defineTemplate map[string]string
+	DefineTemplates map[string]string
 }
 
 var defineInformation DefineInformation
@@ -81,7 +81,7 @@ func buildEntryPoint(ctx *DefineDeclarationContext) {
 				}
 			}
 
-			defineInformation.defineTemplate[templateKey] = strings.Join(codeText, " ")
+			defineInformation.DefineTemplates[templateKey] = strings.Join(codeText, " ")
 		}
 	}
 }

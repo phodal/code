@@ -3,10 +3,11 @@ package main
 import (
 	. "./parser/code"
 	. "./parser/define"
+	codetemplate "./parser/template"
 	"fmt"
 )
 
-func main()  {
+func main() {
 	app := NewCodeApp()
 	app.Start("examples/helloworld.code")
 
@@ -15,6 +16,11 @@ func main()  {
 	defineApp := NewDefineApp(startTemplateSymbol, endTemplateSymbol)
 	info := defineApp.Start("examples/mu.define")
 
-	fmt.Println(info)
-	//template.New(info, startTemplateSymbol, endTemplateSymbol)
+	templates := info.DefineTemplates
+	fmt.Println(templates)
+	template := codetemplate.New(templates["code"], startTemplateSymbol, endTemplateSymbol)
+	result := template.ExecuteString(map[string]interface{}{
+		"code": "aaaa",
+	})
+	fmt.Printf("%s", result)
 }

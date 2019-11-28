@@ -6,7 +6,10 @@ import (
 	"fmt"
 )
 
+var functionCall CodeFunctionCall
+
 func NewCodeAppListener() *CodeAppListener {
+	functionCall = *&CodeFunctionCall{"", nil, nil}
 	return &CodeAppListener{}
 }
 
@@ -28,6 +31,10 @@ func (s *CodeAppListener) EnterMethodCallDeclaration(ctx *MethodCallDeclarationC
 		parameters = append(parameters, *parameter)
 	}
 
-	functionCall := CreateFunctionCall(ctx.IDENTIFIER().GetText(), parameters)
-	fmt.Println(functionCall)
+	functionCall = CreateFunctionCall(ctx.IDENTIFIER().GetText(), parameters)
 }
+
+func (s *CodeAppListener) getCode() CodeFunctionCall {
+	return functionCall
+}
+
