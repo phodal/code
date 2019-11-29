@@ -44,3 +44,7 @@ func (transform Transform) BuildImport(call CodeFunctionCall, modules []DefineMo
 func (transform Transform) BuildPackage(s string) string {
 	return "package " + s + "\n"
 }
+
+func (transform Transform) BuildFunction(function CodeFunction, information DefineInformation) string {
+	return ""
+}

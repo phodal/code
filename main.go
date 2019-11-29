@@ -13,7 +13,11 @@ import (
 	"strings"
 )
 
+var transform Transform
+
 func main() {
+	transform = *&Transform{}
+
 	app := NewCodeApp()
 	codeModel := app.Start("examples/helloworld.code")
 
@@ -26,8 +30,16 @@ func main() {
 	info := defineApp.Start("examples/mu.define")
 
 	code := transformMainCode(codeModel, info, startTemplateSymbol, endTemplateSymbol)
+	transformNormalCode(codeModel, info)
 
 	runCode(code)
+}
+
+func transformNormalCode(model CodeModel, information DefineInformation) {
+	for _, function := range model.Functions {
+		funcStr := transform.BuildFunction(function, information)
+		fmt.Println(funcStr)
+	}
 }
 
 func runCode(codeWithImport string) {
@@ -43,7 +55,6 @@ func runCode(codeWithImport string) {
 }
 
 func transformMainCode(codeModel CodeModel, info DefineInformation, startTemplateSymbol string, endTemplateSymbol string) string {
-	transform := &Transform{}
 	var packageInfo string
 	var imports []string
 	var code = ""
