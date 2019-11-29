@@ -20,6 +20,12 @@ type CodeListener interface {
 	// EnterTypeDeclaration is called when entering the typeDeclaration production.
 	EnterTypeDeclaration(c *TypeDeclarationContext)
 
+	// EnterFunctionDeclaration is called when entering the functionDeclaration production.
+	EnterFunctionDeclaration(c *FunctionDeclarationContext)
+
+	// EnterFunctionBody is called when entering the functionBody production.
+	EnterFunctionBody(c *FunctionBodyContext)
+
 	// EnterExpressDeclaration is called when entering the expressDeclaration production.
 	EnterExpressDeclaration(c *ExpressDeclarationContext)
 
@@ -56,9 +62,6 @@ type CodeListener interface {
 	// EnterMemberDeclaration is called when entering the memberDeclaration production.
 	EnterMemberDeclaration(c *MemberDeclarationContext)
 
-	// EnterFunctionDeclaration is called when entering the functionDeclaration production.
-	EnterFunctionDeclaration(c *FunctionDeclarationContext)
-
 	// ExitCompilationUnit is called when exiting the compilationUnit production.
 	ExitCompilationUnit(c *CompilationUnitContext)
 
@@ -70,6 +73,12 @@ type CodeListener interface {
 
 	// ExitTypeDeclaration is called when exiting the typeDeclaration production.
 	ExitTypeDeclaration(c *TypeDeclarationContext)
+
+	// ExitFunctionDeclaration is called when exiting the functionDeclaration production.
+	ExitFunctionDeclaration(c *FunctionDeclarationContext)
+
+	// ExitFunctionBody is called when exiting the functionBody production.
+	ExitFunctionBody(c *FunctionBodyContext)
 
 	// ExitExpressDeclaration is called when exiting the expressDeclaration production.
 	ExitExpressDeclaration(c *ExpressDeclarationContext)
@@ -106,7 +115,4 @@ type CodeListener interface {
 
 	// ExitMemberDeclaration is called when exiting the memberDeclaration production.
 	ExitMemberDeclaration(c *MemberDeclarationContext)
-
-	// ExitFunctionDeclaration is called when exiting the functionDeclaration production.
-	ExitFunctionDeclaration(c *FunctionDeclarationContext)
 }

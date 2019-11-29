@@ -20,6 +20,12 @@ type CodeVisitor interface {
 	// Visit a parse tree produced by CodeParser#typeDeclaration.
 	VisitTypeDeclaration(ctx *TypeDeclarationContext) interface{}
 
+	// Visit a parse tree produced by CodeParser#functionDeclaration.
+	VisitFunctionDeclaration(ctx *FunctionDeclarationContext) interface{}
+
+	// Visit a parse tree produced by CodeParser#functionBody.
+	VisitFunctionBody(ctx *FunctionBodyContext) interface{}
+
 	// Visit a parse tree produced by CodeParser#expressDeclaration.
 	VisitExpressDeclaration(ctx *ExpressDeclarationContext) interface{}
 
@@ -55,7 +61,4 @@ type CodeVisitor interface {
 
 	// Visit a parse tree produced by CodeParser#memberDeclaration.
 	VisitMemberDeclaration(ctx *MemberDeclarationContext) interface{}
-
-	// Visit a parse tree produced by CodeParser#functionDeclaration.
-	VisitFunctionDeclaration(ctx *FunctionDeclarationContext) interface{}
 }

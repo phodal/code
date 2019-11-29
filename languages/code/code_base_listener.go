@@ -45,6 +45,18 @@ func (s *BaseCodeListener) EnterTypeDeclaration(ctx *TypeDeclarationContext) {}
 // ExitTypeDeclaration is called when production typeDeclaration is exited.
 func (s *BaseCodeListener) ExitTypeDeclaration(ctx *TypeDeclarationContext) {}
 
+// EnterFunctionDeclaration is called when production functionDeclaration is entered.
+func (s *BaseCodeListener) EnterFunctionDeclaration(ctx *FunctionDeclarationContext) {}
+
+// ExitFunctionDeclaration is called when production functionDeclaration is exited.
+func (s *BaseCodeListener) ExitFunctionDeclaration(ctx *FunctionDeclarationContext) {}
+
+// EnterFunctionBody is called when production functionBody is entered.
+func (s *BaseCodeListener) EnterFunctionBody(ctx *FunctionBodyContext) {}
+
+// ExitFunctionBody is called when production functionBody is exited.
+func (s *BaseCodeListener) ExitFunctionBody(ctx *FunctionBodyContext) {}
+
 // EnterExpressDeclaration is called when production expressDeclaration is entered.
 func (s *BaseCodeListener) EnterExpressDeclaration(ctx *ExpressDeclarationContext) {}
 
@@ -116,9 +128,3 @@ func (s *BaseCodeListener) EnterMemberDeclaration(ctx *MemberDeclarationContext)
 
 // ExitMemberDeclaration is called when production memberDeclaration is exited.
 func (s *BaseCodeListener) ExitMemberDeclaration(ctx *MemberDeclarationContext) {}
-
-// EnterFunctionDeclaration is called when production functionDeclaration is entered.
-func (s *BaseCodeListener) EnterFunctionDeclaration(ctx *FunctionDeclarationContext) {}
-
-// ExitFunctionDeclaration is called when production functionDeclaration is exited.
-func (s *BaseCodeListener) ExitFunctionDeclaration(ctx *FunctionDeclarationContext) {}

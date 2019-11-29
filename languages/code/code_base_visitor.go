@@ -24,6 +24,14 @@ func (v *BaseCodeVisitor) VisitTypeDeclaration(ctx *TypeDeclarationContext) inte
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseCodeVisitor) VisitFunctionDeclaration(ctx *FunctionDeclarationContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseCodeVisitor) VisitFunctionBody(ctx *FunctionBodyContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseCodeVisitor) VisitExpressDeclaration(ctx *ExpressDeclarationContext) interface{} {
 	return v.VisitChildren(ctx)
 }
@@ -69,9 +77,5 @@ func (v *BaseCodeVisitor) VisitDataStructDeclaration(ctx *DataStructDeclarationC
 }
 
 func (v *BaseCodeVisitor) VisitMemberDeclaration(ctx *MemberDeclarationContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseCodeVisitor) VisitFunctionDeclaration(ctx *FunctionDeclarationContext) interface{} {
 	return v.VisitChildren(ctx)
 }

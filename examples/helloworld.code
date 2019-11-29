@@ -1,10 +1,6 @@
-// va = 5
-// print(va)
 print("aa")
 print(222)
 
-/*
 func show() {
-  print("aa")
+  print("bbb")
 }
-*/

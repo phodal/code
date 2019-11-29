@@ -1,7 +1,7 @@
 grammar Code;
 
 compilationUnit
-    : packageDeclaration? importDeclaration* typeDeclaration* expressDeclaration* EOF
+    : packageDeclaration? importDeclaration* typeDeclaration*  EOF
     ;
 
 packageDeclaration
@@ -16,7 +16,12 @@ typeDeclaration
     : dataStructDeclaration
     | memberDeclaration
     | functionDeclaration
+    | expressDeclaration
     ;
+
+functionDeclaration: FUNCTION IDENTIFIER '(' parameter? ')' '{' functionBody '}';
+
+functionBody: expressDeclaration?;
 
 expressDeclaration
     : methodCallDeclaration
@@ -60,13 +65,12 @@ parameter
 
 dataStructDeclaration: DATA_STRUCT IDENTIFIER;
 memberDeclaration: MEMBER IDENTIFIER;
-functionDeclaration: FUNCTION IDENTIFIER;
 
 PACKAGE: 'package';
 IMPORT: 'import';
 DATA_STRUCT: 'struct';
 MEMBER: 'member';
-FUNCTION: 'function';
+FUNCTION: 'func';
 
 
 IDENTIFIER:         Letter LetterOrDigit*;
