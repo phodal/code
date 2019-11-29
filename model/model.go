@@ -103,7 +103,7 @@ func CreateSystemMembers() []CodeMember {
 
 func CreateFunction(name string) CodeFunction {
 	function := *&CodeFunction{
-		MemberId:          "",
+		MemberId:          name,
 		Parameters:        nil,
 		ReturnTypes:       nil,
 		References:        nil,

@@ -25,12 +25,17 @@ type CodeAppListener struct {
 }
 
 func (s *CodeAppListener) EnterMethodCallDeclaration(ctx *MethodCallDeclarationContext) {
-	if currentFunction.MemberId == "" {
-		allParameters := ctx.AllParameter()
-		functionName := ctx.IDENTIFIER().GetText()
+	allParameters := ctx.AllParameter()
+	functionName := ctx.IDENTIFIER().GetText()
 
+	parentParentType := reflect.TypeOf(ctx.GetParent().GetParent()).String()
+	switch parentParentType {
+	case "*parser.TypeDeclarationContext":
 		functionCall := BuildFunctionCall(allParameters, functionName)
 		currentCodeModel.FunctionCalls = append(currentCodeModel.FunctionCalls, functionCall)
+	case "*parser.FunctionBodyContext":
+		functionCall := BuildFunctionCall(allParameters, functionName)
+		currentFunction.CodeFunctionCalls = append(currentFunction.CodeFunctionCalls, functionCall)
 	}
 }
 
@@ -50,6 +55,8 @@ func BuildFunctionCall(allParameters []IParameterContext, functionName string) C
 
 func (s *CodeAppListener) EnterFunctionDeclaration(ctx *FunctionDeclarationContext) {
 	function := CreateFunction(ctx.IDENTIFIER().GetText())
+	currentFunction = function
+
 	child := ctx.FunctionBody().GetChild(0)
 	if child != nil {
 		expressCtx := child.(*ExpressDeclarationContext)
@@ -63,7 +70,7 @@ func (s *CodeAppListener) EnterFunctionDeclaration(ctx *FunctionDeclarationConte
 	}
 
 	currentCodeModel.Functions = append(currentCodeModel.Functions, function)
-	currentFunction = CreateFunction("")
+	//currentFunction = CreateFunction("")
 }
 
 func (s *CodeAppListener) EnterVariableDeclarators(ctx *VariableDeclaratorsContext) {
