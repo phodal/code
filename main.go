@@ -25,10 +25,24 @@ func main() {
 	defineApp := NewDefineApp(startTemplateSymbol, endTemplateSymbol)
 	info := defineApp.Start("examples/mu.define")
 
-	transformCode(codeModel, info, startTemplateSymbol, endTemplateSymbol)
+	code := transformMainCode(codeModel, info, startTemplateSymbol, endTemplateSymbol)
+
+	runCode(code)
 }
 
-func transformCode(codeModel CodeModel, info DefineInformation, startTemplateSymbol string, endTemplateSymbol string) {
+func runCode(codeWithImport string) {
+	_ = ioutil.WriteFile("test/main/main.go", []byte(codeWithImport), 0644)
+	cmd := exec.Command("go", "run", "test/main/main.go")
+	stdout, err := cmd.StdoutPipe()
+	_ = cmd.Start()
+	content, err := ioutil.ReadAll(stdout)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(string(content))
+}
+
+func transformMainCode(codeModel CodeModel, info DefineInformation, startTemplateSymbol string, endTemplateSymbol string) string {
 	transform := &Transform{}
 	var packageInfo string
 	var imports []string
@@ -45,13 +59,6 @@ func transformCode(codeModel CodeModel, info DefineInformation, startTemplateSym
 	})
 	packageInfo = transform.BuildPackage("main")
 	codeWithImport := packageInfo + strings.Join(imports, "") + result
-	_ = ioutil.WriteFile("test/main/main.go", []byte(codeWithImport), 0644)
-	cmd := exec.Command("go", "run", "test/main/main.go")
-	stdout, err := cmd.StdoutPipe()
-	_ = cmd.Start()
-	content, err := ioutil.ReadAll(stdout)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(string(content))
+
+	return codeWithImport
 }
