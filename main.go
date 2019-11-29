@@ -6,6 +6,7 @@ import (
 	. "./parser/define"
 	codetemplate "./parser/template"
 	. "./transform"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os/exec"
@@ -15,6 +16,9 @@ import (
 func main() {
 	app := NewCodeApp()
 	codeModel := app.Start("examples/helloworld.code")
+
+	bytes, _ := json.MarshalIndent(codeModel, "", "\t")
+	_ = ioutil.WriteFile("code.json", bytes, 0644)
 
 	startTemplateSymbol := "{{"
 	endTemplateSymbol := "}}"

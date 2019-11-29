@@ -101,6 +101,18 @@ func CreateSystemMembers() []CodeMember {
 	return systemMembers
 }
 
+func CreateFunction(name string) CodeFunction {
+	function := *&CodeFunction{
+		MemberId:          "",
+		Parameters:        nil,
+		ReturnTypes:       nil,
+		References:        nil,
+		CodeFunctionCalls: nil,
+	}
+
+	return function
+}
+
 func CreateMainFunction() {
 	//var defaultMember = "main"
 	//ifunc := &CodeFunction{
