@@ -73,8 +73,19 @@ func (s *CodeAppListener) EnterFunctionDeclaration(ctx *FunctionDeclarationConte
 	//currentFunction = CreateFunction("")
 }
 
+var varMaps = make(map[string]string)
+
 func (s *CodeAppListener) EnterVariableDeclarators(ctx *VariableDeclaratorsContext) {
-	fmt.Println(ctx.GetText())
+	for _, varDeclarator := range ctx.AllVariableDeclarator() {
+		varCtx := varDeclarator.(*VariableDeclaratorContext)
+		ident := varCtx.VariableDeclaratorId().GetText()
+		value := ""
+
+		if varCtx.VariableInitializer() != nil {
+			value = varCtx.VariableInitializer().GetText()
+		}
+		varMaps[ident] = value
+	}
 }
 
 func (s *CodeAppListener) getCode() CodeModel {

@@ -6,3 +6,6 @@ func show() {
 }
 
 show()
+
+var a = "5"
+print(a)

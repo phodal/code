@@ -37,8 +37,10 @@ localVariableDeclaration
     ;
 
 variableDeclarators
-    : variableDeclarator (',' variableDeclarator)*
+    : VAR variableDeclarator (',' variableDeclarator)*
     ;
+
+VAR: 'var';
 
 variableDeclarator
     : variableDeclaratorId ('=' variableInitializer)?
@@ -53,7 +55,7 @@ variableInitializer
     ;
 
 expression
-    : (IDENTIFIER | DECIMAL_LITERAL)
+    : (IDENTIFIER | DECIMAL_LITERAL | STRING_LITERAL)
     ;
 
 methodCallDeclaration: IDENTIFIER '(' parameter* ')';
