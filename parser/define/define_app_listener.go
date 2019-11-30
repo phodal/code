@@ -13,7 +13,6 @@ type Symbol struct {
 }
 
 var symbols []Symbol
-var symbolMaps map[string]string
 
 var startSymbol string
 var endSymbol string
@@ -24,10 +23,9 @@ func NewDefineAppListener(start string, end string) *DefineAppListener {
 	startSymbol = start
 	endSymbol = end
 	defineInformation = *&DefineInformation{
-		make(map[string]string),
-		nil,
+		DefineTemplates: make(map[string]string),
 	}
-	symbolMaps = make(map[string]string)
+	defineInformation.SymbolsMap = make(map[string]string)
 	return &DefineAppListener{}
 }
 
@@ -40,7 +38,9 @@ func (s *DefineAppListener) EnterSymbolDeclaration(ctx *SymbolDeclarationContext
 	value := ctx.STRING_LITERAL().GetText()
 	symbol := &Symbol{key, value}
 	symbols = append(symbols, *symbol)
-	symbolMaps[key] = value[1: len(value)-1]
+
+	defineInformation.SymbolsMap[key] = value[1: len(value)-1]
+
 }
 
 func (s *DefineAppListener) EnterModuleDeclaration(ctx *ModuleDeclarationContext) {
@@ -99,7 +99,7 @@ func buildEntryPoint(ctx *DefineDeclarationContext) {
 				symbolCtx := symbolKey.(*SymbolKeyContext)
 				symbolText := symbolCtx.GetText()
 
-				codeText = append(codeText, symbolMaps[symbolText])
+				codeText = append(codeText, defineInformation.SymbolsMap[symbolText])
 				if index == 0 {
 					codeText = append(codeText, funcName[1:len(funcName)-1])
 				}

@@ -2,6 +2,7 @@ package transform
 
 import (
 	. "../model"
+	"fmt"
 	"strings"
 )
 
@@ -46,5 +47,6 @@ func (transform Transform) BuildPackage(s string) string {
 }
 
 func (transform Transform) BuildFunction(function CodeFunction, information DefineInformation) string {
+	fmt.Println(information)
 	return ""
 }
