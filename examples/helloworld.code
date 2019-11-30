@@ -4,3 +4,5 @@ print(222)
 func show() {
   print("bbb")
 }
+
+show()

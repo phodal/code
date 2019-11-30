@@ -76,7 +76,14 @@ func CreateFunctionCall(functionName string, parameters []CodeParameter) CodeFun
 			ReturnVars: nil,
 			Parameters: parameters,
 		}
+	default:
+		call = *&CodeFunctionCall{
+			MemberId:   functionName,
+			ReturnVars: nil,
+			Parameters: parameters,
+		}
 	}
+
 
 	return call
 }
