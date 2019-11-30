@@ -1,9 +1,9 @@
 package model
 
 type DefineInformation struct {
-	DefineTemplates    map[string]string
-	SymbolsMap         map[string]string
-	ModuleDeclarations []DefineModule
+	DefineTemplates map[string]string
+	SymbolsMap      map[string]string
+	DefineModules   []DefineModule
 }
 
 type DefineModule struct {

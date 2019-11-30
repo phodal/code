@@ -29,17 +29,21 @@ func main() {
 	defineApp := NewDefineApp(startTemplateSymbol, endTemplateSymbol)
 	info := defineApp.Start("examples/mu.define")
 
-	code := transformMainCode(codeModel, info, startTemplateSymbol, endTemplateSymbol)
-	transformNormalCode(codeModel, info)
+	code := ""
+
+	code = code + transformMainCode(codeModel, info, startTemplateSymbol, endTemplateSymbol)
+	code = code + transformNormalCode(codeModel, info)
 
 	runCode(code)
 }
 
-func transformNormalCode(model CodeModel, information DefineInformation) {
+func transformNormalCode(model CodeModel, information DefineInformation) string {
+	funcStr := "\n"
 	for _, function := range model.Functions {
-		funcStr := transform.BuildFunction(function, information)
-		fmt.Println(funcStr)
+		funcStr = funcStr + transform.BuildFunction(function, information)
 	}
+
+	return funcStr
 }
 
 func runCode(codeWithImport string) {
@@ -60,8 +64,8 @@ func transformMainCode(codeModel CodeModel, info DefineInformation, startTemplat
 	var code = ""
 	var result = ""
 	for _, call := range codeModel.FunctionCalls {
-		code = code + "\n" + transform.ToCode(call, info.ModuleDeclarations)
-		imports = transform.BuildImport(call, info.ModuleDeclarations)
+		code = code + "\n" + transform.BuildFunctionCall(call, info.DefineModules)
+		imports = transform.BuildImport(call, info.DefineModules)
 	}
 	templates := info.DefineTemplates
 	template := codetemplate.New(templates["code"], startTemplateSymbol, endTemplateSymbol)

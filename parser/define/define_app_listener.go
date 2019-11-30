@@ -67,7 +67,7 @@ func (s *DefineAppListener) EnterModuleDeclaration(ctx *ModuleDeclarationContext
 
 	}
 
-	defineInformation.ModuleDeclarations = append(defineInformation.ModuleDeclarations, *defineModule)
+	defineInformation.DefineModules = append(defineInformation.DefineModules, *defineModule)
 }
 
 func (s *DefineAppListener) EnterDefineDeclaration(ctx *DefineDeclarationContext) {

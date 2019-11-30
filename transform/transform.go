@@ -2,13 +2,14 @@ package transform
 
 import (
 	. "../model"
+	"fmt"
 	"strings"
 )
 
 type Transform struct {
 }
 
-func (transform Transform) ToCode(call CodeFunctionCall, modules []DefineModule) string {
+func (transform Transform) BuildFunctionCall(call CodeFunctionCall, modules []DefineModule) string {
 	var parameters []string
 	for _, parameter := range call.Parameters {
 		parameters = append(parameters, parameter.Value.Value)
@@ -48,6 +49,19 @@ func (transform Transform) BuildPackage(s string) string {
 func (transform Transform) BuildFunction(function CodeFunction, information DefineInformation) string {
 	symbolMap := information.SymbolsMap
 	funcBody := ""
+	funcName := function.MemberId
 	params := ""
-	return 	symbolMap["FUNCTION"] + symbolMap["PARAMETER_START"] + params + symbolMap["PARAMETER_END"] + symbolMap["METHOD_START"] + funcBody + symbolMap["METHOD_END"]
+	callCode := ""
+
+	for _, param := range function.Parameters {
+		fmt.Println(param.Type)
+	}
+
+	for _, call := range function.CodeFunctionCalls {
+		callCode = transform.BuildFunctionCall(call, information.DefineModules)
+	}
+
+	funcBody = "\n" + callCode
+
+	return 	symbolMap["FUNCTION"]  + " " + funcName + symbolMap["PARAMETER_START"] + params + symbolMap["PARAMETER_END"] + symbolMap["METHOD_START"] + funcBody + symbolMap["METHOD_END"]
 }
