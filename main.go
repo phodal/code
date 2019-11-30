@@ -10,7 +10,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os/exec"
-	"strings"
 )
 
 var transform Transform
@@ -60,20 +59,23 @@ func runCode(codeWithImport string) {
 
 func transformMainCode(codeModel CodeModel, info DefineInformation, startTemplateSymbol string, endTemplateSymbol string) string {
 	var packageInfo string
-	var imports []string
+	var importStr string
 	var code = ""
 	var result = ""
 	for _, call := range codeModel.FunctionCalls {
 		code = code + "\n" + transform.BuildFunctionCall(call, info.DefineModules)
-		imports = transform.BuildImport(call, info.DefineModules)
+		transform.BuildImport(call, info.DefineModules)
 	}
+
+	importStr = transform.GetImports()
+
 	templates := info.DefineTemplates
 	template := codetemplate.New(templates["code"], startTemplateSymbol, endTemplateSymbol)
 	result = template.ExecuteString(map[string]interface{}{
 		"code": code,
 	})
 	packageInfo = transform.BuildPackage("main")
-	codeWithImport := packageInfo + strings.Join(imports, "") + result
+	codeWithImport := packageInfo + importStr + result
 
 	return codeWithImport
 }

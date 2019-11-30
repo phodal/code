@@ -15,11 +15,11 @@ func (transform Transform) BuildFunctionCall(call CodeFunctionCall, modules []De
 		parameters = append(parameters, parameter.Value.Value)
 	}
 
-	callName :=  call.MemberId
+	callName := call.MemberId
 	for _, module := range modules {
 		for _, function := range module.ModuleFunctions {
 			if function.FunctionName == call.MemberId {
-				callName = function.EqualName[1:len(function.EqualName)-1]
+				callName = function.EqualName[1 : len(function.EqualName)-1]
 			}
 		}
 	}
@@ -29,17 +29,26 @@ func (transform Transform) BuildFunctionCall(call CodeFunctionCall, modules []De
 	return callName + "(" + paramList + ")"
 }
 
-func (transform Transform) BuildImport(call CodeFunctionCall, modules []DefineModule) []string {
-	var imports []string
+var imports = make(map[string]string)
 
+func (transform Transform) BuildImport(call CodeFunctionCall, modules []DefineModule) {
 	for _, module := range modules {
 		for _, function := range module.ModuleFunctions {
 			if function.FunctionName == call.MemberId {
-				imports = append(imports, "import " + function.ImportName + "\n")
+				imports[function.ImportName] = function.ImportName
 			}
 		}
 	}
-	return imports
+}
+
+
+func (transform Transform) GetImports() string {
+	var str = ""
+	for _, imp := range imports {
+		str += "import " + imp + "\n"
+	}
+
+	return str + "\n"
 }
 
 func (transform Transform) BuildPackage(s string) string {
@@ -63,5 +72,5 @@ func (transform Transform) BuildFunction(function CodeFunction, information Defi
 
 	funcBody = "\n" + callCode
 
-	return 	symbolMap["FUNCTION"]  + " " + funcName + symbolMap["PARAMETER_START"] + params + symbolMap["PARAMETER_END"] + symbolMap["METHOD_START"] + funcBody + symbolMap["METHOD_END"]
+	return symbolMap["FUNCTION"] + " " + funcName + symbolMap["PARAMETER_START"] + params + symbolMap["PARAMETER_END"] + symbolMap["METHOD_START"] + funcBody + symbolMap["METHOD_END"]
 }
