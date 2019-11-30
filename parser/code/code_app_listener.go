@@ -70,7 +70,6 @@ func (s *CodeAppListener) EnterFunctionDeclaration(ctx *FunctionDeclarationConte
 	}
 
 	currentCodeModel.Functions = append(currentCodeModel.Functions, function)
-	//currentFunction = CreateFunction("")
 }
 
 var varMaps = make(map[string]string)
