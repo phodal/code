@@ -2,7 +2,6 @@ package transform
 
 import (
 	. "../model"
-	"fmt"
 	"strings"
 )
 
@@ -47,6 +46,8 @@ func (transform Transform) BuildPackage(s string) string {
 }
 
 func (transform Transform) BuildFunction(function CodeFunction, information DefineInformation) string {
-	fmt.Println(information)
-	return ""
+	symbolMap := information.SymbolsMap
+	funcBody := ""
+	params := ""
+	return 	symbolMap["FUNCTION"] + symbolMap["PARAMETER_START"] + params + symbolMap["PARAMETER_END"] + symbolMap["METHOD_START"] + funcBody + symbolMap["METHOD_END"]
 }
