@@ -3,20 +3,20 @@ package code
 import (
 	. "../../languages/code"
 	. "../../model"
-	"fmt"
 	"reflect"
 )
 
 type CodeModel struct {
 	FunctionCalls []CodeFunctionCall
 	Functions     []CodeFunction
+	Variables     map[string]string
 }
 
 var currentCodeModel CodeModel
 var currentFunction = CreateFunction("")
 
 func NewCodeAppListener() *CodeAppListener {
-	currentCodeModel = *&CodeModel{nil, nil}
+	currentCodeModel = *&CodeModel{nil, nil, nil}
 	return &CodeAppListener{}
 }
 
@@ -88,5 +88,6 @@ func (s *CodeAppListener) EnterVariableDeclarators(ctx *VariableDeclaratorsConte
 }
 
 func (s *CodeAppListener) getCode() CodeModel {
+	currentCodeModel.Variables = varMaps
 	return currentCodeModel
 }
