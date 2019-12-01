@@ -99,3 +99,12 @@ func  (transform Transform) TransformMainCode(codeModel CodeModel, info DefineIn
 	return codeWithImport
 }
 
+func (transform Transform) TransformNormalCode(model CodeModel, information DefineInformation) string {
+	funcStr := "\n"
+	for _, function := range model.Functions {
+		funcStr = funcStr + transform.BuildFunction(function, information)
+	}
+
+	return funcStr
+}
+

@@ -1,7 +1,6 @@
 package main
 
 import (
-	. "./model"
 	. "./parser/code"
 	. "./parser/define"
 	. "./transform"
@@ -30,18 +29,9 @@ func main() {
 	code := ""
 
 	code = code + transform.TransformMainCode(codeModel, info, startTemplateSymbol, endTemplateSymbol)
-	code = code + transformNormalCode(codeModel, info)
+	code = code + transform.TransformNormalCode(codeModel, info)
 
 	runCode(code)
-}
-
-func transformNormalCode(model CodeModel, information DefineInformation) string {
-	funcStr := "\n"
-	for _, function := range model.Functions {
-		funcStr = funcStr + transform.BuildFunction(function, information)
-	}
-
-	return funcStr
 }
 
 func runCode(codeWithImport string) {
