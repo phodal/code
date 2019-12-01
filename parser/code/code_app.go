@@ -2,6 +2,7 @@ package code
 
 import (
 	. "../../languages/code"
+	. "../../model"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 

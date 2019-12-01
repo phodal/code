@@ -4,7 +4,6 @@ import (
 	. "./model"
 	. "./parser/code"
 	. "./parser/define"
-	codetemplate "./parser/template"
 	. "./transform"
 	"encoding/json"
 	"fmt"
@@ -30,7 +29,7 @@ func main() {
 
 	code := ""
 
-	code = code + transformMainCode(codeModel, info, startTemplateSymbol, endTemplateSymbol)
+	code = code + transform.TransformMainCode(codeModel, info, startTemplateSymbol, endTemplateSymbol)
 	code = code + transformNormalCode(codeModel, info)
 
 	runCode(code)
@@ -57,25 +56,3 @@ func runCode(codeWithImport string) {
 	fmt.Println(string(content))
 }
 
-func transformMainCode(codeModel CodeModel, info DefineInformation, startTemplateSymbol string, endTemplateSymbol string) string {
-	var packageInfo string
-	var importStr string
-	var code = ""
-	var result = ""
-	for _, call := range codeModel.FunctionCalls {
-		code = code + "\n" + transform.BuildFunctionCall(call, info.DefineModules)
-		transform.BuildImport(call, info.DefineModules)
-	}
-
-	importStr = transform.GetImports()
-
-	templates := info.DefineTemplates
-	template := codetemplate.New(templates["code"], startTemplateSymbol, endTemplateSymbol)
-	result = template.ExecuteString(map[string]interface{}{
-		"code": code,
-	})
-	packageInfo = transform.BuildPackage("main")
-	codeWithImport := packageInfo + importStr + result
-
-	return codeWithImport
-}

@@ -16,3 +16,9 @@ type ModuleFunction struct {
 	EqualName    string
 	ImportName   string
 }
+
+type CodeModel struct {
+	FunctionCalls []CodeFunctionCall
+	Functions     []CodeFunction
+	Variables     map[string]string
+}

@@ -6,12 +6,6 @@ import (
 	"reflect"
 )
 
-type CodeModel struct {
-	FunctionCalls []CodeFunctionCall
-	Functions     []CodeFunction
-	Variables     map[string]string
-}
-
 var currentCodeModel CodeModel
 var currentFunction = CreateFunction("")
 

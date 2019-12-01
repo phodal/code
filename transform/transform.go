@@ -2,6 +2,7 @@ package transform
 
 import (
 	. "../model"
+	codetemplate "../parser/template"
 	"fmt"
 	"strings"
 )
@@ -74,3 +75,27 @@ func (transform Transform) BuildFunction(function CodeFunction, information Defi
 
 	return symbolMap["FUNCTION"] + " " + funcName + symbolMap["PARAMETER_START"] + params + symbolMap["PARAMETER_END"] + symbolMap["METHOD_START"] + funcBody + symbolMap["METHOD_END"]
 }
+
+func  (transform Transform) TransformMainCode(codeModel CodeModel, info DefineInformation, startTemplateSymbol string, endTemplateSymbol string) string {
+	var packageInfo string
+	var importStr string
+	var code = ""
+	var result = ""
+	for _, call := range codeModel.FunctionCalls {
+		code = code + "\n" + transform.BuildFunctionCall(call, info.DefineModules)
+		transform.BuildImport(call, info.DefineModules)
+	}
+
+	importStr = transform.GetImports()
+
+	templates := info.DefineTemplates
+	template := codetemplate.New(templates["code"], startTemplateSymbol, endTemplateSymbol)
+	result = template.ExecuteString(map[string]interface{}{
+		"code": code,
+	})
+	packageInfo = transform.BuildPackage("main")
+	codeWithImport := packageInfo + importStr + result
+
+	return codeWithImport
+}
+
