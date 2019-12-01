@@ -7,6 +7,8 @@ import (
 	"strings"
 )
 
+var imports = make(map[string]string)
+
 type Transform struct {
 }
 
@@ -30,8 +32,6 @@ func (transform Transform) BuildFunctionCall(call CodeFunctionCall, modules []De
 	return callName + "(" + paramList + ")"
 }
 
-var imports = make(map[string]string)
-
 func (transform Transform) BuildImport(call CodeFunctionCall, modules []DefineModule) {
 	for _, module := range modules {
 		for _, function := range module.ModuleFunctions {
@@ -41,7 +41,6 @@ func (transform Transform) BuildImport(call CodeFunctionCall, modules []DefineMo
 		}
 	}
 }
-
 
 func (transform Transform) GetImports() string {
 	var str = ""

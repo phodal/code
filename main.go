@@ -35,8 +35,9 @@ func main() {
 }
 
 func runCode(codeWithImport string) {
-	_ = ioutil.WriteFile("test/main/main.go", []byte(codeWithImport), 0644)
-	cmd := exec.Command("go", "run", "test/main/main.go")
+	fileName := "test/main/main.go"
+	_ = ioutil.WriteFile(fileName, []byte(codeWithImport), 0644)
+	cmd := exec.Command("go", "run", fileName)
 	stdout, err := cmd.StdoutPipe()
 	_ = cmd.Start()
 	content, err := ioutil.ReadAll(stdout)

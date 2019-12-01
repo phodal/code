@@ -63,10 +63,6 @@ type CodeParameterValue struct {
 	Value string
 }
 
-func CreateParameter() {
-
-}
-
 func CreateFunctionCall(functionName string, parameters []CodeParameter) CodeFunctionCall {
 	var call CodeFunctionCall
 	switch functionName {
@@ -88,26 +84,6 @@ func CreateFunctionCall(functionName string, parameters []CodeParameter) CodeFun
 	return call
 }
 
-func CreateMember() {
-
-}
-
-func CreateSystemMembers() []CodeMember {
-	var systemMembers []CodeMember
-	pos := &CodePosition{}
-	printMember := &CodeMember{
-		MemberId:     "sys" + "." + "print",
-		Name:         "print",
-		DataStructId: "",
-		FileId:       "",
-		PackageName:  "sys",
-		Position:     *pos,
-	}
-
-	systemMembers = append(systemMembers, *printMember)
-	return systemMembers
-}
-
 func CreateFunction(name string) CodeFunction {
 	function := *&CodeFunction{
 		MemberId:          name,
@@ -120,14 +96,3 @@ func CreateFunction(name string) CodeFunction {
 	return function
 }
 
-func CreateMainFunction() {
-	//var defaultMember = "main"
-	//ifunc := &CodeFunction{
-	//	MemberId:          defaultMember,
-	//	Parameters:        nil,
-	//	ReturnTypes:       nil,
-	//	References:        nil,
-	//	CodeFunctionCalls: nil,
-	//}
-
-}

@@ -8,6 +8,7 @@ import (
 
 var currentCodeModel CodeModel
 var currentFunction = CreateFunction("")
+var varMaps = make(map[string]string)
 
 func NewCodeAppListener() *CodeAppListener {
 	currentCodeModel = *&CodeModel{nil, nil, nil}
@@ -65,8 +66,6 @@ func (s *CodeAppListener) EnterFunctionDeclaration(ctx *FunctionDeclarationConte
 
 	currentCodeModel.Functions = append(currentCodeModel.Functions, function)
 }
-
-var varMaps = make(map[string]string)
 
 func (s *CodeAppListener) EnterVariableDeclarators(ctx *VariableDeclaratorsContext) {
 	for _, varDeclarator := range ctx.AllVariableDeclarator() {
