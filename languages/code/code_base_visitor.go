@@ -72,6 +72,10 @@ func (v *BaseCodeVisitor) VisitParameter(ctx *ParameterContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseCodeVisitor) VisitIntegerLiteral(ctx *IntegerLiteralContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseCodeVisitor) VisitDataStructDeclaration(ctx *DataStructDeclarationContext) interface{} {
 	return v.VisitChildren(ctx)
 }

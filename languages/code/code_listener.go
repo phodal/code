@@ -56,6 +56,9 @@ type CodeListener interface {
 	// EnterParameter is called when entering the parameter production.
 	EnterParameter(c *ParameterContext)
 
+	// EnterIntegerLiteral is called when entering the integerLiteral production.
+	EnterIntegerLiteral(c *IntegerLiteralContext)
+
 	// EnterDataStructDeclaration is called when entering the dataStructDeclaration production.
 	EnterDataStructDeclaration(c *DataStructDeclarationContext)
 
@@ -109,6 +112,9 @@ type CodeListener interface {
 
 	// ExitParameter is called when exiting the parameter production.
 	ExitParameter(c *ParameterContext)
+
+	// ExitIntegerLiteral is called when exiting the integerLiteral production.
+	ExitIntegerLiteral(c *IntegerLiteralContext)
 
 	// ExitDataStructDeclaration is called when exiting the dataStructDeclaration production.
 	ExitDataStructDeclaration(c *DataStructDeclarationContext)

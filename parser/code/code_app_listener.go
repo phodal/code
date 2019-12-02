@@ -37,11 +37,20 @@ func (s *CodeAppListener) EnterMethodCallDeclaration(ctx *MethodCallDeclarationC
 func BuildFunctionCall(allParameters []IParameterContext, functionName string) CodeFunctionCall {
 	var parameters []CodeParameter
 	for _, parameter := range allParameters {
-		stringCodeType := &CodeType{
+		childType := reflect.TypeOf(parameter.GetChild(0)).String()
+		paraCodeType := &CodeType{
 			Type: "string",
 		}
+
+		switch childType {
+		case "*parser.IntegerLiteralContext":
+			paraCodeType.Type = "integer"
+		default:
+
+		}
+
 		var paramValue = &CodeParameterValue{Value: parameter.GetText()}
-		parameter := &CodeParameter{*stringCodeType, *paramValue}
+		parameter := &CodeParameter{*paraCodeType, *paramValue}
 		parameters = append(parameters, *parameter)
 	}
 	functionCall := CreateFunctionCall(functionName, parameters)

@@ -12,11 +12,18 @@ var imports = make(map[string]string)
 type Transform struct {
 }
 
-func (transform Transform) BuildFunctionCall(call CodeFunctionCall, modules []DefineModule) string {
+func (transform Transform) BuildFunctionCall(call CodeFunctionCall, info DefineInformation) string {
 	var parameters []string
 	for _, parameter := range call.Parameters {
-		parameters = append(parameters, parameter.Value.Value)
+		switch parameter.Key.Type {
+		case "string":
+			parameters = append(parameters, parameter.Value.Value)
+		case "integer":
+			parameters = append(parameters, parameter.Value.Value)
+		}
 	}
+
+	modules := info.DefineModules
 
 	callName := call.MemberId
 	for _, module := range modules {
@@ -67,7 +74,7 @@ func (transform Transform) BuildFunction(function CodeFunction, information Defi
 	}
 
 	for _, call := range function.CodeFunctionCalls {
-		callCode = transform.BuildFunctionCall(call, information.DefineModules)
+		callCode = transform.BuildFunctionCall(call, information)
 	}
 
 	funcBody = "\n" + callCode
@@ -81,7 +88,7 @@ func  (transform Transform) TransformMainCode(codeModel CodeModel, info DefineIn
 	var code = ""
 	var result = ""
 	for _, call := range codeModel.FunctionCalls {
-		code = code + "\n" + transform.BuildFunctionCall(call, info.DefineModules)
+		code = code + "\n" + transform.BuildFunctionCall(call, info)
 		transform.BuildImport(call, info.DefineModules)
 	}
 
