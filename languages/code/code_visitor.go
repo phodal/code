@@ -56,8 +56,8 @@ type CodeVisitor interface {
 	// Visit a parse tree produced by CodeParser#parameter.
 	VisitParameter(ctx *ParameterContext) interface{}
 
-	// Visit a parse tree produced by CodeParser#integerLiteral.
-	VisitIntegerLiteral(ctx *IntegerLiteralContext) interface{}
+	// Visit a parse tree produced by CodeParser#literal.
+	VisitLiteral(ctx *LiteralContext) interface{}
 
 	// Visit a parse tree produced by CodeParser#dataStructDeclaration.
 	VisitDataStructDeclaration(ctx *DataStructDeclarationContext) interface{}

@@ -72,7 +72,7 @@ func (v *BaseCodeVisitor) VisitParameter(ctx *ParameterContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseCodeVisitor) VisitIntegerLiteral(ctx *IntegerLiteralContext) interface{} {
+func (v *BaseCodeVisitor) VisitLiteral(ctx *LiteralContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

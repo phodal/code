@@ -12,14 +12,15 @@ var imports = make(map[string]string)
 type Transform struct {
 }
 
-func (transform Transform) BuildFunctionCall(call CodeFunctionCall, info DefineInformation) string {
+func (transform Transform) BuildFunctionCall(call CodeFunctionCall, info DefineInformation, model CodeModel) string {
 	var parameters []string
 	for _, parameter := range call.Parameters {
 		switch parameter.Key.Type {
 		case "string":
 			parameters = append(parameters, parameter.Value.Value)
-		case "integer":
-			parameters = append(parameters, parameter.Value.Value)
+		case "type":
+			value := model.Variables[parameter.Value.Value]
+			parameters = append(parameters, value)
 		}
 	}
 
@@ -62,7 +63,7 @@ func (transform Transform) BuildPackage(s string) string {
 	return "package " + s + "\n"
 }
 
-func (transform Transform) BuildFunction(function CodeFunction, information DefineInformation) string {
+func (transform Transform) BuildFunction(function CodeFunction, information DefineInformation, model CodeModel) string {
 	symbolMap := information.SymbolsMap
 	funcBody := ""
 	funcName := function.MemberId
@@ -74,7 +75,7 @@ func (transform Transform) BuildFunction(function CodeFunction, information Defi
 	}
 
 	for _, call := range function.CodeFunctionCalls {
-		callCode = transform.BuildFunctionCall(call, information)
+		callCode = transform.BuildFunctionCall(call, information, model)
 	}
 
 	funcBody = "\n" + callCode
@@ -82,13 +83,13 @@ func (transform Transform) BuildFunction(function CodeFunction, information Defi
 	return symbolMap["FUNCTION"] + " " + funcName + symbolMap["PARAMETER_START"] + params + symbolMap["PARAMETER_END"] + symbolMap["METHOD_START"] + funcBody + symbolMap["METHOD_END"]
 }
 
-func  (transform Transform) TransformMainCode(codeModel CodeModel, info DefineInformation, startTemplateSymbol string, endTemplateSymbol string) string {
+func (transform Transform) TransformMainCode(codeModel CodeModel, info DefineInformation, startTemplateSymbol string, endTemplateSymbol string) string {
 	var packageInfo string
 	var importStr string
 	var code = ""
 	var result = ""
 	for _, call := range codeModel.FunctionCalls {
-		code = code + "\n" + transform.BuildFunctionCall(call, info)
+		code = code + "\n" + transform.BuildFunctionCall(call, info, codeModel)
 		transform.BuildImport(call, info.DefineModules)
 	}
 
@@ -108,9 +109,8 @@ func  (transform Transform) TransformMainCode(codeModel CodeModel, info DefineIn
 func (transform Transform) TransformNormalCode(model CodeModel, information DefineInformation) string {
 	funcStr := "\n"
 	for _, function := range model.Functions {
-		funcStr = funcStr + transform.BuildFunction(function, information)
+		funcStr = funcStr + transform.BuildFunction(function, information, model)
 	}
 
 	return funcStr
 }
-

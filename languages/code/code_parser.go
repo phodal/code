@@ -16,7 +16,7 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 20, 135,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 20, 134,
 	4, 2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7,
 	4, 8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 4, 12, 9, 12, 4, 13,
 	9, 13, 4, 14, 9, 14, 4, 15, 9, 15, 4, 16, 9, 16, 4, 17, 9, 17, 4, 18, 9,
@@ -28,48 +28,47 @@ var parserATN = []uint16{
 	3, 9, 3, 9, 3, 10, 3, 10, 3, 11, 3, 11, 3, 11, 3, 11, 7, 11, 96, 10, 11,
 	12, 11, 14, 11, 99, 11, 11, 3, 12, 3, 12, 3, 12, 5, 12, 104, 10, 12, 3,
 	13, 3, 13, 3, 14, 3, 14, 3, 15, 3, 15, 3, 16, 3, 16, 3, 16, 7, 16, 115,
-	10, 16, 12, 16, 14, 16, 118, 11, 16, 3, 16, 3, 16, 3, 17, 3, 17, 3, 17,
-	5, 17, 125, 10, 17, 3, 18, 3, 18, 3, 19, 3, 19, 3, 19, 3, 20, 3, 20, 3,
-	20, 3, 20, 2, 2, 21, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28,
-	30, 32, 34, 36, 38, 2, 3, 4, 2, 15, 15, 19, 20, 2, 129, 2, 41, 3, 2, 2,
-	2, 4, 57, 3, 2, 2, 2, 6, 60, 3, 2, 2, 2, 8, 67, 3, 2, 2, 2, 10, 69, 3,
-	2, 2, 2, 12, 81, 3, 2, 2, 2, 14, 85, 3, 2, 2, 2, 16, 87, 3, 2, 2, 2, 18,
-	89, 3, 2, 2, 2, 20, 91, 3, 2, 2, 2, 22, 100, 3, 2, 2, 2, 24, 105, 3, 2,
-	2, 2, 26, 107, 3, 2, 2, 2, 28, 109, 3, 2, 2, 2, 30, 111, 3, 2, 2, 2, 32,
-	124, 3, 2, 2, 2, 34, 126, 3, 2, 2, 2, 36, 128, 3, 2, 2, 2, 38, 131, 3,
-	2, 2, 2, 40, 42, 5, 4, 3, 2, 41, 40, 3, 2, 2, 2, 41, 42, 3, 2, 2, 2, 42,
-	46, 3, 2, 2, 2, 43, 45, 5, 6, 4, 2, 44, 43, 3, 2, 2, 2, 45, 48, 3, 2, 2,
-	2, 46, 44, 3, 2, 2, 2, 46, 47, 3, 2, 2, 2, 47, 52, 3, 2, 2, 2, 48, 46,
-	3, 2, 2, 2, 49, 51, 5, 8, 5, 2, 50, 49, 3, 2, 2, 2, 51, 54, 3, 2, 2, 2,
-	52, 50, 3, 2, 2, 2, 52, 53, 3, 2, 2, 2, 53, 55, 3, 2, 2, 2, 54, 52, 3,
-	2, 2, 2, 55, 56, 7, 2, 2, 3, 56, 3, 3, 2, 2, 2, 57, 58, 7, 10, 2, 2, 58,
-	59, 7, 15, 2, 2, 59, 5, 3, 2, 2, 2, 60, 61, 7, 11, 2, 2, 61, 62, 7, 15,
-	2, 2, 62, 7, 3, 2, 2, 2, 63, 68, 5, 36, 19, 2, 64, 68, 5, 38, 20, 2, 65,
-	68, 5, 10, 6, 2, 66, 68, 5, 14, 8, 2, 67, 63, 3, 2, 2, 2, 67, 64, 3, 2,
-	2, 2, 67, 65, 3, 2, 2, 2, 67, 66, 3, 2, 2, 2, 68, 9, 3, 2, 2, 2, 69, 70,
-	7, 14, 2, 2, 70, 71, 7, 15, 2, 2, 71, 73, 7, 3, 2, 2, 72, 74, 5, 32, 17,
-	2, 73, 72, 3, 2, 2, 2, 73, 74, 3, 2, 2, 2, 74, 75, 3, 2, 2, 2, 75, 76,
-	7, 4, 2, 2, 76, 77, 7, 5, 2, 2, 77, 78, 5, 12, 7, 2, 78, 79, 7, 6, 2, 2,
-	79, 11, 3, 2, 2, 2, 80, 82, 5, 14, 8, 2, 81, 80, 3, 2, 2, 2, 81, 82, 3,
-	2, 2, 2, 82, 13, 3, 2, 2, 2, 83, 86, 5, 30, 16, 2, 84, 86, 5, 16, 9, 2,
-	85, 83, 3, 2, 2, 2, 85, 84, 3, 2, 2, 2, 86, 15, 3, 2, 2, 2, 87, 88, 5,
-	18, 10, 2, 88, 17, 3, 2, 2, 2, 89, 90, 5, 20, 11, 2, 90, 19, 3, 2, 2, 2,
-	91, 92, 7, 9, 2, 2, 92, 97, 5, 22, 12, 2, 93, 94, 7, 7, 2, 2, 94, 96, 5,
-	22, 12, 2, 95, 93, 3, 2, 2, 2, 96, 99, 3, 2, 2, 2, 97, 95, 3, 2, 2, 2,
-	97, 98, 3, 2, 2, 2, 98, 21, 3, 2, 2, 2, 99, 97, 3, 2, 2, 2, 100, 103, 5,
-	24, 13, 2, 101, 102, 7, 8, 2, 2, 102, 104, 5, 26, 14, 2, 103, 101, 3, 2,
-	2, 2, 103, 104, 3, 2, 2, 2, 104, 23, 3, 2, 2, 2, 105, 106, 7, 15, 2, 2,
-	106, 25, 3, 2, 2, 2, 107, 108, 5, 28, 15, 2, 108, 27, 3, 2, 2, 2, 109,
+	10, 16, 12, 16, 14, 16, 118, 11, 16, 3, 16, 3, 16, 3, 17, 3, 17, 5, 17,
+	124, 10, 17, 3, 18, 3, 18, 3, 19, 3, 19, 3, 19, 3, 20, 3, 20, 3, 20, 3,
+	20, 2, 2, 21, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32,
+	34, 36, 38, 2, 4, 4, 2, 15, 15, 19, 20, 3, 2, 19, 20, 2, 127, 2, 41, 3,
+	2, 2, 2, 4, 57, 3, 2, 2, 2, 6, 60, 3, 2, 2, 2, 8, 67, 3, 2, 2, 2, 10, 69,
+	3, 2, 2, 2, 12, 81, 3, 2, 2, 2, 14, 85, 3, 2, 2, 2, 16, 87, 3, 2, 2, 2,
+	18, 89, 3, 2, 2, 2, 20, 91, 3, 2, 2, 2, 22, 100, 3, 2, 2, 2, 24, 105, 3,
+	2, 2, 2, 26, 107, 3, 2, 2, 2, 28, 109, 3, 2, 2, 2, 30, 111, 3, 2, 2, 2,
+	32, 123, 3, 2, 2, 2, 34, 125, 3, 2, 2, 2, 36, 127, 3, 2, 2, 2, 38, 130,
+	3, 2, 2, 2, 40, 42, 5, 4, 3, 2, 41, 40, 3, 2, 2, 2, 41, 42, 3, 2, 2, 2,
+	42, 46, 3, 2, 2, 2, 43, 45, 5, 6, 4, 2, 44, 43, 3, 2, 2, 2, 45, 48, 3,
+	2, 2, 2, 46, 44, 3, 2, 2, 2, 46, 47, 3, 2, 2, 2, 47, 52, 3, 2, 2, 2, 48,
+	46, 3, 2, 2, 2, 49, 51, 5, 8, 5, 2, 50, 49, 3, 2, 2, 2, 51, 54, 3, 2, 2,
+	2, 52, 50, 3, 2, 2, 2, 52, 53, 3, 2, 2, 2, 53, 55, 3, 2, 2, 2, 54, 52,
+	3, 2, 2, 2, 55, 56, 7, 2, 2, 3, 56, 3, 3, 2, 2, 2, 57, 58, 7, 10, 2, 2,
+	58, 59, 7, 15, 2, 2, 59, 5, 3, 2, 2, 2, 60, 61, 7, 11, 2, 2, 61, 62, 7,
+	15, 2, 2, 62, 7, 3, 2, 2, 2, 63, 68, 5, 36, 19, 2, 64, 68, 5, 38, 20, 2,
+	65, 68, 5, 10, 6, 2, 66, 68, 5, 14, 8, 2, 67, 63, 3, 2, 2, 2, 67, 64, 3,
+	2, 2, 2, 67, 65, 3, 2, 2, 2, 67, 66, 3, 2, 2, 2, 68, 9, 3, 2, 2, 2, 69,
+	70, 7, 14, 2, 2, 70, 71, 7, 15, 2, 2, 71, 73, 7, 3, 2, 2, 72, 74, 5, 32,
+	17, 2, 73, 72, 3, 2, 2, 2, 73, 74, 3, 2, 2, 2, 74, 75, 3, 2, 2, 2, 75,
+	76, 7, 4, 2, 2, 76, 77, 7, 5, 2, 2, 77, 78, 5, 12, 7, 2, 78, 79, 7, 6,
+	2, 2, 79, 11, 3, 2, 2, 2, 80, 82, 5, 14, 8, 2, 81, 80, 3, 2, 2, 2, 81,
+	82, 3, 2, 2, 2, 82, 13, 3, 2, 2, 2, 83, 86, 5, 30, 16, 2, 84, 86, 5, 16,
+	9, 2, 85, 83, 3, 2, 2, 2, 85, 84, 3, 2, 2, 2, 86, 15, 3, 2, 2, 2, 87, 88,
+	5, 18, 10, 2, 88, 17, 3, 2, 2, 2, 89, 90, 5, 20, 11, 2, 90, 19, 3, 2, 2,
+	2, 91, 92, 7, 9, 2, 2, 92, 97, 5, 22, 12, 2, 93, 94, 7, 7, 2, 2, 94, 96,
+	5, 22, 12, 2, 95, 93, 3, 2, 2, 2, 96, 99, 3, 2, 2, 2, 97, 95, 3, 2, 2,
+	2, 97, 98, 3, 2, 2, 2, 98, 21, 3, 2, 2, 2, 99, 97, 3, 2, 2, 2, 100, 103,
+	5, 24, 13, 2, 101, 102, 7, 8, 2, 2, 102, 104, 5, 26, 14, 2, 103, 101, 3,
+	2, 2, 2, 103, 104, 3, 2, 2, 2, 104, 23, 3, 2, 2, 2, 105, 106, 7, 15, 2,
+	2, 106, 25, 3, 2, 2, 2, 107, 108, 5, 28, 15, 2, 108, 27, 3, 2, 2, 2, 109,
 	110, 9, 2, 2, 2, 110, 29, 3, 2, 2, 2, 111, 112, 7, 15, 2, 2, 112, 116,
 	7, 3, 2, 2, 113, 115, 5, 32, 17, 2, 114, 113, 3, 2, 2, 2, 115, 118, 3,
 	2, 2, 2, 116, 114, 3, 2, 2, 2, 116, 117, 3, 2, 2, 2, 117, 119, 3, 2, 2,
 	2, 118, 116, 3, 2, 2, 2, 119, 120, 7, 4, 2, 2, 120, 31, 3, 2, 2, 2, 121,
-	125, 7, 19, 2, 2, 122, 125, 5, 34, 18, 2, 123, 125, 7, 15, 2, 2, 124, 121,
-	3, 2, 2, 2, 124, 122, 3, 2, 2, 2, 124, 123, 3, 2, 2, 2, 125, 33, 3, 2,
-	2, 2, 126, 127, 7, 20, 2, 2, 127, 35, 3, 2, 2, 2, 128, 129, 7, 12, 2, 2,
-	129, 130, 7, 15, 2, 2, 130, 37, 3, 2, 2, 2, 131, 132, 7, 13, 2, 2, 132,
-	133, 7, 15, 2, 2, 133, 39, 3, 2, 2, 2, 13, 41, 46, 52, 67, 73, 81, 85,
-	97, 103, 116, 124,
+	124, 5, 34, 18, 2, 122, 124, 7, 15, 2, 2, 123, 121, 3, 2, 2, 2, 123, 122,
+	3, 2, 2, 2, 124, 33, 3, 2, 2, 2, 125, 126, 9, 3, 2, 2, 126, 35, 3, 2, 2,
+	2, 127, 128, 7, 12, 2, 2, 128, 129, 7, 15, 2, 2, 129, 37, 3, 2, 2, 2, 130,
+	131, 7, 13, 2, 2, 131, 132, 7, 15, 2, 2, 132, 39, 3, 2, 2, 2, 13, 41, 46,
+	52, 67, 73, 81, 85, 97, 103, 116, 123,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
@@ -89,7 +88,7 @@ var ruleNames = []string{
 	"functionDeclaration", "functionBody", "expressDeclaration", "blockStatement",
 	"localVariableDeclaration", "variableDeclarators", "variableDeclarator",
 	"variableDeclaratorId", "variableInitializer", "expression", "methodCallDeclaration",
-	"parameter", "integerLiteral", "dataStructDeclaration", "memberDeclaration",
+	"parameter", "literal", "dataStructDeclaration", "memberDeclaration",
 }
 var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
 
@@ -158,7 +157,7 @@ const (
 	CodeParserRULE_expression               = 13
 	CodeParserRULE_methodCallDeclaration    = 14
 	CodeParserRULE_parameter                = 15
-	CodeParserRULE_integerLiteral           = 16
+	CodeParserRULE_literal                  = 16
 	CodeParserRULE_dataStructDeclaration    = 17
 	CodeParserRULE_memberDeclaration        = 18
 )
@@ -2158,18 +2157,14 @@ func NewParameterContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 
 func (s *ParameterContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ParameterContext) STRING_LITERAL() antlr.TerminalNode {
-	return s.GetToken(CodeParserSTRING_LITERAL, 0)
-}
-
-func (s *ParameterContext) IntegerLiteral() IIntegerLiteralContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IIntegerLiteralContext)(nil)).Elem(), 0)
+func (s *ParameterContext) Literal() ILiteralContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*ILiteralContext)(nil)).Elem(), 0)
 
 	if t == nil {
 		return nil
 	}
 
-	return t.(IIntegerLiteralContext)
+	return t.(ILiteralContext)
 }
 
 func (s *ParameterContext) IDENTIFIER() antlr.TerminalNode {
@@ -2226,28 +2221,21 @@ func (p *CodeParser) Parameter() (localctx IParameterContext) {
 		}
 	}()
 
-	p.SetState(122)
+	p.SetState(121)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
-	case CodeParserSTRING_LITERAL:
+	case CodeParserSTRING_LITERAL, CodeParserDECIMAL_LITERAL:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(119)
-			p.Match(CodeParserSTRING_LITERAL)
-		}
-
-	case CodeParserDECIMAL_LITERAL:
-		p.EnterOuterAlt(localctx, 2)
-		{
-			p.SetState(120)
-			p.IntegerLiteral()
+			p.Literal()
 		}
 
 	case CodeParserIDENTIFIER:
-		p.EnterOuterAlt(localctx, 3)
+		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(121)
+			p.SetState(120)
 			p.Match(CodeParserIDENTIFIER)
 		}
 
@@ -2258,81 +2246,86 @@ func (p *CodeParser) Parameter() (localctx IParameterContext) {
 	return localctx
 }
 
-// IIntegerLiteralContext is an interface to support dynamic dispatch.
-type IIntegerLiteralContext interface {
+// ILiteralContext is an interface to support dynamic dispatch.
+type ILiteralContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
-	// IsIntegerLiteralContext differentiates from other interfaces.
-	IsIntegerLiteralContext()
+	// IsLiteralContext differentiates from other interfaces.
+	IsLiteralContext()
 }
 
-type IntegerLiteralContext struct {
+type LiteralContext struct {
 	*antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyIntegerLiteralContext() *IntegerLiteralContext {
-	var p = new(IntegerLiteralContext)
+func NewEmptyLiteralContext() *LiteralContext {
+	var p = new(LiteralContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = CodeParserRULE_integerLiteral
+	p.RuleIndex = CodeParserRULE_literal
 	return p
 }
 
-func (*IntegerLiteralContext) IsIntegerLiteralContext() {}
+func (*LiteralContext) IsLiteralContext() {}
 
-func NewIntegerLiteralContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *IntegerLiteralContext {
-	var p = new(IntegerLiteralContext)
+func NewLiteralContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *LiteralContext {
+	var p = new(LiteralContext)
 
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CodeParserRULE_integerLiteral
+	p.RuleIndex = CodeParserRULE_literal
 
 	return p
 }
 
-func (s *IntegerLiteralContext) GetParser() antlr.Parser { return s.parser }
+func (s *LiteralContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *IntegerLiteralContext) DECIMAL_LITERAL() antlr.TerminalNode {
+func (s *LiteralContext) DECIMAL_LITERAL() antlr.TerminalNode {
 	return s.GetToken(CodeParserDECIMAL_LITERAL, 0)
 }
 
-func (s *IntegerLiteralContext) GetRuleContext() antlr.RuleContext {
+func (s *LiteralContext) STRING_LITERAL() antlr.TerminalNode {
+	return s.GetToken(CodeParserSTRING_LITERAL, 0)
+}
+
+func (s *LiteralContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *IntegerLiteralContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *LiteralContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *IntegerLiteralContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *LiteralContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(CodeListener); ok {
-		listenerT.EnterIntegerLiteral(s)
+		listenerT.EnterLiteral(s)
 	}
 }
 
-func (s *IntegerLiteralContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *LiteralContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(CodeListener); ok {
-		listenerT.ExitIntegerLiteral(s)
+		listenerT.ExitLiteral(s)
 	}
 }
 
-func (s *IntegerLiteralContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+func (s *LiteralContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case CodeVisitor:
-		return t.VisitIntegerLiteral(s)
+		return t.VisitLiteral(s)
 
 	default:
 		return t.VisitChildren(s)
 	}
 }
 
-func (p *CodeParser) IntegerLiteral() (localctx IIntegerLiteralContext) {
-	localctx = NewIntegerLiteralContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 32, CodeParserRULE_integerLiteral)
+func (p *CodeParser) Literal() (localctx ILiteralContext) {
+	localctx = NewLiteralContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 32, CodeParserRULE_literal)
+	var _la int
 
 	defer func() {
 		p.ExitRule()
@@ -2352,8 +2345,15 @@ func (p *CodeParser) IntegerLiteral() (localctx IIntegerLiteralContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(124)
-		p.Match(CodeParserDECIMAL_LITERAL)
+		p.SetState(123)
+		_la = p.GetTokenStream().LA(1)
+
+		if !(_la == CodeParserSTRING_LITERAL || _la == CodeParserDECIMAL_LITERAL) {
+			p.GetErrorHandler().RecoverInline(p)
+		} else {
+			p.GetErrorHandler().ReportMatch(p)
+			p.Consume()
+		}
 	}
 
 	return localctx
@@ -2457,11 +2457,11 @@ func (p *CodeParser) DataStructDeclaration() (localctx IDataStructDeclarationCon
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(126)
+		p.SetState(125)
 		p.Match(CodeParserDATA_STRUCT)
 	}
 	{
-		p.SetState(127)
+		p.SetState(126)
 		p.Match(CodeParserIDENTIFIER)
 	}
 
@@ -2566,11 +2566,11 @@ func (p *CodeParser) MemberDeclaration() (localctx IMemberDeclarationContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(129)
+		p.SetState(128)
 		p.Match(CodeParserMEMBER)
 	}
 	{
-		p.SetState(130)
+		p.SetState(129)
 		p.Match(CodeParserIDENTIFIER)
 	}
 

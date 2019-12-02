@@ -43,10 +43,9 @@ func BuildFunctionCall(allParameters []IParameterContext, functionName string) C
 		}
 
 		switch childType {
-		case "*parser.IntegerLiteralContext":
-			paraCodeType.Type = "integer"
+		case "*antlr.TerminalNodeImpl":
+			paraCodeType.Type = "type"
 		default:
-
 		}
 
 		var paramValue = &CodeParameterValue{Value: parameter.GetText()}

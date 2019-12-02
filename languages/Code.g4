@@ -60,12 +60,14 @@ expression
 
 methodCallDeclaration: IDENTIFIER '(' parameter* ')';
 parameter
-    : STRING_LITERAL
-    | integerLiteral
+    : literal
     | IDENTIFIER
     ;
 
-integerLiteral: DECIMAL_LITERAL;
+literal
+    : DECIMAL_LITERAL
+    | STRING_LITERAL
+    ;
 
 dataStructDeclaration: DATA_STRUCT IDENTIFIER;
 memberDeclaration: MEMBER IDENTIFIER;

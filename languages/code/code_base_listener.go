@@ -117,11 +117,11 @@ func (s *BaseCodeListener) EnterParameter(ctx *ParameterContext) {}
 // ExitParameter is called when production parameter is exited.
 func (s *BaseCodeListener) ExitParameter(ctx *ParameterContext) {}
 
-// EnterIntegerLiteral is called when production integerLiteral is entered.
-func (s *BaseCodeListener) EnterIntegerLiteral(ctx *IntegerLiteralContext) {}
+// EnterLiteral is called when production literal is entered.
+func (s *BaseCodeListener) EnterLiteral(ctx *LiteralContext) {}
 
-// ExitIntegerLiteral is called when production integerLiteral is exited.
-func (s *BaseCodeListener) ExitIntegerLiteral(ctx *IntegerLiteralContext) {}
+// ExitLiteral is called when production literal is exited.
+func (s *BaseCodeListener) ExitLiteral(ctx *LiteralContext) {}
 
 // EnterDataStructDeclaration is called when production dataStructDeclaration is entered.
 func (s *BaseCodeListener) EnterDataStructDeclaration(ctx *DataStructDeclarationContext) {}
