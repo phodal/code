@@ -21,7 +21,7 @@ typeDeclaration
 
 functionDeclaration: FUNCTION IDENTIFIER '(' parameter? ')' '{' functionBody '}';
 
-functionBody: expressDeclaration?;
+functionBody: expressDeclaration*;
 
 expressDeclaration
     : methodCallDeclaration
