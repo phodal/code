@@ -78,22 +78,26 @@ func (s *CodeAppListener) EnterFunctionDeclaration(ctx *FunctionDeclarationConte
 			if childType == "*parser.LocalVariableDeclarationContext" {
 				context := child.(*LocalVariableDeclarationContext).GetChild(0).(*VariableDeclaratorsContext)
 
-				for _, varDeclarator := range context.AllVariableDeclarator() {
-					varCtx := varDeclarator.(*VariableDeclaratorContext)
-					ident := varCtx.VariableDeclaratorId().GetText()
-					value := ""
-
-					if varCtx.VariableInitializer() != nil {
-						value = varCtx.VariableInitializer().GetText()
-					}
-
-					currentFunction.Variables[ident] = value
-				}
+				s.handleParameters(context)
 			}
 		}
 	}
 
 	currentCodeModel.Functions = append(currentCodeModel.Functions, function)
+}
+
+func (s *CodeAppListener) handleParameters(context *VariableDeclaratorsContext) {
+	for _, varDeclarator := range context.AllVariableDeclarator() {
+		varCtx := varDeclarator.(*VariableDeclaratorContext)
+		ident := varCtx.VariableDeclaratorId().GetText()
+		value := ""
+
+		if varCtx.VariableInitializer() != nil {
+			value = varCtx.VariableInitializer().GetText()
+		}
+
+		currentFunction.Variables[ident] = value
+	}
 }
 
 func (s *CodeAppListener) EnterVariableDeclarators(ctx *VariableDeclaratorsContext) {

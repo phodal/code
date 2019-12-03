@@ -75,7 +75,7 @@ func (transform Transform) BuildFunction(function CodeFunction, information Defi
 	}
 
 	for _, call := range function.CodeFunctionCalls {
-		callCode = transform.BuildFunctionCall(call, information, model)
+		callCode = callCode + "\n" +  transform.BuildFunctionCall(call, information, model)
 	}
 
 	funcBody = "\n" + callCode
