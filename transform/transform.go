@@ -109,7 +109,7 @@ func (transform Transform) TransformMainCode(codeModel CodeModel, info DefineInf
 func (transform Transform) TransformNormalCode(model CodeModel, information DefineInformation) string {
 	funcStr := "\n"
 	for _, function := range model.Functions {
-		funcStr = funcStr + transform.BuildFunction(function, information, model)
+		funcStr = funcStr + "\n" + transform.BuildFunction(function, information, model)
 	}
 
 	return funcStr

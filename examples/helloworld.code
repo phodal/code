@@ -11,3 +11,10 @@ show()
 
 var a = "5"
 print(a)
+
+show()
+
+func hello() {
+  print("world")
+}
+hello()
