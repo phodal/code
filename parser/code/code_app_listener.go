@@ -60,15 +60,36 @@ func (s *CodeAppListener) EnterFunctionDeclaration(ctx *FunctionDeclarationConte
 	function := CreateFunction(ctx.IDENTIFIER().GetText())
 	currentFunction = function
 
-	child := ctx.FunctionBody().GetChild(0)
-	if child != nil {
-		expressCtx := child.(*ExpressDeclarationContext)
+	allExpressDeclaration := ctx.FunctionBody().(*FunctionBodyContext).AllExpressDeclaration()
+	for _, express := range allExpressDeclaration {
+		expressCtx := express.(*ExpressDeclarationContext)
+
 		firstChildCtx := expressCtx.GetChild(0)
+
 		switch reflect.TypeOf(firstChildCtx).String() {
 		case "*parser.MethodCallDeclarationContext":
 			context := firstChildCtx.(*MethodCallDeclarationContext)
 			functionCall := BuildFunctionCall(context.AllParameter(), context.IDENTIFIER().GetText())
 			function.CodeFunctionCalls = append(function.CodeFunctionCalls, functionCall)
+
+		case "*parser.BlockStatementContext":
+			child := firstChildCtx.GetChild(0)
+			childType := reflect.TypeOf(child).String()
+			if childType == "*parser.LocalVariableDeclarationContext" {
+				context := child.(*LocalVariableDeclarationContext).GetChild(0).(*VariableDeclaratorsContext)
+
+				for _, varDeclarator := range context.AllVariableDeclarator() {
+					varCtx := varDeclarator.(*VariableDeclaratorContext)
+					ident := varCtx.VariableDeclaratorId().GetText()
+					value := ""
+
+					if varCtx.VariableInitializer() != nil {
+						value = varCtx.VariableInitializer().GetText()
+					}
+
+					currentFunction.Variables[ident] = value
+				}
+			}
 		}
 	}
 
@@ -76,7 +97,6 @@ func (s *CodeAppListener) EnterFunctionDeclaration(ctx *FunctionDeclarationConte
 }
 
 func (s *CodeAppListener) EnterVariableDeclarators(ctx *VariableDeclaratorsContext) {
-	parentType := reflect.TypeOf(ctx.GetParent()).String()
 	for _, varDeclarator := range ctx.AllVariableDeclarator() {
 		varCtx := varDeclarator.(*VariableDeclaratorContext)
 		ident := varCtx.VariableDeclaratorId().GetText()
@@ -84,10 +104,6 @@ func (s *CodeAppListener) EnterVariableDeclarators(ctx *VariableDeclaratorsConte
 
 		if varCtx.VariableInitializer() != nil {
 			value = varCtx.VariableInitializer().GetText()
-		}
-
-		if parentType == "*parser.LocalVariableDeclarationContext" {
-			currentFunction.Variables[ident] = value
 		}
 
 		varMaps[ident] = value

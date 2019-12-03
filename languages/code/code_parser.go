@@ -16,7 +16,7 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 20, 137,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 20, 138,
 	4, 2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7,
 	4, 8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 4, 12, 9, 12, 4, 13,
 	9, 13, 4, 14, 9, 14, 4, 15, 9, 15, 4, 16, 9, 16, 4, 17, 9, 17, 4, 18, 9,
@@ -24,52 +24,53 @@ var parserATN = []uint16{
 	10, 2, 12, 2, 14, 2, 48, 11, 2, 3, 2, 7, 2, 51, 10, 2, 12, 2, 14, 2, 54,
 	11, 2, 3, 2, 3, 2, 3, 3, 3, 3, 3, 3, 3, 4, 3, 4, 3, 4, 3, 5, 3, 5, 3, 5,
 	3, 5, 5, 5, 68, 10, 5, 3, 6, 3, 6, 3, 6, 3, 6, 5, 6, 74, 10, 6, 3, 6, 3,
-	6, 3, 6, 3, 6, 3, 6, 3, 7, 7, 7, 82, 10, 7, 12, 7, 14, 7, 85, 11, 7, 3,
-	8, 3, 8, 5, 8, 89, 10, 8, 3, 9, 3, 9, 3, 10, 3, 10, 3, 11, 3, 11, 3, 11,
-	3, 11, 7, 11, 99, 10, 11, 12, 11, 14, 11, 102, 11, 11, 3, 12, 3, 12, 3,
-	12, 5, 12, 107, 10, 12, 3, 13, 3, 13, 3, 14, 3, 14, 3, 15, 3, 15, 3, 16,
-	3, 16, 3, 16, 7, 16, 118, 10, 16, 12, 16, 14, 16, 121, 11, 16, 3, 16, 3,
-	16, 3, 17, 3, 17, 5, 17, 127, 10, 17, 3, 18, 3, 18, 3, 19, 3, 19, 3, 19,
-	3, 20, 3, 20, 3, 20, 3, 20, 2, 2, 21, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20,
-	22, 24, 26, 28, 30, 32, 34, 36, 38, 2, 4, 4, 2, 15, 15, 19, 20, 3, 2, 19,
-	20, 2, 130, 2, 41, 3, 2, 2, 2, 4, 57, 3, 2, 2, 2, 6, 60, 3, 2, 2, 2, 8,
-	67, 3, 2, 2, 2, 10, 69, 3, 2, 2, 2, 12, 83, 3, 2, 2, 2, 14, 88, 3, 2, 2,
-	2, 16, 90, 3, 2, 2, 2, 18, 92, 3, 2, 2, 2, 20, 94, 3, 2, 2, 2, 22, 103,
-	3, 2, 2, 2, 24, 108, 3, 2, 2, 2, 26, 110, 3, 2, 2, 2, 28, 112, 3, 2, 2,
-	2, 30, 114, 3, 2, 2, 2, 32, 126, 3, 2, 2, 2, 34, 128, 3, 2, 2, 2, 36, 130,
-	3, 2, 2, 2, 38, 133, 3, 2, 2, 2, 40, 42, 5, 4, 3, 2, 41, 40, 3, 2, 2, 2,
-	41, 42, 3, 2, 2, 2, 42, 46, 3, 2, 2, 2, 43, 45, 5, 6, 4, 2, 44, 43, 3,
-	2, 2, 2, 45, 48, 3, 2, 2, 2, 46, 44, 3, 2, 2, 2, 46, 47, 3, 2, 2, 2, 47,
-	52, 3, 2, 2, 2, 48, 46, 3, 2, 2, 2, 49, 51, 5, 8, 5, 2, 50, 49, 3, 2, 2,
-	2, 51, 54, 3, 2, 2, 2, 52, 50, 3, 2, 2, 2, 52, 53, 3, 2, 2, 2, 53, 55,
-	3, 2, 2, 2, 54, 52, 3, 2, 2, 2, 55, 56, 7, 2, 2, 3, 56, 3, 3, 2, 2, 2,
-	57, 58, 7, 10, 2, 2, 58, 59, 7, 15, 2, 2, 59, 5, 3, 2, 2, 2, 60, 61, 7,
-	11, 2, 2, 61, 62, 7, 15, 2, 2, 62, 7, 3, 2, 2, 2, 63, 68, 5, 36, 19, 2,
-	64, 68, 5, 38, 20, 2, 65, 68, 5, 10, 6, 2, 66, 68, 5, 14, 8, 2, 67, 63,
-	3, 2, 2, 2, 67, 64, 3, 2, 2, 2, 67, 65, 3, 2, 2, 2, 67, 66, 3, 2, 2, 2,
-	68, 9, 3, 2, 2, 2, 69, 70, 7, 14, 2, 2, 70, 71, 7, 15, 2, 2, 71, 73, 7,
-	3, 2, 2, 72, 74, 5, 32, 17, 2, 73, 72, 3, 2, 2, 2, 73, 74, 3, 2, 2, 2,
-	74, 75, 3, 2, 2, 2, 75, 76, 7, 4, 2, 2, 76, 77, 7, 5, 2, 2, 77, 78, 5,
-	12, 7, 2, 78, 79, 7, 6, 2, 2, 79, 11, 3, 2, 2, 2, 80, 82, 5, 14, 8, 2,
-	81, 80, 3, 2, 2, 2, 82, 85, 3, 2, 2, 2, 83, 81, 3, 2, 2, 2, 83, 84, 3,
-	2, 2, 2, 84, 13, 3, 2, 2, 2, 85, 83, 3, 2, 2, 2, 86, 89, 5, 30, 16, 2,
-	87, 89, 5, 16, 9, 2, 88, 86, 3, 2, 2, 2, 88, 87, 3, 2, 2, 2, 89, 15, 3,
-	2, 2, 2, 90, 91, 5, 18, 10, 2, 91, 17, 3, 2, 2, 2, 92, 93, 5, 20, 11, 2,
-	93, 19, 3, 2, 2, 2, 94, 95, 7, 9, 2, 2, 95, 100, 5, 22, 12, 2, 96, 97,
-	7, 7, 2, 2, 97, 99, 5, 22, 12, 2, 98, 96, 3, 2, 2, 2, 99, 102, 3, 2, 2,
-	2, 100, 98, 3, 2, 2, 2, 100, 101, 3, 2, 2, 2, 101, 21, 3, 2, 2, 2, 102,
-	100, 3, 2, 2, 2, 103, 106, 5, 24, 13, 2, 104, 105, 7, 8, 2, 2, 105, 107,
-	5, 26, 14, 2, 106, 104, 3, 2, 2, 2, 106, 107, 3, 2, 2, 2, 107, 23, 3, 2,
-	2, 2, 108, 109, 7, 15, 2, 2, 109, 25, 3, 2, 2, 2, 110, 111, 5, 28, 15,
-	2, 111, 27, 3, 2, 2, 2, 112, 113, 9, 2, 2, 2, 113, 29, 3, 2, 2, 2, 114,
-	115, 7, 15, 2, 2, 115, 119, 7, 3, 2, 2, 116, 118, 5, 32, 17, 2, 117, 116,
-	3, 2, 2, 2, 118, 121, 3, 2, 2, 2, 119, 117, 3, 2, 2, 2, 119, 120, 3, 2,
-	2, 2, 120, 122, 3, 2, 2, 2, 121, 119, 3, 2, 2, 2, 122, 123, 7, 4, 2, 2,
-	123, 31, 3, 2, 2, 2, 124, 127, 5, 34, 18, 2, 125, 127, 7, 15, 2, 2, 126,
-	124, 3, 2, 2, 2, 126, 125, 3, 2, 2, 2, 127, 33, 3, 2, 2, 2, 128, 129, 9,
-	3, 2, 2, 129, 35, 3, 2, 2, 2, 130, 131, 7, 12, 2, 2, 131, 132, 7, 15, 2,
-	2, 132, 37, 3, 2, 2, 2, 133, 134, 7, 13, 2, 2, 134, 135, 7, 15, 2, 2, 135,
-	39, 3, 2, 2, 2, 13, 41, 46, 52, 67, 73, 83, 88, 100, 106, 119, 126,
+	6, 3, 6, 3, 6, 3, 6, 3, 7, 3, 7, 7, 7, 83, 10, 7, 12, 7, 14, 7, 86, 11,
+	7, 3, 8, 3, 8, 5, 8, 90, 10, 8, 3, 9, 3, 9, 3, 10, 3, 10, 3, 11, 3, 11,
+	3, 11, 3, 11, 7, 11, 100, 10, 11, 12, 11, 14, 11, 103, 11, 11, 3, 12, 3,
+	12, 3, 12, 5, 12, 108, 10, 12, 3, 13, 3, 13, 3, 14, 3, 14, 3, 15, 3, 15,
+	3, 16, 3, 16, 3, 16, 7, 16, 119, 10, 16, 12, 16, 14, 16, 122, 11, 16, 3,
+	16, 3, 16, 3, 17, 3, 17, 5, 17, 128, 10, 17, 3, 18, 3, 18, 3, 19, 3, 19,
+	3, 19, 3, 20, 3, 20, 3, 20, 3, 20, 2, 2, 21, 2, 4, 6, 8, 10, 12, 14, 16,
+	18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 2, 4, 4, 2, 15, 15, 19, 20,
+	3, 2, 19, 20, 2, 131, 2, 41, 3, 2, 2, 2, 4, 57, 3, 2, 2, 2, 6, 60, 3, 2,
+	2, 2, 8, 67, 3, 2, 2, 2, 10, 69, 3, 2, 2, 2, 12, 80, 3, 2, 2, 2, 14, 89,
+	3, 2, 2, 2, 16, 91, 3, 2, 2, 2, 18, 93, 3, 2, 2, 2, 20, 95, 3, 2, 2, 2,
+	22, 104, 3, 2, 2, 2, 24, 109, 3, 2, 2, 2, 26, 111, 3, 2, 2, 2, 28, 113,
+	3, 2, 2, 2, 30, 115, 3, 2, 2, 2, 32, 127, 3, 2, 2, 2, 34, 129, 3, 2, 2,
+	2, 36, 131, 3, 2, 2, 2, 38, 134, 3, 2, 2, 2, 40, 42, 5, 4, 3, 2, 41, 40,
+	3, 2, 2, 2, 41, 42, 3, 2, 2, 2, 42, 46, 3, 2, 2, 2, 43, 45, 5, 6, 4, 2,
+	44, 43, 3, 2, 2, 2, 45, 48, 3, 2, 2, 2, 46, 44, 3, 2, 2, 2, 46, 47, 3,
+	2, 2, 2, 47, 52, 3, 2, 2, 2, 48, 46, 3, 2, 2, 2, 49, 51, 5, 8, 5, 2, 50,
+	49, 3, 2, 2, 2, 51, 54, 3, 2, 2, 2, 52, 50, 3, 2, 2, 2, 52, 53, 3, 2, 2,
+	2, 53, 55, 3, 2, 2, 2, 54, 52, 3, 2, 2, 2, 55, 56, 7, 2, 2, 3, 56, 3, 3,
+	2, 2, 2, 57, 58, 7, 10, 2, 2, 58, 59, 7, 15, 2, 2, 59, 5, 3, 2, 2, 2, 60,
+	61, 7, 11, 2, 2, 61, 62, 7, 15, 2, 2, 62, 7, 3, 2, 2, 2, 63, 68, 5, 36,
+	19, 2, 64, 68, 5, 38, 20, 2, 65, 68, 5, 10, 6, 2, 66, 68, 5, 14, 8, 2,
+	67, 63, 3, 2, 2, 2, 67, 64, 3, 2, 2, 2, 67, 65, 3, 2, 2, 2, 67, 66, 3,
+	2, 2, 2, 68, 9, 3, 2, 2, 2, 69, 70, 7, 14, 2, 2, 70, 71, 7, 15, 2, 2, 71,
+	73, 7, 3, 2, 2, 72, 74, 5, 32, 17, 2, 73, 72, 3, 2, 2, 2, 73, 74, 3, 2,
+	2, 2, 74, 75, 3, 2, 2, 2, 75, 76, 7, 4, 2, 2, 76, 77, 7, 5, 2, 2, 77, 78,
+	5, 12, 7, 2, 78, 79, 7, 6, 2, 2, 79, 11, 3, 2, 2, 2, 80, 84, 5, 14, 8,
+	2, 81, 83, 5, 14, 8, 2, 82, 81, 3, 2, 2, 2, 83, 86, 3, 2, 2, 2, 84, 82,
+	3, 2, 2, 2, 84, 85, 3, 2, 2, 2, 85, 13, 3, 2, 2, 2, 86, 84, 3, 2, 2, 2,
+	87, 90, 5, 30, 16, 2, 88, 90, 5, 16, 9, 2, 89, 87, 3, 2, 2, 2, 89, 88,
+	3, 2, 2, 2, 90, 15, 3, 2, 2, 2, 91, 92, 5, 18, 10, 2, 92, 17, 3, 2, 2,
+	2, 93, 94, 5, 20, 11, 2, 94, 19, 3, 2, 2, 2, 95, 96, 7, 9, 2, 2, 96, 101,
+	5, 22, 12, 2, 97, 98, 7, 7, 2, 2, 98, 100, 5, 22, 12, 2, 99, 97, 3, 2,
+	2, 2, 100, 103, 3, 2, 2, 2, 101, 99, 3, 2, 2, 2, 101, 102, 3, 2, 2, 2,
+	102, 21, 3, 2, 2, 2, 103, 101, 3, 2, 2, 2, 104, 107, 5, 24, 13, 2, 105,
+	106, 7, 8, 2, 2, 106, 108, 5, 26, 14, 2, 107, 105, 3, 2, 2, 2, 107, 108,
+	3, 2, 2, 2, 108, 23, 3, 2, 2, 2, 109, 110, 7, 15, 2, 2, 110, 25, 3, 2,
+	2, 2, 111, 112, 5, 28, 15, 2, 112, 27, 3, 2, 2, 2, 113, 114, 9, 2, 2, 2,
+	114, 29, 3, 2, 2, 2, 115, 116, 7, 15, 2, 2, 116, 120, 7, 3, 2, 2, 117,
+	119, 5, 32, 17, 2, 118, 117, 3, 2, 2, 2, 119, 122, 3, 2, 2, 2, 120, 118,
+	3, 2, 2, 2, 120, 121, 3, 2, 2, 2, 121, 123, 3, 2, 2, 2, 122, 120, 3, 2,
+	2, 2, 123, 124, 7, 4, 2, 2, 124, 31, 3, 2, 2, 2, 125, 128, 5, 34, 18, 2,
+	126, 128, 7, 15, 2, 2, 127, 125, 3, 2, 2, 2, 127, 126, 3, 2, 2, 2, 128,
+	33, 3, 2, 2, 2, 129, 130, 9, 3, 2, 2, 130, 35, 3, 2, 2, 2, 131, 132, 7,
+	12, 2, 2, 132, 133, 7, 15, 2, 2, 133, 37, 3, 2, 2, 2, 134, 135, 7, 13,
+	2, 2, 135, 136, 7, 15, 2, 2, 136, 39, 3, 2, 2, 2, 13, 41, 46, 52, 67, 73,
+	84, 89, 101, 107, 120, 127,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
@@ -1019,17 +1020,21 @@ func (p *CodeParser) FunctionBody() (localctx IFunctionBodyContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(81)
+	{
+		p.SetState(78)
+		p.ExpressDeclaration()
+	}
+	p.SetState(82)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == CodeParserVAR || _la == CodeParserIDENTIFIER {
 		{
-			p.SetState(78)
+			p.SetState(79)
 			p.ExpressDeclaration()
 		}
 
-		p.SetState(83)
+		p.SetState(84)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -1145,21 +1150,21 @@ func (p *CodeParser) ExpressDeclaration() (localctx IExpressDeclarationContext) 
 		}
 	}()
 
-	p.SetState(86)
+	p.SetState(87)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
 	case CodeParserIDENTIFIER:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(84)
+			p.SetState(85)
 			p.MethodCallDeclaration()
 		}
 
 	case CodeParserVAR:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(85)
+			p.SetState(86)
 			p.BlockStatement()
 		}
 
@@ -1270,7 +1275,7 @@ func (p *CodeParser) BlockStatement() (localctx IBlockStatementContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(88)
+		p.SetState(89)
 		p.LocalVariableDeclaration()
 	}
 
@@ -1377,7 +1382,7 @@ func (p *CodeParser) LocalVariableDeclaration() (localctx ILocalVariableDeclarat
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(90)
+		p.SetState(91)
 		p.VariableDeclarators()
 	}
 
@@ -1502,28 +1507,28 @@ func (p *CodeParser) VariableDeclarators() (localctx IVariableDeclaratorsContext
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(92)
+		p.SetState(93)
 		p.Match(CodeParserVAR)
 	}
 	{
-		p.SetState(93)
+		p.SetState(94)
 		p.VariableDeclarator()
 	}
-	p.SetState(98)
+	p.SetState(99)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == CodeParserT__4 {
 		{
-			p.SetState(94)
+			p.SetState(95)
 			p.Match(CodeParserT__4)
 		}
 		{
-			p.SetState(95)
+			p.SetState(96)
 			p.VariableDeclarator()
 		}
 
-		p.SetState(100)
+		p.SetState(101)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -1642,20 +1647,20 @@ func (p *CodeParser) VariableDeclarator() (localctx IVariableDeclaratorContext) 
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(101)
+		p.SetState(102)
 		p.VariableDeclaratorId()
 	}
-	p.SetState(104)
+	p.SetState(105)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == CodeParserT__5 {
 		{
-			p.SetState(102)
+			p.SetState(103)
 			p.Match(CodeParserT__5)
 		}
 		{
-			p.SetState(103)
+			p.SetState(104)
 			p.VariableInitializer()
 		}
 
@@ -1758,7 +1763,7 @@ func (p *CodeParser) VariableDeclaratorId() (localctx IVariableDeclaratorIdConte
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(106)
+		p.SetState(107)
 		p.Match(CodeParserIDENTIFIER)
 	}
 
@@ -1865,7 +1870,7 @@ func (p *CodeParser) VariableInitializer() (localctx IVariableInitializerContext
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(108)
+		p.SetState(109)
 		p.Expression()
 	}
 
@@ -1975,7 +1980,7 @@ func (p *CodeParser) Expression() (localctx IExpressionContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(110)
+		p.SetState(111)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<CodeParserIDENTIFIER)|(1<<CodeParserSTRING_LITERAL)|(1<<CodeParserDECIMAL_LITERAL))) != 0) {
@@ -2107,29 +2112,29 @@ func (p *CodeParser) MethodCallDeclaration() (localctx IMethodCallDeclarationCon
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(112)
+		p.SetState(113)
 		p.Match(CodeParserIDENTIFIER)
 	}
 	{
-		p.SetState(113)
+		p.SetState(114)
 		p.Match(CodeParserT__0)
 	}
-	p.SetState(117)
+	p.SetState(118)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<CodeParserIDENTIFIER)|(1<<CodeParserSTRING_LITERAL)|(1<<CodeParserDECIMAL_LITERAL))) != 0 {
 		{
-			p.SetState(114)
+			p.SetState(115)
 			p.Parameter()
 		}
 
-		p.SetState(119)
+		p.SetState(120)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(120)
+		p.SetState(121)
 		p.Match(CodeParserT__1)
 	}
 
@@ -2238,21 +2243,21 @@ func (p *CodeParser) Parameter() (localctx IParameterContext) {
 		}
 	}()
 
-	p.SetState(124)
+	p.SetState(125)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
 	case CodeParserSTRING_LITERAL, CodeParserDECIMAL_LITERAL:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(122)
+			p.SetState(123)
 			p.Literal()
 		}
 
 	case CodeParserIDENTIFIER:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(123)
+			p.SetState(124)
 			p.Match(CodeParserIDENTIFIER)
 		}
 
@@ -2362,7 +2367,7 @@ func (p *CodeParser) Literal() (localctx ILiteralContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(126)
+		p.SetState(127)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(_la == CodeParserSTRING_LITERAL || _la == CodeParserDECIMAL_LITERAL) {
@@ -2474,11 +2479,11 @@ func (p *CodeParser) DataStructDeclaration() (localctx IDataStructDeclarationCon
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(128)
+		p.SetState(129)
 		p.Match(CodeParserDATA_STRUCT)
 	}
 	{
-		p.SetState(129)
+		p.SetState(130)
 		p.Match(CodeParserIDENTIFIER)
 	}
 
@@ -2583,11 +2588,11 @@ func (p *CodeParser) MemberDeclaration() (localctx IMemberDeclarationContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(131)
+		p.SetState(132)
 		p.Match(CodeParserMEMBER)
 	}
 	{
-		p.SetState(132)
+		p.SetState(133)
 		p.Match(CodeParserIDENTIFIER)
 	}
 
