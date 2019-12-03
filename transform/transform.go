@@ -78,9 +78,9 @@ func (transform Transform) BuildFunction(function CodeFunction, information Defi
 		callCode = callCode + "\n" +  transform.BuildFunctionCall(call, information, model)
 	}
 
-	funcBody = "\n" + callCode
+	funcBody = callCode
 
-	return symbolMap["FUNCTION"] + " " + funcName + symbolMap["PARAMETER_START"] + params + symbolMap["PARAMETER_END"] + symbolMap["METHOD_START"] + funcBody + symbolMap["METHOD_END"]
+	return symbolMap["FUNCTION"] + " " + funcName + symbolMap["PARAMETER_START"] + params + symbolMap["PARAMETER_END"] + symbolMap["METHOD_START"] + funcBody + "\n" + symbolMap["METHOD_END"]
 }
 
 func (transform Transform) TransformMainCode(codeModel CodeModel, info DefineInformation, startTemplateSymbol string, endTemplateSymbol string) string {
@@ -109,7 +109,7 @@ func (transform Transform) TransformMainCode(codeModel CodeModel, info DefineInf
 func (transform Transform) TransformNormalCode(model CodeModel, information DefineInformation) string {
 	funcStr := "\n"
 	for _, function := range model.Functions {
-		funcStr = funcStr + "\n" + transform.BuildFunction(function, information, model)
+		funcStr = funcStr + "\n\n" + transform.BuildFunction(function, information, model)
 	}
 
 	return funcStr
