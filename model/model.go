@@ -46,6 +46,7 @@ type CodeFunction struct {
 	ReturnTypes       []CodeType
 	References        []MemberId
 	CodeFunctionCalls []CodeFunctionCall
+	Variables         map[string]string
 }
 
 type CodeFunctionCall struct {
@@ -80,7 +81,6 @@ func CreateFunctionCall(functionName string, parameters []CodeParameter) CodeFun
 		}
 	}
 
-
 	return call
 }
 
@@ -91,8 +91,8 @@ func CreateFunction(name string) CodeFunction {
 		ReturnTypes:       nil,
 		References:        nil,
 		CodeFunctionCalls: nil,
+		Variables:         make(map[string]string),
 	}
 
 	return function
 }
-

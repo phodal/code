@@ -76,6 +76,7 @@ func (s *CodeAppListener) EnterFunctionDeclaration(ctx *FunctionDeclarationConte
 }
 
 func (s *CodeAppListener) EnterVariableDeclarators(ctx *VariableDeclaratorsContext) {
+	parentType := reflect.TypeOf(ctx.GetParent()).String()
 	for _, varDeclarator := range ctx.AllVariableDeclarator() {
 		varCtx := varDeclarator.(*VariableDeclaratorContext)
 		ident := varCtx.VariableDeclaratorId().GetText()
@@ -84,6 +85,11 @@ func (s *CodeAppListener) EnterVariableDeclarators(ctx *VariableDeclaratorsConte
 		if varCtx.VariableInitializer() != nil {
 			value = varCtx.VariableInitializer().GetText()
 		}
+
+		if parentType == "*parser.LocalVariableDeclarationContext" {
+			currentFunction.Variables[ident] = value
+		}
+
 		varMaps[ident] = value
 	}
 }
