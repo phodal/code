@@ -57,17 +57,35 @@ func (s *BaseCodeListener) EnterFunctionBody(ctx *FunctionBodyContext) {}
 // ExitFunctionBody is called when production functionBody is exited.
 func (s *BaseCodeListener) ExitFunctionBody(ctx *FunctionBodyContext) {}
 
+// EnterPrimary is called when production primary is entered.
+func (s *BaseCodeListener) EnterPrimary(ctx *PrimaryContext) {}
+
+// ExitPrimary is called when production primary is exited.
+func (s *BaseCodeListener) ExitPrimary(ctx *PrimaryContext) {}
+
 // EnterExpressDeclaration is called when production expressDeclaration is entered.
 func (s *BaseCodeListener) EnterExpressDeclaration(ctx *ExpressDeclarationContext) {}
 
 // ExitExpressDeclaration is called when production expressDeclaration is exited.
 func (s *BaseCodeListener) ExitExpressDeclaration(ctx *ExpressDeclarationContext) {}
 
+// EnterBlock is called when production block is entered.
+func (s *BaseCodeListener) EnterBlock(ctx *BlockContext) {}
+
+// ExitBlock is called when production block is exited.
+func (s *BaseCodeListener) ExitBlock(ctx *BlockContext) {}
+
 // EnterBlockStatement is called when production blockStatement is entered.
 func (s *BaseCodeListener) EnterBlockStatement(ctx *BlockStatementContext) {}
 
 // ExitBlockStatement is called when production blockStatement is exited.
 func (s *BaseCodeListener) ExitBlockStatement(ctx *BlockStatementContext) {}
+
+// EnterForControl is called when production forControl is entered.
+func (s *BaseCodeListener) EnterForControl(ctx *ForControlContext) {}
+
+// ExitForControl is called when production forControl is exited.
+func (s *BaseCodeListener) ExitForControl(ctx *ForControlContext) {}
 
 // EnterLocalVariableDeclaration is called when production localVariableDeclaration is entered.
 func (s *BaseCodeListener) EnterLocalVariableDeclaration(ctx *LocalVariableDeclarationContext) {}

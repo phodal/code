@@ -23,14 +23,32 @@ functionDeclaration: FUNCTION IDENTIFIER '(' parameter? ')' '{' functionBody '}'
 
 functionBody: expressDeclaration (expressDeclaration)*;
 
+primary: IDENTIFIER;
+
 expressDeclaration
     : methodCallDeclaration
     | blockStatement
+    | primary
+    | expressDeclaration ('<' '<' | '>' '>' '>' | '>' '>') expressDeclaration
+    | <assoc=right> expression
+            bop=('=' | '+=' | '-=' | '*=' | '/=' | '&=' | '|=' | '^=' | '>>=' | '>>>=' | '<<=' | '%=')
+            expression
+    ;
+
+
+block
+    : '{' blockStatement* '}'
     ;
 
 blockStatement
-    : localVariableDeclaration
+    : blockLabel=block
+    | localVariableDeclaration
+    | FOR forControl blockStatement
     ;
+
+forControl: forExpress=expressDeclaration ;
+
+FOR: 'for';
 
 localVariableDeclaration
     : variableDeclarators

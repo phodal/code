@@ -26,11 +26,20 @@ type CodeVisitor interface {
 	// Visit a parse tree produced by CodeParser#functionBody.
 	VisitFunctionBody(ctx *FunctionBodyContext) interface{}
 
+	// Visit a parse tree produced by CodeParser#primary.
+	VisitPrimary(ctx *PrimaryContext) interface{}
+
 	// Visit a parse tree produced by CodeParser#expressDeclaration.
 	VisitExpressDeclaration(ctx *ExpressDeclarationContext) interface{}
 
+	// Visit a parse tree produced by CodeParser#block.
+	VisitBlock(ctx *BlockContext) interface{}
+
 	// Visit a parse tree produced by CodeParser#blockStatement.
 	VisitBlockStatement(ctx *BlockStatementContext) interface{}
+
+	// Visit a parse tree produced by CodeParser#forControl.
+	VisitForControl(ctx *ForControlContext) interface{}
 
 	// Visit a parse tree produced by CodeParser#localVariableDeclaration.
 	VisitLocalVariableDeclaration(ctx *LocalVariableDeclarationContext) interface{}

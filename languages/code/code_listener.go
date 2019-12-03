@@ -26,11 +26,20 @@ type CodeListener interface {
 	// EnterFunctionBody is called when entering the functionBody production.
 	EnterFunctionBody(c *FunctionBodyContext)
 
+	// EnterPrimary is called when entering the primary production.
+	EnterPrimary(c *PrimaryContext)
+
 	// EnterExpressDeclaration is called when entering the expressDeclaration production.
 	EnterExpressDeclaration(c *ExpressDeclarationContext)
 
+	// EnterBlock is called when entering the block production.
+	EnterBlock(c *BlockContext)
+
 	// EnterBlockStatement is called when entering the blockStatement production.
 	EnterBlockStatement(c *BlockStatementContext)
+
+	// EnterForControl is called when entering the forControl production.
+	EnterForControl(c *ForControlContext)
 
 	// EnterLocalVariableDeclaration is called when entering the localVariableDeclaration production.
 	EnterLocalVariableDeclaration(c *LocalVariableDeclarationContext)
@@ -83,11 +92,20 @@ type CodeListener interface {
 	// ExitFunctionBody is called when exiting the functionBody production.
 	ExitFunctionBody(c *FunctionBodyContext)
 
+	// ExitPrimary is called when exiting the primary production.
+	ExitPrimary(c *PrimaryContext)
+
 	// ExitExpressDeclaration is called when exiting the expressDeclaration production.
 	ExitExpressDeclaration(c *ExpressDeclarationContext)
 
+	// ExitBlock is called when exiting the block production.
+	ExitBlock(c *BlockContext)
+
 	// ExitBlockStatement is called when exiting the blockStatement production.
 	ExitBlockStatement(c *BlockStatementContext)
+
+	// ExitForControl is called when exiting the forControl production.
+	ExitForControl(c *ForControlContext)
 
 	// ExitLocalVariableDeclaration is called when exiting the localVariableDeclaration production.
 	ExitLocalVariableDeclaration(c *LocalVariableDeclarationContext)

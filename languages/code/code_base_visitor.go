@@ -32,11 +32,23 @@ func (v *BaseCodeVisitor) VisitFunctionBody(ctx *FunctionBodyContext) interface{
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseCodeVisitor) VisitPrimary(ctx *PrimaryContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseCodeVisitor) VisitExpressDeclaration(ctx *ExpressDeclarationContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseCodeVisitor) VisitBlock(ctx *BlockContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseCodeVisitor) VisitBlockStatement(ctx *BlockStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseCodeVisitor) VisitForControl(ctx *ForControlContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

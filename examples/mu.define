@@ -13,11 +13,13 @@ define entry_point {
     }
 }
 
+/*
 define loop {
-    defaultTemplate(condition, index,code) {
-
+    defaultTemplate(condition) {
+        FOR "loop"
     }
 }
+*/
 
 module sys {
     print {
