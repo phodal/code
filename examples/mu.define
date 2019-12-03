@@ -5,10 +5,17 @@ symbol PARAMETER_START "("
 symbol PARAMETER_END ")"
 symbol PARAMETER_SPLIT ","
 symbol MAIN "main"
+symbol FOR "for"
 
 define entry_point {
     defaultTemplate(code) {
         FUNCTION "main" PARAMETER_START PARAMETER_END METHOD_START code METHOD_END
+    }
+}
+
+define loop {
+    defaultTemplate(condition, index,code) {
+
     }
 }
 
