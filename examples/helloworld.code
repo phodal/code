@@ -19,8 +19,10 @@ func hello() {
 }
 hello()
 
-var n = 1
-for (n < 5) {
-  n =  n * 2
-  print(5)
+func loopDemo() {
+  var n = 1
+  for (n < 5) {
+    n =  n * 2
+    print(n)
+  }
 }

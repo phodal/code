@@ -3,6 +3,7 @@ package code
 import (
 	. "../../languages/code"
 	. "../../model"
+	"fmt"
 	"reflect"
 )
 
@@ -80,10 +81,13 @@ func (s *CodeAppListener) EnterFunctionDeclaration(ctx *FunctionDeclarationConte
 		case "*parser.BlockStatementContext":
 			child := firstChildCtx.GetChild(0)
 			childType := reflect.TypeOf(child).String()
-			if childType == "*parser.LocalVariableDeclarationContext" {
+			switch childType {
+			case "*parser.LocalVariableDeclarationContext":
 				context := child.(*LocalVariableDeclarationContext).GetChild(0).(*VariableDeclaratorsContext)
 
-				s.handleParameters(context)
+				s.handleLocalVariable(context)
+			case "*parser.StatementContext":
+				s.handleStatement(child.(*StatementContext))
 			}
 		}
 	}
@@ -91,7 +95,13 @@ func (s *CodeAppListener) EnterFunctionDeclaration(ctx *FunctionDeclarationConte
 	currentCodeModel.Functions = append(currentCodeModel.Functions, function)
 }
 
-func (s *CodeAppListener) handleParameters(context *VariableDeclaratorsContext) {
+func (s *CodeAppListener) handleStatement(statementCtx *StatementContext) {
+	child := statementCtx.GetChild(0)
+	childType := reflect.TypeOf(child).String()
+	fmt.Println(childType)
+}
+
+func (s *CodeAppListener) handleLocalVariable(context *VariableDeclaratorsContext) {
 	for _, varDeclarator := range context.AllVariableDeclarator() {
 		varCtx := varDeclarator.(*VariableDeclaratorContext)
 		ident := varCtx.VariableDeclaratorId().GetText()
