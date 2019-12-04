@@ -63,11 +63,11 @@ func (s *BaseCodeListener) EnterPrimary(ctx *PrimaryContext) {}
 // ExitPrimary is called when production primary is exited.
 func (s *BaseCodeListener) ExitPrimary(ctx *PrimaryContext) {}
 
-// EnterExpressDeclaration is called when production expressDeclaration is entered.
-func (s *BaseCodeListener) EnterExpressDeclaration(ctx *ExpressDeclarationContext) {}
+// EnterExpression is called when production expression is entered.
+func (s *BaseCodeListener) EnterExpression(ctx *ExpressionContext) {}
 
-// ExitExpressDeclaration is called when production expressDeclaration is exited.
-func (s *BaseCodeListener) ExitExpressDeclaration(ctx *ExpressDeclarationContext) {}
+// ExitExpression is called when production expression is exited.
+func (s *BaseCodeListener) ExitExpression(ctx *ExpressionContext) {}
 
 // EnterBlock is called when production block is entered.
 func (s *BaseCodeListener) EnterBlock(ctx *BlockContext) {}
@@ -80,6 +80,12 @@ func (s *BaseCodeListener) EnterBlockStatement(ctx *BlockStatementContext) {}
 
 // ExitBlockStatement is called when production blockStatement is exited.
 func (s *BaseCodeListener) ExitBlockStatement(ctx *BlockStatementContext) {}
+
+// EnterStatement is called when production statement is entered.
+func (s *BaseCodeListener) EnterStatement(ctx *StatementContext) {}
+
+// ExitStatement is called when production statement is exited.
+func (s *BaseCodeListener) ExitStatement(ctx *StatementContext) {}
 
 // EnterForControl is called when production forControl is entered.
 func (s *BaseCodeListener) EnterForControl(ctx *ForControlContext) {}
@@ -116,12 +122,6 @@ func (s *BaseCodeListener) EnterVariableInitializer(ctx *VariableInitializerCont
 
 // ExitVariableInitializer is called when production variableInitializer is exited.
 func (s *BaseCodeListener) ExitVariableInitializer(ctx *VariableInitializerContext) {}
-
-// EnterExpression is called when production expression is entered.
-func (s *BaseCodeListener) EnterExpression(ctx *ExpressionContext) {}
-
-// ExitExpression is called when production expression is exited.
-func (s *BaseCodeListener) ExitExpression(ctx *ExpressionContext) {}
 
 // EnterMethodCallDeclaration is called when production methodCallDeclaration is entered.
 func (s *BaseCodeListener) EnterMethodCallDeclaration(ctx *MethodCallDeclarationContext) {}

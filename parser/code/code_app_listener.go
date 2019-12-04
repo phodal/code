@@ -60,9 +60,9 @@ func (s *CodeAppListener) EnterFunctionDeclaration(ctx *FunctionDeclarationConte
 	function := CreateFunction(ctx.IDENTIFIER().GetText())
 	currentFunction = function
 
-	allExpressDeclaration := ctx.FunctionBody().(*FunctionBodyContext).AllExpressDeclaration()
+	allExpressDeclaration := ctx.FunctionBody().(*FunctionBodyContext).AllExpression()
 	for _, express := range allExpressDeclaration {
-		expressCtx := express.(*ExpressDeclarationContext)
+		expressCtx := express.(*ExpressionContext)
 
 		firstChildCtx := expressCtx.GetChild(0)
 

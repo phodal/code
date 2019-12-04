@@ -16,23 +16,24 @@ typeDeclaration
     : dataStructDeclaration
     | memberDeclaration
     | functionDeclaration
-    | expressDeclaration
+    | expression
     ;
 
 functionDeclaration: FUNCTION IDENTIFIER '(' parameter? ')' '{' functionBody '}';
 
-functionBody: expressDeclaration (expressDeclaration)*;
+functionBody: expression (expression)*;
 
 primary: IDENTIFIER | DECIMAL_LITERAL | STRING_LITERAL;
 
-expressDeclaration
-    : methodCallDeclaration
-    | blockStatement
-    | primary
-    | expressDeclaration ('<' '<' | '>' '>' '>' | '>' '>') expressDeclaration
+expression
+    : primary
+    | methodCallDeclaration
+    | expression bop=('<=' | '>=' | '>' | '<') expression
+    | expression bop=('*'|'/'|'%') expression
     | <assoc=right> expression
             bop=('=' | '+=' | '-=' | '*=' | '/=' | '&=' | '|=' | '^=' | '>>=' | '>>>=' | '<<=' | '%=')
             expression
+    | blockStatement
     ;
 
 
@@ -41,12 +42,17 @@ block
     ;
 
 blockStatement
-    : blockLabel=block
-    | FOR '(' forControl ')' blockStatement
-    | localVariableDeclaration
+    : localVariableDeclaration
+    | statement
     ;
 
-forControl: expressDeclaration;
+statement
+    : blockLabel=block
+    | FOR '(' forControl ')' statement
+//    | expression
+    ;
+
+forControl: expression;
 
 FOR: 'for';
 
@@ -55,7 +61,7 @@ localVariableDeclaration
     ;
 
 variableDeclarators
-    : VAR variableDeclarator (',' variableDeclarator)*
+    : VAR? variableDeclarator (',' variableDeclarator)*
     ;
 
 VAR: 'var';
@@ -72,11 +78,8 @@ variableInitializer
     : expression
     ;
 
-expression
-    : (IDENTIFIER | DECIMAL_LITERAL | STRING_LITERAL)
-    ;
-
 methodCallDeclaration: IDENTIFIER '(' parameter* ')';
+
 parameter
     : literal
     | IDENTIFIER

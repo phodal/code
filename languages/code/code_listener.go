@@ -29,14 +29,17 @@ type CodeListener interface {
 	// EnterPrimary is called when entering the primary production.
 	EnterPrimary(c *PrimaryContext)
 
-	// EnterExpressDeclaration is called when entering the expressDeclaration production.
-	EnterExpressDeclaration(c *ExpressDeclarationContext)
+	// EnterExpression is called when entering the expression production.
+	EnterExpression(c *ExpressionContext)
 
 	// EnterBlock is called when entering the block production.
 	EnterBlock(c *BlockContext)
 
 	// EnterBlockStatement is called when entering the blockStatement production.
 	EnterBlockStatement(c *BlockStatementContext)
+
+	// EnterStatement is called when entering the statement production.
+	EnterStatement(c *StatementContext)
 
 	// EnterForControl is called when entering the forControl production.
 	EnterForControl(c *ForControlContext)
@@ -55,9 +58,6 @@ type CodeListener interface {
 
 	// EnterVariableInitializer is called when entering the variableInitializer production.
 	EnterVariableInitializer(c *VariableInitializerContext)
-
-	// EnterExpression is called when entering the expression production.
-	EnterExpression(c *ExpressionContext)
 
 	// EnterMethodCallDeclaration is called when entering the methodCallDeclaration production.
 	EnterMethodCallDeclaration(c *MethodCallDeclarationContext)
@@ -95,14 +95,17 @@ type CodeListener interface {
 	// ExitPrimary is called when exiting the primary production.
 	ExitPrimary(c *PrimaryContext)
 
-	// ExitExpressDeclaration is called when exiting the expressDeclaration production.
-	ExitExpressDeclaration(c *ExpressDeclarationContext)
+	// ExitExpression is called when exiting the expression production.
+	ExitExpression(c *ExpressionContext)
 
 	// ExitBlock is called when exiting the block production.
 	ExitBlock(c *BlockContext)
 
 	// ExitBlockStatement is called when exiting the blockStatement production.
 	ExitBlockStatement(c *BlockStatementContext)
+
+	// ExitStatement is called when exiting the statement production.
+	ExitStatement(c *StatementContext)
 
 	// ExitForControl is called when exiting the forControl production.
 	ExitForControl(c *ForControlContext)
@@ -121,9 +124,6 @@ type CodeListener interface {
 
 	// ExitVariableInitializer is called when exiting the variableInitializer production.
 	ExitVariableInitializer(c *VariableInitializerContext)
-
-	// ExitExpression is called when exiting the expression production.
-	ExitExpression(c *ExpressionContext)
 
 	// ExitMethodCallDeclaration is called when exiting the methodCallDeclaration production.
 	ExitMethodCallDeclaration(c *MethodCallDeclarationContext)

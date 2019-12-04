@@ -36,7 +36,7 @@ func (v *BaseCodeVisitor) VisitPrimary(ctx *PrimaryContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseCodeVisitor) VisitExpressDeclaration(ctx *ExpressDeclarationContext) interface{} {
+func (v *BaseCodeVisitor) VisitExpression(ctx *ExpressionContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -45,6 +45,10 @@ func (v *BaseCodeVisitor) VisitBlock(ctx *BlockContext) interface{} {
 }
 
 func (v *BaseCodeVisitor) VisitBlockStatement(ctx *BlockStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseCodeVisitor) VisitStatement(ctx *StatementContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -69,10 +73,6 @@ func (v *BaseCodeVisitor) VisitVariableDeclaratorId(ctx *VariableDeclaratorIdCon
 }
 
 func (v *BaseCodeVisitor) VisitVariableInitializer(ctx *VariableInitializerContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseCodeVisitor) VisitExpression(ctx *ExpressionContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
