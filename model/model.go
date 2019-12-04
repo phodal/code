@@ -18,7 +18,6 @@ type CodeMember struct {
 	DataStructId string
 	FileId       string
 	PackageName  string // namespace
-	Position     CodePosition
 }
 
 type CodeDataStruct struct {
@@ -47,6 +46,7 @@ type CodeFunction struct {
 	References        []MemberId
 	CodeFunctionCalls []CodeFunctionCall
 	Variables         map[string]string
+	Position          CodePosition
 }
 
 type CodeFunctionCall struct {

@@ -60,6 +60,11 @@ func (s *CodeAppListener) EnterFunctionDeclaration(ctx *FunctionDeclarationConte
 	function := CreateFunction(ctx.IDENTIFIER().GetText())
 	currentFunction = function
 
+	function.Position.StartLine = ctx.GetStart().GetLine()
+	function.Position.StartLineColumn = ctx.IDENTIFIER().GetSymbol().GetColumn()
+	function.Position.StopLine = ctx.GetStop().GetLine()
+	function.Position.StopLineColumn = ctx.IDENTIFIER().GetSymbol().GetColumn()
+
 	allExpressDeclaration := ctx.FunctionBody().(*FunctionBodyContext).AllExpression()
 	for _, express := range allExpressDeclaration {
 		expressCtx := express.(*ExpressionContext)
