@@ -23,7 +23,7 @@ functionDeclaration: FUNCTION IDENTIFIER '(' parameter? ')' '{' functionBody '}'
 
 functionBody: expressDeclaration (expressDeclaration)*;
 
-primary: IDENTIFIER;
+primary: IDENTIFIER | DECIMAL_LITERAL | STRING_LITERAL;
 
 expressDeclaration
     : methodCallDeclaration
@@ -42,11 +42,11 @@ block
 
 blockStatement
     : blockLabel=block
+    | FOR '(' forControl ')' blockStatement
     | localVariableDeclaration
-    | FOR forControl blockStatement
     ;
 
-forControl: forExpress=expressDeclaration ;
+forControl: expressDeclaration;
 
 FOR: 'for';
 
