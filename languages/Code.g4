@@ -49,7 +49,7 @@ blockStatement
 statement
     : blockLabel=block
     | FOR '(' forControl ')' statement
-//    | expression
+    | methodCallDeclaration
     ;
 
 forControl: expression;
