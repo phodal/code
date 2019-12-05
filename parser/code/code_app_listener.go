@@ -4,6 +4,7 @@ import (
 	. "../../languages/code"
 	. "../../model"
 	"fmt"
+	"github.com/antlr/antlr4/runtime/Go/antlr"
 	"reflect"
 )
 
@@ -87,7 +88,8 @@ func (s *CodeAppListener) EnterFunctionDeclaration(ctx *FunctionDeclarationConte
 
 				s.handleLocalVariable(context)
 			case "*parser.StatementContext":
-				s.handleStatement(child.(*StatementContext))
+				statement := s.handleStatement(child.(*StatementContext))
+				fmt.Println(statement)
 			}
 		}
 	}
@@ -95,10 +97,37 @@ func (s *CodeAppListener) EnterFunctionDeclaration(ctx *FunctionDeclarationConte
 	currentCodeModel.Functions = append(currentCodeModel.Functions, function)
 }
 
-func (s *CodeAppListener) handleStatement(statementCtx *StatementContext) {
+type BlockStatement struct {
+	Condition      string
+	BlockStatement []string
+}
+
+func (s *CodeAppListener) handleStatement(statementCtx *StatementContext) BlockStatement {
+	blockStatement := &BlockStatement{
+		Condition:      "",
+		BlockStatement: nil,
+	}
+
 	child := statementCtx.GetChild(0)
 	childType := reflect.TypeOf(child).String()
-	fmt.Println(childType)
+	switch childType {
+	case "*antlr.TerminalNodeImpl":
+		nodeType := child.(*antlr.TerminalNodeImpl)
+		switch nodeType.GetText() {
+		case "for":
+			FOR_STATEMENT_INDEX := 4
+			FOR_CONTROL_INDEX := 2
+
+			forControlText := statementCtx.GetChild(FOR_CONTROL_INDEX).(*ForControlContext).GetText()
+			blockStatement.Condition = forControlText
+			blockCtx := statementCtx.GetChild(FOR_STATEMENT_INDEX).GetChild(0).(*BlockContext)
+			for _, statement := range blockCtx.AllBlockStatement() {
+				blockStatement.BlockStatement = append(blockStatement.BlockStatement, statement.GetText())
+			}
+		}
+	}
+
+	return *blockStatement
 }
 
 func (s *CodeAppListener) handleLocalVariable(context *VariableDeclaratorsContext) {
