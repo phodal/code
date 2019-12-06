@@ -37,7 +37,7 @@ func (transform Transform) BuildFunctionCall(call CodeFunctionCall, info DefineI
 
 	paramList := strings.Join(parameters, ",")
 
-	return callName + "(" + paramList + ")"
+	return addSpace(callName + "(" + paramList + ")")
 }
 
 func (transform Transform) BuildImport(call CodeFunctionCall, modules []DefineModule) {
@@ -92,6 +92,7 @@ func (transform Transform) TransformMainCode(codeModel CodeModel, info DefineInf
 		code = code + "\n" + transform.BuildFunctionCall(call, info, codeModel)
 		transform.BuildImport(call, info.DefineModules)
 	}
+	code = code + "\n"
 
 	importStr = transform.GetImports()
 
@@ -107,10 +108,14 @@ func (transform Transform) TransformMainCode(codeModel CodeModel, info DefineInf
 }
 
 func (transform Transform) TransformNormalCode(model CodeModel, information DefineInformation) string {
-	funcStr := "\n"
+	funcStr := ""
 	for _, function := range model.Functions {
 		funcStr = funcStr + "\n\n" + transform.BuildFunction(function, information, model)
 	}
 
 	return funcStr
+}
+
+func addSpace(str string) string {
+	return "    " + str
 }

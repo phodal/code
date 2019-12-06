@@ -6,10 +6,11 @@ symbol PARAMETER_END ")"
 symbol PARAMETER_SPLIT ","
 symbol MAIN "main"
 symbol FOR "for"
+symbol SPACE ""
 
 define entry_point {
     defaultTemplate(code) {
-        FUNCTION "main" PARAMETER_START PARAMETER_END METHOD_START code METHOD_END
+        FUNCTION "main" PARAMETER_START PARAMETER_END SPACE METHOD_START code METHOD_END
     }
 }
 
