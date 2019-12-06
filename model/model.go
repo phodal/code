@@ -46,7 +46,15 @@ type CodeFunction struct {
 	References        []MemberId
 	CodeFunctionCalls []CodeFunctionCall
 	Variables         map[string]string
+	Expression        []Expression
 	Position          CodePosition
+}
+
+type Expression struct {
+	Expressions    []Expression
+	BlockStatement []string
+	BlockCondition string
+	Position       CodePosition
 }
 
 type CodeFunctionCall struct {
